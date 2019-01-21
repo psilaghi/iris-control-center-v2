@@ -1,26 +1,49 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import AppHeader from './components/AppHeader';
+import Navbar from './components/Navbar';
+import AppContent from './components/AppContent';
+import {
+  BrowserRouter as Router
+} from 'react-router-dom';
+import styled, { createGlobalStyle } from 'styled-components';
+
+const GlobalStyle = createGlobalStyle`
+  html, body, #root {
+    height: 100%;
+  }
+  #root {
+    display: grid;
+    grid-template-areas: 
+      "header header"
+      "Navbar content";
+    grid-template-columns: 271px 1fr;
+    grid-template-rows: auto 1fr;
+  }
+  body {
+    font-family: 'Open Sans';
+  }
+`;
+const StyledAppHeader = styled(AppHeader)`
+  grid-area: header;
+`;
+const StyledNavbar = styled(Navbar)`
+  grid-area: Navbar;
+`;
+const StyledAppContent = styled(AppContent)`
+  grid-area: content;
+`;
 
 class App extends Component {
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
-      </div>
+      <Router>
+        <>
+          <GlobalStyle />
+          <StyledAppHeader />
+          <StyledNavbar />
+          <StyledAppContent />
+        </>
+      </Router>
     );
   }
 }
