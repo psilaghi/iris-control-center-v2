@@ -10,7 +10,7 @@ const Li = styled.li`
     background-color: white;
     font-weight: bold;
   `}
-  padding: 10px 20px 10px 30px;
+  // padding: 10px 20px 10px 30px;
   font-size: 21px;
 `;
 const StyledNavLink = styled(NavLink)`
@@ -23,6 +23,16 @@ const StyledNavLink = styled(NavLink)`
   display: flex;
   align-items: center;
   justify-content: space-between;
+  padding: 10px 20px 10px 30px;
+`;
+const StyledSubNavLink = styled(NavLink)`
+  text-decoration: none;
+  &:active,
+  &:link,
+  &:visited {
+    color: inherit;
+  }
+  padding: 10px 20px 10px 30px;
 `;
 
 const Button = styled.button`
@@ -30,6 +40,17 @@ const Button = styled.button`
   border: none;
   padding: 10px;
   font-size: 17px;
+`;
+
+const Ul = styled.ul`
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  background-color: #EDEDF0;
+`;
+
+const Span = styled.span`
+  padding: 17px;
 `;
 
 function NavbarItem(props) {
@@ -46,8 +67,21 @@ function NavbarItem(props) {
           <Icon icon={expanded ? 'close' : 'open'} />
         </Button>
       </StyledNavLink>
+      {expanded && props.sublinks && (
+        <Ul>
+          {props.sublinks.map(item => (
+            <li>
+              <StyledSubNavLink to={`${props.basePath}${item.path}`}>
+                <Icon icon={item.icon} />
+                <Span>
+                  {item.label}
+                </Span>
+              </StyledSubNavLink>
+            </li>
+          ))}
+        </Ul>
+      )}
     </Li>
-
   );
 }
 

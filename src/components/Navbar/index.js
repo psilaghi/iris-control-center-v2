@@ -15,23 +15,33 @@ const Ul = styled.ul`
   margin: 0;
 `;
 
+const targets = [
+  {path:"/firefox", label: "Firefox", icon: "firefox-logo"}, 
+  {path:"/slack", label: "Slack", icon: "slack-logo"}, 
+  {path:"/chrome", label: "Chrome", icon: "chrome-logo"}, 
+  {path:"/safari", label: "Safari", icon: "safari-logo"}, 
+  {path:"/webapp", label: "Web App", icon: "webapp-logo"}];
+
 function Navbar(props) {
   return (
     <Aside className={props.className}>
       <nav>
         <Ul>
           <Route path="/runs">
-            <NavbarItem label="All Runs" basePath="/runs"/> 
-            {/* adaugam un sublinks la comp de navbarItem     */}
+            <NavbarItem label="All Runs" basePath="/runs"/>
           </Route>
           
           <Route path="/new">
-            <NavbarItem label="Create New Run" basePath="/new"/>     
+            <NavbarItem 
+              label="Create New Run" 
+              basePath="/new" 
+              sublinks={targets} 
+            />
           </Route>
         </Ul>
       </nav>
     </Aside>
   );
-}
+};
 
 export default Navbar;
