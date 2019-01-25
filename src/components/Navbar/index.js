@@ -1,18 +1,36 @@
 import * as React from 'react';
-import { NavLink } from 'react-router-dom';
 import styled from 'styled-components';
 import NavbarItem from './NavbarItem';
 import { Route } from 'react-router-dom';
 
 const Aside = styled.aside`
 	width: 271px;
-	background-color: #D7D7DB;
+  background-color: #D7D7DB;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 `;
 
 const Ul = styled.ul`
   list-style: none;
   padding: 0;
   margin: 0;
+`;
+
+const Nav = styled.nav`
+  width: 100%;
+`;
+
+const QuitButton = styled.button`
+  background-color: #fb003b;
+  border: none;
+  border-radius: 5px;
+  box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14), 0 3px 1px -2px rgba(0,0,0,0.12), 0 1px 5px 0 rgba(0,0,0,0.2);
+  color: white;
+  font-size: 21px;
+  height: 62px;	
+  margin: 20px;
+  width: 150px;	
 `;
 
 const targets = [
@@ -25,7 +43,7 @@ const targets = [
 function Navbar(props) {
   return (
     <Aside className={props.className}>
-      <nav>
+      <Nav>
         <Ul>
           <Route path="/runs">
             <NavbarItem label="All Runs" basePath="/runs"/>
@@ -39,7 +57,8 @@ function Navbar(props) {
             />
           </Route>
         </Ul>
-      </nav>
+      </Nav>
+      <QuitButton type="button">Quit Iris</QuitButton>
     </Aside>
   );
 };
