@@ -1,85 +1,91 @@
 import * as React from 'react';
-import { useState } from 'react';
 import Icon from '../Icon';
 import { NavLink, withRouter } from 'react-router-dom';
-import styled, { withTheme } from 'styled-components';
+import styled from 'styled-components';
 
 const Span = styled.span`
   font-size: 21px;
 `;
 
 const Li = styled.li`
+  padding-left: 8px;
   ${props => props.selected && `
     box-shadow: inset 8px 0px 0px 0px rgba(69,161,255,1);
     background-color: white;
-    font-weight: bold;
   `}
 `;
 const StyledNavLink = styled(NavLink)`
-  text-decoration: none;
-  &:active,
-  &:link,
-  &:visited {
-    color: inherit;
-  }
-  display: flex;
   align-items: center;
-  justify-content: space-between;
-  padding: 10px 20px 10px 30px;
-`;
-const StyledSubNavLink = styled(NavLink)`
-  text-decoration: none;
-  &:active,
-  &:link,
-  &:visited {
-    color: inherit;
-  }
-  padding: 10px 20px 10px 30px;
+  box-sizing: border-box;
   display: flex;
-  align-items: center;
-  ${Span} {
-    padding: 7px 0 7px 17px;
-  }
-`;
+  height: 62px;
+  padding: 0 24px;
+  text-decoration: none;
 
-const Button = styled.button`
-  background: none;
-  border: none;
-  padding: 10px;
-  font-size: 17px;
+  &:active,
+  &:link,
+  &:visited {
+    color: inherit;
+  }
+
+  ${props => props.selected && `
+    font-weight: bold;
+    ${props.dark && `
+      background-color: rgba(0,15,64, 0.59);
+      ${Span} {
+        color: white;
+      }
+    `}
+  `}
+  
 `;
 
 const Ul = styled.ul`
   list-style: none;
-  padding: 0;
+  padding: 10px 0;
   margin: 0;
   background-color: #EDEDF0;
+  ${StyledNavLink} {
+    height: 48px;
+    padding: 0 17px;
+  }
+`;
+const ExpandIcon = styled(Icon)`
+  margin: auto;
+  margin-right: 0;
+`;
+
+const Logo = styled(Icon)`
+  margin-right: 17px;
 `;
 
 function NavbarItem(props) {
-  const [expanded, setExpanded] = useState(!!props.match || false);
-  
   return (
     <Li selected={props.match}>
-      <StyledNavLink to={props.basePath}>
+      <StyledNavLink 
+        selected={props.match} 
+        to={props.sublinks ? 
+          `${props.basePath}${props.sublinks[0].path}` : 
+          props.basePath
+        }
+      >
         <Span>{props.label}</Span>
-        <Button type="button" onClick={event => {
-          event.preventDefault();
-          setExpanded(!expanded);
-        }}>
-          <Icon icon={expanded ? 'close' : 'open'} />
-        </Button>
+        <ExpandIcon icon={props.match ? 'close' : 'open'} />
       </StyledNavLink>
-      {expanded && props.sublinks && (
+      {props.match && props.sublinks && (
         <Ul>
           {props.sublinks.map(item => (
-            <li>
-              <StyledSubNavLink to={`${props.basePath}${item.path}`}>
-                <Icon icon={item.icon} size="2x" />
+            <li key={item.path}>
+              <StyledNavLink 
+                dark
+                selected={props.location.pathname === `${props.basePath}${item.path}`} 
+                to={`${props.basePath}${item.path}`}
+              >
+                <Logo icon={item.icon} size="2x" />
                 <Span>
                   {item.label}
                 </Span>
-              </StyledSubNavLink>
+              </StyledNavLink>
             </li>
           ))}
         </Ul>

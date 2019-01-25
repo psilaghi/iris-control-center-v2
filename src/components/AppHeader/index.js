@@ -4,18 +4,18 @@ import styled from 'styled-components';
 const Header = styled.header`
   align-items: center;
   background-color: #1A1919;
+  box-sizing: border-box;
   display: flex;
+  font-family: 'ZillaSlab';
+  height: 150px;
   justify-content: space-between;
   padding: 20px 50px;
-  height: 150px;
-  box-sizing: border-box;
-  font-family: 'ZillaSlab';
 `;
 
 const HeaderText = styled.div`
+  color: white;
   font-size: 94px;
   font-weight: 700;
-  color: white;
 `;
 
 function AppHeader(props) {
