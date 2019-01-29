@@ -77,7 +77,7 @@ function NavbarItem(props) {
           {props.sublinks.map(item => (
             <li key={item.path}>
               <StyledNavLink 
-                dark
+                dark="true"
                 selected={props.location.pathname === `${props.basePath}${item.path}`} 
                 to={`${props.basePath}${item.path}`}
               >
