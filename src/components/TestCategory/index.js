@@ -34,6 +34,9 @@ const Checkbox = styled.input`
 `;
 const Container = styled.div`
   margin: 4px 0;
+   .card-body {
+    padding: 0;
+  }
 `;
 
 class TestCategory extends React.Component {
