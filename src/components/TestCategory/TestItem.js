@@ -33,9 +33,7 @@ const Checkbox = styled.input`
 `;
 const Container = styled.div`
   margin: 4px 0;
-  .card-body {
-    padding: 0;
-  }
+  padding-left: 36px;
 `;
 
 class TestItem extends React.Component {
@@ -74,8 +72,11 @@ class TestItem extends React.Component {
           <span>
             {this.props.test.name}
           </span>
+          {/* <span>
+            {this.props.test.meta}
+          </span> */}
           <ExpandButton type="button" onClick={this.toggleCollapse}>
-            <Icon icon={this.state.expanded ? 'close' : 'open'} />
+            <Icon icon={this.state.expanded ? 'close' : 'arrowhead-right'} />
           </ExpandButton>
         </SummaryContainer>
         <Collapse isOpen={this.state.expanded}>

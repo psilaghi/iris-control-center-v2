@@ -22,6 +22,27 @@ export default {
         <rect id="Rectangle" fill="currentColor" x="3" y="10" width="18" height="2" rx="1"></rect>
     </g>
   `],
+  'arrowhead-right': [18, 18, `
+    <g id="ic/chevron_right" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <mask id="mask-2" fill="white">
+            <use xlink:href="#path-1"></use>
+        </mask>
+        <g id="Background"></g>
+        <g id="ic_chevron_right_24px" mask="url(#mask-2)">
+            <g transform="translate(8.000000, 6.000000)">
+                <mask id="mask-4" fill="white">
+                    <use xlink:href="#path-3"></use>
+                </mask>
+                <g id="Path" stroke="none" fill="none"></g>
+                <g id="c/grey/600" stroke="none" fill="none" opacity="0.746279762" mask="url(#mask-4)" fill-rule="evenodd">
+                    <g transform="translate(-8.000000, -6.000000)" fill="#0060DF" id="Shape">
+                        <rect x="0" y="0" width="24" height="24"></rect>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+  `],
   'firefox-logo': [30, 31, `
     <g id="Components" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
         <g transform="translate(-1645.000000, -345.000000)" id="-New-Run-Group">
