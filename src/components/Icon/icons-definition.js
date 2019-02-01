@@ -22,25 +22,9 @@ export default {
         <rect id="Rectangle" fill="currentColor" x="3" y="10" width="18" height="2" rx="1"></rect>
     </g>
   `],
-  'arrowhead-right': [18, 18, `
-    <g id="ic/chevron_right" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-        <mask id="mask-2" fill="white">
-            <use xlink:href="#path-1"></use>
-        </mask>
-        <g id="Background"></g>
-        <g id="ic_chevron_right_24px" mask="url(#mask-2)">
-            <g transform="translate(8.000000, 6.000000)">
-                <mask id="mask-4" fill="white">
-                    <use xlink:href="#path-3"></use>
-                </mask>
-                <g id="Path" stroke="none" fill="none"></g>
-                <g id="c/grey/600" stroke="none" fill="none" opacity="0.746279762" mask="url(#mask-4)" fill-rule="evenodd">
-                    <g transform="translate(-8.000000, -6.000000)" fill="#0060DF" id="Shape">
-                        <rect x="0" y="0" width="24" height="24"></rect>
-                    </g>
-                </g>
-            </g>
-        </g>
+  'arrowhead-right': [256, 512, `
+    <g>
+      <path fill="currentColor" d="M224.3 273l-136 136c-9.4 9.4-24.6 9.4-33.9 0l-22.6-22.6c-9.4-9.4-9.4-24.6 0-33.9l96.4-96.4-96.4-96.4c-9.4-9.4-9.4-24.6 0-33.9L54.3 103c9.4-9.4 24.6-9.4 33.9 0l136 136c9.5 9.4 9.5 24.6.1 34z"></path>
     </g>
   `],
   'firefox-logo': [30, 31, `
