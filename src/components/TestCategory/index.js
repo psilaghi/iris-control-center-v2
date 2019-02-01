@@ -33,9 +33,12 @@ const Checkbox = styled.input`
   font-size: 16px;
 `;
 const Container = styled.div`
-  margin: 4px 0;
+  margin: 8px 0;
    .card-body {
     padding: 0;
+  }
+   .card {
+    border: none;
   }
 `;
 

@@ -19,6 +19,7 @@ const ExpandButton = styled.button`
 `;
 const SummaryContainer = styled.div`
   display: flex;
+  // flex-direction: column;
   align-items: center;
   font-size: 20px;
   height: 55px;
@@ -32,8 +33,14 @@ const Checkbox = styled.input`
   font-size: 16px;
 `;
 const Container = styled.div`
-  margin: 4px 0;
+  margin: 2px 0;
   padding-left: 36px;
+`;
+
+const Meta = styled.div`
+  font-size: 12px;
+  color: gray;
+  margin-left: 33px;
 `;
 
 class TestItem extends React.Component {
@@ -64,19 +71,23 @@ class TestItem extends React.Component {
     return (
       <Container>
         <SummaryContainer onClick={this.toggleCollapse}>
-          <Checkbox
-            type="checkbox"
-            checked={this.props.checked}
-            onChange={this.handleChange}
-          />
-          <span>
-            {this.props.test.name}
-          </span>
-          {/* <span>
-            {this.props.test.meta}
-          </span> */}
+          <div>
+            <div>
+              <Checkbox
+                type="checkbox"
+                checked={this.props.checked}
+                onChange={this.handleChange}
+              />
+              <span>
+                {this.props.test.name}
+              </span>
+            </div>
+            <Meta>
+              {this.props.test.meta}
+            </Meta>
+          </div>
           <ExpandButton type="button" onClick={this.toggleCollapse}>
-            <Icon icon={this.state.expanded ? 'close' : 'arrowhead-right'} />
+            <Icon icon={this.state.expanded ? 'arrowhead-right' : 'open'} />
           </ExpandButton>
         </SummaryContainer>
         <Collapse isOpen={this.state.expanded}>
