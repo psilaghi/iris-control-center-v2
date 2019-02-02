@@ -7,6 +7,12 @@ const ContentContainer = styled.div`
   box-sizing: border-box;
   padding: 50px;
 `;
+const Title = styled.h1`
+  
+`;
+const SelectAll = styled.label`
+  
+`;
 
 class Tests extends React.Component {
   constructor(props) {
@@ -37,9 +43,22 @@ class Tests extends React.Component {
     this.props.onSelect(tests);
   }
 
+  handleSelectAll = (checked) => {
+    this.props.onSelect(
+      checked ? Object.assign({}, this.state.tests) : {}
+    );
+  }
+
   render() {
     return (
       <ContentContainer>
+        <Title>
+          Tests
+        </Title>
+        <SelectAll>
+          <input type="checkbox" onChange={this.handleSelectAll} />
+          Select all tests
+        </SelectAll>
         {Object.keys(this.state.tests).map(categoryName => (
           <TestCategory
             key={categoryName}
