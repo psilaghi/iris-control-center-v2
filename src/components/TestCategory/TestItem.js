@@ -15,17 +15,19 @@ const ExpandButton = styled.button`
     outline: none;
     border: none;
   }
-  display: flex;
+  display: none;
 `;
 const SummaryContainer = styled.div`
   display: flex;
-  // flex-direction: column;
   align-items: center;
   font-size: 20px;
   height: 55px;
   background-color: #e5effc;
   &:hover {
     background-color: #c4daf7;
+    ${ExpandButton} {
+      display: flex;
+    }
   }
 `;
 const Checkbox = styled.input`
@@ -87,7 +89,7 @@ class TestItem extends React.Component {
             </Meta>
           </div>
           <ExpandButton type="button" onClick={this.toggleCollapse}>
-            <Icon icon={this.state.expanded ? 'arrowhead-right' : 'open'} />
+            <Icon icon="arrowhead-right" />
           </ExpandButton>
         </SummaryContainer>
         <Collapse isOpen={this.state.expanded}>
