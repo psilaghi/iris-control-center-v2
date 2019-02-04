@@ -17,72 +17,28 @@ class NewRunPage extends React.Component {
     };
   }
 
-  componentDidMount() {
-    ApiClient.get('/data/all_args.json').then(response => {
-      const defaults = {};
-      for (let key in response) {
-        defaults[key] = (response[key].type === 'bool' ? (response[key].default === 'true') : response[key].default);
-      }
-      this.setState({
-        args: response,
-        newRun: {
-          ...this.state.newRun,
-          ...defaults
-        }
-      });
-    });
-  }
-
-  handleChange = (name, value) => {
-    this.setState({
-      newRun: {
-        ...this.state.newRun,
-        [name]: value
-      }
-    });
-  }
-
-  handleCheckboxChange = (event) => {
-    this.setState({
-      newRun: {
-        ...this.state.newRun,
-        [event.target.name]: event.target.checked ? true : false
-      }
-    });
-  }
-
   handleSubmit = () => {
     ApiClient.post('/go',this.state);
   }
 
-  handleCancel = () => {
-    ApiClient.get('/cancel');
-  }
-
-  handleTestSelection = (categoryName, selectedTests) => {
-    let tests;
-    if (!selectedTests.length) {
-      tests = {
-        ...this.state.tests
-      };
-      delete tests[categoryName];
-    } else {
-      tests = {
-        ...this.state.tests,
-        [categoryName]: selectedTests
-      }
-    }
-
+  handleTestSelection = (selectedTests) => {
     this.setState({
-      tests: tests
+      tests: selectedTests
+    });
+  }
+  
+  handleSettingsSelection = (selectedArgs) => {
+    this.setState({
+      args: selectedArgs
     });
   }
 
   render() {
+    console.log(this.state);
     return (
       <MainGrid>
         <Tests onSelect={this.handleTestSelection} selections={this.state.tests} />
-        <Settings />
+        <Settings onSelect={this.handleSettingsSelection} selections={this.state.args}/>
       </MainGrid>
     );
   }

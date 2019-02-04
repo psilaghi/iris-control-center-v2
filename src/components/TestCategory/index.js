@@ -30,7 +30,6 @@ const SummaryContainer = styled.div`
 `;
 const Checkbox = styled.input`
   margin: 10px;
-  font-size: 16px;
 `;
 const Container = styled.div`
   margin: 8px 0;
