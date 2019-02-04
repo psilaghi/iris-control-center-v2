@@ -27,6 +27,9 @@ const StyledNavLink = styled(NavLink)`
   &:visited {
     color: inherit;
   }
+  &:hover {
+    text-decoration: none;
+  }
 
   ${props => props.selected && `
     font-weight: bold;

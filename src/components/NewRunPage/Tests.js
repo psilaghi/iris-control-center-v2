@@ -8,10 +8,25 @@ const ContentContainer = styled.div`
   padding: 50px;
 `;
 const Title = styled.h1`
-  
+  color: #737373;
+  font-size: 28px;
+  font-weight: normal;
 `;
-const SelectAll = styled.label`
-  
+const SelectAllCheckbox = styled.input`
+  margin: 10px;
+`;
+const Span = styled.span`
+  font-size: 20px;
+`;
+const Label = styled.label`
+  display: flex;
+  align-items: center;
+  margin: 0;
+`;
+const Hr = styled.hr`
+  margin: 0;
+  background-color: #0060DF;
+  height: 1px;
 `;
 
 class Tests extends React.Component {
@@ -43,9 +58,9 @@ class Tests extends React.Component {
     this.props.onSelect(tests);
   }
 
-  handleSelectAll = (checked) => {
+  handleSelectAll = (event) => {
     this.props.onSelect(
-      checked ? Object.assign({}, this.state.tests) : {}
+      event.target.checked ? this.state.tests : {}
     );
   }
 
@@ -55,16 +70,23 @@ class Tests extends React.Component {
         <Title>
           Tests
         </Title>
-        <SelectAll>
-          <input type="checkbox" onChange={this.handleSelectAll} />
-          Select all tests
-        </SelectAll>
+        <Label>
+          <SelectAllCheckbox 
+            checked={this.state.tests === this.props.selections} 
+            type="checkbox" 
+            onChange={this.handleSelectAll} 
+          />
+          <Span>
+            Select all tests
+          </Span>
+        </Label>
+        <Hr/>
         {Object.keys(this.state.tests).map(categoryName => (
           <TestCategory
             key={categoryName}
             name={categoryName}
             tests={this.state.tests[categoryName] || []}
-            onChange={this.props.onSelect}
+            onChange={this.handleTestSelection}
             selectedTests={this.props.selections[categoryName] || []}
           />
         ))}

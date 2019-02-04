@@ -2,6 +2,7 @@ import * as React from 'react';
 import styled from 'styled-components';
 import NavbarItem from './NavbarItem';
 import { Route } from 'react-router-dom';
+import ApiClient from '../apiClient';
 
 const Aside = styled.aside`
 	width: 271px;
@@ -40,6 +41,10 @@ const targets = [
   {path:"/safari", label: "Safari", icon: "safari-logo"}, 
   {path:"/webapp", label: "Web App", icon: "webapp-logo"}];
 
+const handleQuit = () => {
+  ApiClient.get('/cancel');
+}
+
 function Navbar(props) {
   return (
     <Aside className={props.className}>
@@ -58,7 +63,7 @@ function Navbar(props) {
           </Route>
         </Ul>
       </Nav>
-      <QuitButton type="button">Quit Iris</QuitButton>
+      <QuitButton type="button" onClick={handleQuit}>Quit Iris</QuitButton>
     </Aside>
   );
 };

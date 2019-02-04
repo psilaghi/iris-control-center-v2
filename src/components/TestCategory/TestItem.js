@@ -43,6 +43,10 @@ const Meta = styled.div`
   font-size: 12px;
   color: gray;
   margin-left: 33px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  padding-right: 20px;
 `;
 
 class TestItem extends React.Component {
@@ -85,7 +89,9 @@ class TestItem extends React.Component {
               </span>
             </div>
             <Meta>
-              {this.props.test.meta}
+              <span>
+                {this.props.test.meta}
+              </span>
             </Meta>
           </div>
           <ExpandButton type="button" onClick={this.toggleCollapse}>
