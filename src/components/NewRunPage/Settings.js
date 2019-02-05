@@ -27,7 +27,7 @@ const DropdownItems = [
 `;
 const ContentContainer = styled.div`
   box-sizing: border-box;
-  padding: 50px;
+  padding: 33px;
 `;
 const LaunchButton = styled.button`
   background-color: #45a1ff;
