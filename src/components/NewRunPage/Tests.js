@@ -5,7 +5,7 @@ import styled from 'styled-components';
 
 const ContentContainer = styled.div`
   box-sizing: border-box;
-  padding: 50px;
+  padding: 100px;
 `;
 const Title = styled.h1`
   color: #737373;

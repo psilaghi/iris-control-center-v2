@@ -4,13 +4,15 @@ export const InputWrapper = styled.div`
   align-items: center;
   display: flex;
   flex-shrink: 0;
-  padding: 0 0 10px 0;
+  justify-content: space-between;
+  padding: 5px 0;
 `;
 
 export const InputLabel = styled.label`
+  margin: 0;
   overflow: hidden;
-  padding: 0 15px;
-  test-align: left;
+  padding: 0 15px 0 0;
+  text-align: left;
   text-overflow: ellipsis;
   width: 150px;
 `;

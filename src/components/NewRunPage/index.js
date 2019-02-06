@@ -26,7 +26,7 @@ class NewRunPage extends React.Component {
       tests: selectedTests
     });
   }
-  
+
   handleSettingsSelection = (selectedArgs) => {
     this.setState({
       args: selectedArgs
@@ -34,7 +34,6 @@ class NewRunPage extends React.Component {
   }
 
   render() {
-    console.log(this.state);
     return (
       <MainGrid>
         <Tests onSelect={this.handleTestSelection} selections={this.state.tests} />

@@ -11,24 +11,13 @@ const DropdownItems = [
   'locale',
   'mouse'
  ];
- 
- const CheckboxItems = [
+const CheckboxItems = [
   'email',
   'highlight',
   'override',
   'report',
   'save'
- ]
-
- const Title = styled.h1`
-  color: #737373;
-  font-size: 28px;
-  font-weight: normal;
-`;
-const ContentContainer = styled.div`
-  box-sizing: border-box;
-  padding: 33px;
-`;
+]
 const LaunchButton = styled.button`
   background-color: #45a1ff;
   border: none;
@@ -36,9 +25,29 @@ const LaunchButton = styled.button`
   box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14), 0 3px 1px -2px rgba(0,0,0,0.12), 0 1px 5px 0 rgba(0,0,0,0.2);
   color: white;
   font-size: 21px;
-  height: 62px;	
+  height: 62px;
   margin: 20px;
-  width: 192px;	
+  width: 192px;
+`;
+const Title = styled.h1`
+  color: #737373;
+  font-size: 28px;
+  font-weight: normal;
+  margin: 50px 0 0 0;
+`;
+const Section = styled.div`
+  margin: 18px 0 19px 0;
+`;
+const ContentContainer = styled.div`
+  border-left: 1px solid lightgray;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  padding: 35px;
+
+  ${LaunchButton} {
+    align-self: center;
+  }
 `;
 
  class Settings extends React.Component {
@@ -48,7 +57,7 @@ const LaunchButton = styled.button`
       args: {}
     };
   }
-  
+
   componentDidMount() {
     ApiClient.get('/data/all_args.json').then(response => {
       const defaults = {};
@@ -81,7 +90,7 @@ const LaunchButton = styled.button`
         <Title>
           Settings
         </Title>
-        <div>
+        <Section>
           {DropdownItems.map(item =>
             this.state.args[item] && (
               <Select
@@ -94,9 +103,9 @@ const LaunchButton = styled.button`
               />
             )
           )}
-        </div>
+        </Section>
 
-        <div>
+        <Section>
           {CheckboxItems.map(item =>
             this.state.args[item] && (
               <Checkbox
@@ -108,7 +117,7 @@ const LaunchButton = styled.button`
               />
             )
           )}
-        </div>
+        </Section>
       </ContentContainer>
     );
   }
