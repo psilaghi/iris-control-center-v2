@@ -17,6 +17,7 @@ const ExpandButton = styled.button`
     border: none;
   }
   display: flex;
+  font-size: 15px;
 `;
 const SummaryContainer = styled.div`
   display: flex;
@@ -99,6 +100,7 @@ class TestCategory extends React.Component {
                   test={test}
                   checked={this.props.selectedTests.indexOf(test) !== -1}
                   onChange={this.handleTestSelection}
+                  onTestClick={this.props.onTestClick}
                 />
               ))}
             </CardBody>

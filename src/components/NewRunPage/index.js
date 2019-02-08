@@ -3,6 +3,7 @@ import Tests from './Tests';
 import Settings from './Settings';
 import styled from 'styled-components';
 import ApiClient from '../apiClient';
+import TestDetails from './TestDetails';
 
 const MainGrid = styled.div`
   display: grid;
@@ -33,11 +34,17 @@ class NewRunPage extends React.Component {
     });
   }
 
+  handleExpandedTest = (test) => {
+    this.setState({
+      expandedTest: test
+    });
+  }
+
   render() {
     return (
       <MainGrid>
-        <Tests onSelect={this.handleTestSelection} selections={this.state.tests} />
-        <Settings onSelect={this.handleSettingsSelection} selections={this.state.args}/>
+        <Tests onSelect={this.handleTestSelection} selections={this.state.tests} onTestClick={this.handleExpandedTest} />
+        {this.state.expandedTest ? (<TestDetails test={this.state.expandedTest} />) : (<Settings onSelect={this.handleSettingsSelection} selections={this.state.args} />)}
       </MainGrid>
     );
   }

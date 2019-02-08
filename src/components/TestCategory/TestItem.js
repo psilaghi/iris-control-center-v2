@@ -32,7 +32,6 @@ const SummaryContainer = styled.div`
 `;
 const Checkbox = styled.input`
   margin: 10px;
-  font-size: 16px;
 `;
 const Container = styled.div`
   margin: 2px 0;
@@ -65,11 +64,9 @@ class TestItem extends React.Component {
     }
   }
 
-  toggleCollapse = (event) => {
+  toggleExpand = (event) => {
     if (event.target.type !== 'checkbox') {
-      this.setState({
-        expanded: !this.state.expanded
-      });
+      this.props.onTestClick(this.props.test);
     }
   }
 
@@ -94,20 +91,10 @@ class TestItem extends React.Component {
               </span>
             </Meta>
           </div>
-          <ExpandButton type="button" onClick={this.toggleCollapse}>
+          <ExpandButton type="button" onClick={this.toggleExpand}>
             <Icon icon="arrowhead-right" />
           </ExpandButton>
         </SummaryContainer>
-        <Collapse isOpen={this.state.expanded}>
-          <Card>
-            <CardBody>
-              <h6>Details:</h6>
-              {Object.keys(this.props.test).map(key => (
-                <div className="details" key={key}> <i>{key}:</i> {this.props.test[key].toString()}</div>
-              ))}
-            </CardBody>
-          </Card>
-        </Collapse>
       </Container>
     );
   }

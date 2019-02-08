@@ -88,6 +88,7 @@ class Tests extends React.Component {
             tests={this.state.tests[categoryName] || []}
             onChange={this.handleTestSelection}
             selectedTests={this.props.selections[categoryName] || []}
+            onTestClick={this.props.onTestClick}
           />
         ))}
       </ContentContainer>
