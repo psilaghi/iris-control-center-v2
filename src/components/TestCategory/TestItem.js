@@ -29,6 +29,12 @@ const SummaryContainer = styled.div`
       display: flex;
     }
   }
+  ${props => props.selected && `
+    background-color: #c4daf7;
+    ${ExpandButton} {
+      display: flex;
+    }
+  `};
 `;
 const Checkbox = styled.input`
   margin: 10px;
@@ -73,7 +79,7 @@ class TestItem extends React.Component {
   render() {
     return (
       <Container>
-        <SummaryContainer onClick={this.toggleCollapse}>
+        <SummaryContainer onClick={this.toggleCollapse} selected={this.props.selected}>
           <div>
             <div>
               <Checkbox

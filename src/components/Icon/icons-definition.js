@@ -27,6 +27,13 @@ export default {
       <path fill="currentColor" d="M224.3 273l-136 136c-9.4 9.4-24.6 9.4-33.9 0l-22.6-22.6c-9.4-9.4-9.4-24.6 0-33.9l96.4-96.4-96.4-96.4c-9.4-9.4-9.4-24.6 0-33.9L54.3 103c9.4-9.4 24.6-9.4 33.9 0l136 136c9.5 9.4 9.5 24.6.1 34z"></path>
     </g>
   `],
+  'exit': [15, 15, `
+    <g>
+      <title>Layer 1</title>
+      <path fill="none" stroke="#0060df" stroke-width="2" stroke-miterlimit="4" id="path2985" d="m2,14.000017l12,-12"/>
+      <path fill="none" stroke="#0060df" stroke-width="2" stroke-miterlimit="4" id="path2985-1" d="m2,2.000017l12,12"/>
+    </g>
+  `],
   'firefox-logo': [30, 31, `
     <g id="Components" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
         <g transform="translate(-1645.000000, -345.000000)" id="-New-Run-Group">

@@ -79,14 +79,10 @@ const ContentContainer = styled.div`
     );
   }
 
-  handleLaunch = () => {
-    ApiClient.post('/go',this.state.newRun);
-  }
-
   render(){
     return (
       <ContentContainer>
-        <LaunchButton type="button" onClick={this.handleLaunch}>Launch Tests</LaunchButton>
+        <LaunchButton type="button" onClick={this.props.onLaunch}>Launch Tests</LaunchButton>
         <Title>
           Settings
         </Title>

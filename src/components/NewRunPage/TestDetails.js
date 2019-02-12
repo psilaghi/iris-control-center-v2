@@ -1,16 +1,37 @@
 import * as React from 'react';
-import TestCategory from '../TestCategory';
-import ApiClient from '../apiClient';
 import styled from 'styled-components';
+import Icon from '../Icon';
+
+const Container = styled.div`
+  display: flex;
+  flex-direction: column;
+  padding: 0 28px 0 23px;
+  overflow: auto;
+`;
+const CloseButton = styled.button`
+  margin: 0 auto;
+  margin-right: 0;
+  border: none;
+  padding: 22px;
+  background: none;
+  &:active,
+  &:focus {
+    outline: none;
+    border: none;
+  }
+`;
 
 function TestDetails(props) {
   return (
-    <div>
+    <Container>
+      <CloseButton type="button" onClick={props.onClose}>
+        <Icon icon="exit" />
+      </CloseButton>
       <h6>Details:</h6>
       {Object.keys(props.test).map(key => (
         <div className="details" key={key}> <i>{key}:</i> {props.test[key].toString()}</div>
       ))}
-    </div>
+    </Container>
   );
 }
 

@@ -14,12 +14,14 @@ class NewRunPage extends React.Component {
     super(props);
     this.state = {
       args: {},
-      tests: {}
+      tests: {},
+      expandedTest: null
     };
   }
 
-  handleSubmit = () => {
-    ApiClient.post('/go',this.state);
+  handleLaunch = () => {
+    const {expandedTest, ...data} = this.state;
+    ApiClient.post('/go', data);
   }
 
   handleTestSelection = (selectedTests) => {
@@ -40,11 +42,28 @@ class NewRunPage extends React.Component {
     });
   }
 
+  handleCloseDetails = () => {
+    this.setState({
+      expandedTest: null
+    });
+  }
+
   render() {
     return (
       <MainGrid>
-        <Tests onSelect={this.handleTestSelection} selections={this.state.tests} onTestClick={this.handleExpandedTest} />
-        {this.state.expandedTest ? (<TestDetails test={this.state.expandedTest} />) : (<Settings onSelect={this.handleSettingsSelection} selections={this.state.args} />)}
+        <Tests
+          expandedTest={this.state.expandedTest}
+          selections={this.state.tests}
+          onSelect={this.handleTestSelection}
+          onTestClick={this.handleExpandedTest}
+        />
+        {this.state.expandedTest ?
+          (<TestDetails test={this.state.expandedTest} onClose={this.handleCloseDetails}/>) :
+          (<Settings
+            selections={this.state.args}
+            onLaunch={this.handleLaunch}
+            onSelect={this.handleSettingsSelection}
+          />)}
       </MainGrid>
     );
   }

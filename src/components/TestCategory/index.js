@@ -101,6 +101,7 @@ class TestCategory extends React.Component {
                   checked={this.props.selectedTests.indexOf(test) !== -1}
                   onChange={this.handleTestSelection}
                   onTestClick={this.props.onTestClick}
+                  selected={test===this.props.expandedTest}
                 />
               ))}
             </CardBody>

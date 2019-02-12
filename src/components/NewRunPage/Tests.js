@@ -71,10 +71,10 @@ class Tests extends React.Component {
           Tests
         </Title>
         <Label>
-          <SelectAllCheckbox 
-            checked={this.state.tests === this.props.selections} 
-            type="checkbox" 
-            onChange={this.handleSelectAll} 
+          <SelectAllCheckbox
+            checked={this.state.tests === this.props.selections}
+            type="checkbox"
+            onChange={this.handleSelectAll}
           />
           <Span>
             Select all tests
@@ -89,6 +89,7 @@ class Tests extends React.Component {
             onChange={this.handleTestSelection}
             selectedTests={this.props.selections[categoryName] || []}
             onTestClick={this.props.onTestClick}
+            expandedTest={this.props.expandedTest}
           />
         ))}
       </ContentContainer>
