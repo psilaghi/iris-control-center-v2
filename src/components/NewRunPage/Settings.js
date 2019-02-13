@@ -94,7 +94,7 @@ const ContentContainer = styled.div`
                 label={this.state.args[item].label}
                 name={item}
                 options={this.state.args[item].value}
-                value={this.props.selections[item]}
+                value={this.props.selections[item] || this.state.args[item].value[0]}
                 onChange={this.handleChange}
               />
             )
