@@ -43,6 +43,14 @@ const Container = styled.div`
   margin: 2px 0;
   padding-left: 36px;
 `;
+const Summary = styled.div`
+  overflow: hidden;
+`;
+const Title = styled.div`
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+`;
 
 const Meta = styled.div`
   font-size: 12px;
@@ -80,8 +88,8 @@ class TestItem extends React.Component {
     return (
       <Container>
         <SummaryContainer onClick={this.toggleCollapse} selected={this.props.selected}>
-          <div>
-            <div>
+          <Summary>
+            <Title>
               <Checkbox
                 type="checkbox"
                 checked={this.props.checked}
@@ -90,13 +98,13 @@ class TestItem extends React.Component {
               <span>
                 {this.props.test.name}
               </span>
-            </div>
+            </Title>
             <Meta>
               <span>
                 {this.props.test.meta}
               </span>
             </Meta>
-          </div>
+          </Summary>
           <ExpandButton type="button" onClick={this.toggleExpand}>
             <Icon icon="arrowhead-right" />
           </ExpandButton>

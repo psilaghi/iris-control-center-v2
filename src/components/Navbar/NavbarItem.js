@@ -58,8 +58,9 @@ const ExpandIcon = styled(Icon)`
   margin-right: 0;
 `;
 
-const Logo = styled(Icon)`
+const Logo = styled.img`
   margin-right: 17px;
+  height: 30px;
 `;
 
 function NavbarItem(props) {
@@ -84,7 +85,7 @@ function NavbarItem(props) {
                 selected={props.location.pathname === `${props.basePath}${item.path}`} 
                 to={`${props.basePath}${item.path}`}
               >
-                <Logo icon={item.icon} size="2x" />
+                <Logo src={item.icon} />
                 <Span>
                   {item.label}
                 </Span>

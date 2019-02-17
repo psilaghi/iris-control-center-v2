@@ -20,6 +20,10 @@ const CloseButton = styled.button`
     border: none;
   }
 `;
+const Details = styled.div`
+  overflow-x: scroll;
+  padding-bottom: 30px;
+`;
 
 function TestDetails(props) {
   return (
@@ -28,9 +32,11 @@ function TestDetails(props) {
         <Icon icon="exit" />
       </CloseButton>
       <h6>Details:</h6>
-      {Object.keys(props.test).map(key => (
-        <div className="details" key={key}> <i>{key}:</i> {props.test[key].toString()}</div>
-      ))}
+      <Details>
+        {Object.keys(props.test).map(key => (
+          <div className="details" key={key}> <i>{key}:</i> {props.test[key].toString()}</div>
+        ))}
+      </Details>
     </Container>
   );
 }

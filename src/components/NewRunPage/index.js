@@ -7,7 +7,8 @@ import TestDetails from './TestDetails';
 
 const MainGrid = styled.div`
   display: grid;
-  grid-template-columns: minmax(500px, 1fr) minmax(auto, 400px);
+  grid-template-columns: minmax(500px, 1fr) 400px;
+  height: 100%;
 `
 class NewRunPage extends React.Component {
   constructor(props) {
@@ -15,8 +16,18 @@ class NewRunPage extends React.Component {
     this.state = {
       args: {},
       tests: {},
-      expandedTest: null
+      expandedTest: null,
+      targetData: null
     };
+  }
+
+  componentDidMount() {
+    ApiClient.get('/data/targets.json').then(response => {
+      const target = response.targets.find(item =>
+        item.name.toLowerCase() === this.props.match.params.target
+      );
+      this.setState({targetData: target});
+    });
   }
 
   handleLaunch = () => {
@@ -51,19 +62,29 @@ class NewRunPage extends React.Component {
   render() {
     return (
       <MainGrid>
-        <Tests
-          expandedTest={this.state.expandedTest}
-          selections={this.state.tests}
-          onSelect={this.handleTestSelection}
-          onTestClick={this.handleExpandedTest}
-        />
-        {this.state.expandedTest ?
-          (<TestDetails test={this.state.expandedTest} onClose={this.handleCloseDetails}/>) :
-          (<Settings
-            selections={this.state.args}
-            onLaunch={this.handleLaunch}
-            onSelect={this.handleSettingsSelection}
-          />)}
+        {this.state.targetData ? (
+          <React.Fragment>
+            <Tests
+              expandedTest={this.state.expandedTest}
+              selections={this.state.tests}
+              onSelect={this.handleTestSelection}
+              onTestClick={this.handleExpandedTest}
+              tests={this.state.targetData.tests}
+            />
+            {this.state.expandedTest ?
+              (<TestDetails test={this.state.expandedTest} onClose={this.handleCloseDetails}/>) :
+              (<Settings
+                selections={this.state.args}
+                onLaunch={this.handleLaunch}
+                onSelect={this.handleSettingsSelection}
+                settings={this.state.targetData.settings}
+              />)
+            }
+          </React.Fragment>
+        ) : (
+          <span>Loading data...</span>
+        )}
+        
       </MainGrid>
     );
   }

@@ -7,7 +7,7 @@ function AppContent(props) {
   return (
     <main className={props.className}>
       <Route path="/runs" component={AllRunsPage}/>
-      <Route path="/new" component={NewRunPage}/>
+      <Route path="/new/:target" component={NewRunPage}/>
     </main>
   );
 }

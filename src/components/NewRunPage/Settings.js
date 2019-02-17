@@ -39,7 +39,6 @@ const Section = styled.div`
   margin: 18px 0 19px 0;
 `;
 const ContentContainer = styled.div`
-  border-left: 1px solid lightgray;
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
@@ -51,25 +50,6 @@ const ContentContainer = styled.div`
 `;
 
  class Settings extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      args: {}
-    };
-  }
-
-  componentDidMount() {
-    ApiClient.get('/data/all_args.json').then(response => {
-      const defaults = {};
-      for (let key in response) {
-        defaults[key] = (response[key].type === 'bool' ? (response[key].default === 'true') : response[key].default);
-      }
-      this.setState({
-        args: response
-      });
-    });
-  }
-
   handleChange = (name, value) => {
     this.props.onSelect(
       {
@@ -88,13 +68,13 @@ const ContentContainer = styled.div`
         </Title>
         <Section>
           {DropdownItems.map(item =>
-            this.state.args[item] && (
+            this.props.settings[item] && (
               <Select
                 key={item}
-                label={this.state.args[item].label}
+                label={this.props.settings[item].label}
                 name={item}
-                options={this.state.args[item].value}
-                value={this.props.selections[item] || this.state.args[item].value[0]}
+                options={this.props.settings[item].value}
+                value={this.props.selections[item] || this.props.settings[item].value[0]}
                 onChange={this.handleChange}
               />
             )
@@ -103,10 +83,10 @@ const ContentContainer = styled.div`
 
         <Section>
           {CheckboxItems.map(item =>
-            this.state.args[item] && (
+            this.props.settings[item] && (
               <Checkbox
                 key={item}
-                label={this.state.args[item].label}
+                label={this.props.settings[item].label}
                 name={item}
                 checked={this.props.selections[item] || false}
                 onChange={this.handleChange}

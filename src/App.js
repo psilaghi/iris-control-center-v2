@@ -17,7 +17,7 @@ const GlobalStyle = createGlobalStyle`
       "header header"
       "Navbar content";
     grid-template-columns: 271px 1fr;
-    grid-template-rows: auto 1fr;
+    grid-template-rows: auto minmax(300px, 1fr);
   }
   body {
     font-family: 'Open Sans';

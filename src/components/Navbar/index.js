@@ -2,6 +2,7 @@ import * as React from 'react';
 import styled from 'styled-components';
 import NavbarItem from './NavbarItem';
 import { Route } from 'react-router-dom';
+import ApiClient from '../apiClient';
 
 const Aside = styled.aside`
 	width: 271px;
@@ -18,33 +19,49 @@ const Ul = styled.ul`
 const Nav = styled.nav`
   width: 100%;
 `;
-const targets = [
-  {path:"/firefox", label: "Firefox", icon: "firefox-logo"}, 
-  {path:"/slack", label: "Slack", icon: "slack-logo"}, 
-  {path:"/chrome", label: "Chrome", icon: "chrome-logo"}, 
-  {path:"/safari", label: "Safari", icon: "safari-logo"}, 
-  {path:"/webapp", label: "Web App", icon: "webapp-logo"}];
 
-function Navbar(props) {
-  return (
-    <Aside className={props.className}>
-      <Nav>
-        <Ul>
-          <Route path="/runs">
-            <NavbarItem label="All Runs" basePath="/runs"/>
-          </Route>
-          
-          <Route path="/new">
-            <NavbarItem 
-              label="Create New Run" 
-              basePath="/new" 
-              sublinks={targets} 
-            />
-          </Route>
-        </Ul>
-      </Nav>
-    </Aside>
-  );
+class Navbar extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      targets: null
+    };
+  }
+
+  componentDidMount() {
+    ApiClient.get('/data/targets.json').then(response => {
+      const parsedResponse = response.targets.map(target => {
+        return {
+          path: `/${target.name.toLowerCase()}`,
+          label: `${target.name}`,
+          icon: `/images/${target.icon}`
+        };
+      })
+      this.setState({targets: parsedResponse});
+    });
+  }
+
+  render() {
+    return (
+      <Aside className={this.props.className}>
+        <Nav>
+          <Ul>
+            <Route path="/runs">
+              <NavbarItem label="All Runs" basePath="/runs"/>
+            </Route>
+            
+            <Route path="/new">
+              <NavbarItem 
+                label="Create New Run" 
+                basePath="/new" 
+                sublinks={this.state.targets} 
+              />
+            </Route>
+          </Ul>
+        </Nav>
+      </Aside>
+    );
+  };
 };
 
 export default Navbar;

@@ -4,13 +4,16 @@ import ApiClient from '../apiClient';
 import styled from 'styled-components';
 
 const ContentContainer = styled.div`
+  border-right: 1px solid lightgray;
   box-sizing: border-box;
-  padding: 100px;
+  padding: 50px;
+  overflow-y: auto;
 `;
 const Title = styled.h1`
   color: #737373;
   font-size: 28px;
   font-weight: normal;
+  margin-bottom: 40px;
 `;
 const SelectAllCheckbox = styled.input`
   margin: 10px;
@@ -30,17 +33,6 @@ const Hr = styled.hr`
 `;
 
 class Tests extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      tests: {}
-    };
-  }
-
-  componentDidMount() {
-    ApiClient.get('/data/all_tests.json').then(response => this.setState({tests: response}));
-  }
-
   handleTestSelection = (categoryName, selectedTests) => {
     let tests;
     if (!selectedTests.length) {
@@ -60,7 +52,7 @@ class Tests extends React.Component {
 
   handleSelectAll = (event) => {
     this.props.onSelect(
-      event.target.checked ? this.state.tests : {}
+      event.target.checked ? this.props.tests : {}
     );
   }
 
@@ -72,7 +64,7 @@ class Tests extends React.Component {
         </Title>
         <Label>
           <SelectAllCheckbox
-            checked={this.state.tests === this.props.selections}
+            checked={this.props.tests === this.props.selections}
             type="checkbox"
             onChange={this.handleSelectAll}
           />
@@ -81,11 +73,11 @@ class Tests extends React.Component {
           </Span>
         </Label>
         <Hr/>
-        {Object.keys(this.state.tests).map(categoryName => (
+        {this.props.tests.map(categoryName => (
           <TestCategory
             key={categoryName}
             name={categoryName}
-            tests={this.state.tests[categoryName] || []}
+            tests={this.props.tests[categoryName] || []}
             onChange={this.handleTestSelection}
             selectedTests={this.props.selections[categoryName] || []}
             onTestClick={this.props.onTestClick}
