@@ -1,6 +1,5 @@
 import * as React from 'react';
 import TestCategory from '../TestCategory';
-import ApiClient from '../apiClient';
 import styled from 'styled-components';
 
 const ContentContainer = styled.div`

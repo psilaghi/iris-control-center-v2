@@ -1,5 +1,4 @@
 import * as React from 'react';
-import { Collapse, CardBody, Card } from 'reactstrap';
 import Icon from '../Icon';
 import styled from 'styled-components';
 

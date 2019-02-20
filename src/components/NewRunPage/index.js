@@ -26,7 +26,7 @@ class NewRunPage extends React.Component {
       const target = response.targets.find(item =>
         item.name.toLowerCase() === this.props.match.params.target
       );
-      this.setState({targetData: target});
+      // this.setState({targetData: target});
     });
   }
 
@@ -84,7 +84,7 @@ class NewRunPage extends React.Component {
         ) : (
           <span>Loading data...</span>
         )}
-        
+
       </MainGrid>
     );
   }
