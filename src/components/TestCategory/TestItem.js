@@ -40,7 +40,7 @@ const Checkbox = styled.input`
 `;
 const Container = styled.div`
   margin: 2px 0;
-  padding-left: 36px;
+  
 `;
 const Summary = styled.div`
   overflow: hidden;
@@ -51,7 +51,7 @@ const Title = styled.div`
   white-space: nowrap;
 `;
 
-const Meta = styled.div`
+const Description = styled.div`
   font-size: 12px;
   color: gray;
   margin-left: 33px;
@@ -70,11 +70,8 @@ class TestItem extends React.Component {
   }
 
   handleChange = (event) => {
-    if (event.target.checked) {
-      this.props.onChange(this.props.test, 'add');
-    } else {
-      this.props.onChange(this.props.test, 'remove');
-    }
+    const action = event.target.checked ? 'add' : 'remove';
+    this.props.onChange(this.props.test, action);
   }
 
   toggleExpand = (event) => {
@@ -98,11 +95,11 @@ class TestItem extends React.Component {
                 {this.props.test.name}
               </span>
             </Title>
-            <Meta>
+            <Description>
               <span>
-                {this.props.test.meta}
+                {this.props.test.description}
               </span>
-            </Meta>
+            </Description>
           </Summary>
           <ExpandButton type="button" onClick={this.toggleExpand}>
             <Icon icon="arrowhead-right" />

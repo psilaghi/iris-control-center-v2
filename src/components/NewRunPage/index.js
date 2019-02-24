@@ -17,7 +17,9 @@ class NewRunPage extends React.Component {
       args: {},
       tests: {},
       expandedTest: null,
-      targetData: null
+      targetData: null,
+      allData: {},
+      selectedItems: {}
     };
   }
 
@@ -26,10 +28,17 @@ class NewRunPage extends React.Component {
       const target = response.targets.find(item =>
         item.name.toLowerCase() === this.props.match.params.target
       );
-      // this.setState({targetData: target});
+      this.setState({allData: response.targets, targetData: target});
     });
   }
-
+ componentWillReceiveProps(newProps){
+   if(newProps.match.params.target !== this.props.match.params.target){
+    const target = this.state.allData.find(item =>
+      item.name.toLowerCase() === newProps.match.params.target
+    );
+    this.setState({ targetData: target});
+   }
+ }
   handleLaunch = () => {
     const {expandedTest, ...data} = this.state;
     ApiClient.post('/go', data);
@@ -37,7 +46,7 @@ class NewRunPage extends React.Component {
 
   handleTestSelection = (selectedTests) => {
     this.setState({
-      tests: selectedTests
+      selectedItems: selectedTests
     });
   }
 
@@ -66,7 +75,7 @@ class NewRunPage extends React.Component {
           <React.Fragment>
             <Tests
               expandedTest={this.state.expandedTest}
-              selections={this.state.tests}
+              selectedItems={this.state.selectedItems}
               onSelect={this.handleTestSelection}
               onTestClick={this.handleExpandedTest}
               tests={this.state.targetData.tests}

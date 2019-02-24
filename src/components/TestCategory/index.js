@@ -42,6 +42,9 @@ const Container = styled.div`
   }
 `;
 
+const MarginContainer = styled.div`
+  margin-left: 36px;
+`;
 class TestCategory extends React.Component {
   constructor(props) {
     super(props);
@@ -52,7 +55,7 @@ class TestCategory extends React.Component {
 
   handleChange = (event) => {
     if (event.target.checked) {
-      this.props.onChange(this.props.name, this.props.tests);
+      this.props.onChange(this.props.name, this.props.data.children);
     } else {
       this.props.onChange(this.props.name, []);
     }
@@ -67,46 +70,76 @@ class TestCategory extends React.Component {
   }
 
   handleTestSelection = (test, action) => {
+    debugger;
     if (action === 'add') {
-      this.props.onChange(this.props.name, [...this.props.selectedTests, test])
+      this.props.onChange(this.props.name, [...this.props.selectedItems, test])
     } else {
-      this.props.onChange(this.props.name, this.props.selectedTests.filter(item => item !== test));
+      this.props.onChange(this.props.name, this.props.selectedItems.filter(item => item !== test));
     }
   }
 
+  handleCategorySelection = (categoryName, selectedTests) => {
+    this.props.onChange(this.props.name, selectedTests);
+  }
+
   render() {
+    const isCategory = !!this.props.data.children;
+    const isDisabled = isCategory && !!this.props.data.children.length;
+    const isCategoryChecked = isCategory && !isDisabled && 
+      this.props.selectedItems.length === this.props.data.children.length;
+   debugger;
     return (
       <Container>
-        <SummaryContainer>
-          <Checkbox
-            type="checkbox"
-            checked={this.props.selectedTests.length === this.props.tests.length}
-            onChange={this.handleChange}
-          />
-          <span>
-            {this.props.name}
-          </span>
-          <ExpandButton type="button" onClick={this.toggleCollapse}>
-            <Icon icon={this.state.expanded ? 'close' : 'open'} />
-          </ExpandButton>
-        </SummaryContainer>
+        {isCategory && 
+          <SummaryContainer>
+            <Checkbox
+              type="checkbox"
+              disabled={!isDisabled}
+              checked={isCategoryChecked}
+              onChange={this.handleChange}
+            />
+            <span>
+              {this.props.name}
+            </span>
+            <ExpandButton type="button" onClick={this.toggleCollapse}>
+              <Icon icon={this.state.expanded ? 'close' : 'open'} />
+            </ExpandButton>
+          </SummaryContainer>
+        }
 
-        <Collapse isOpen={this.state.expanded}>
-          <Card>
-            <CardBody>
-              {this.props.tests.map(test => (
-                <TestItem
-                  key={test.name}
-                  test={test}
-                  checked={this.props.selectedTests.indexOf(test) !== -1}
-                  onChange={this.handleTestSelection}
-                  onTestClick={this.props.onTestClick}
-                  selected={test===this.props.expandedTest}
-                />
-              ))}
-            </CardBody>
-          </Card>
-        </Collapse>
+        {isCategory &&
+          <Collapse isOpen={this.state.expanded}>
+            <Card>
+              <CardBody>
+                  {this.props.data.children.map(
+                    item => (
+                    <MarginContainer key={item.name}>
+                      <TestCategory
+                        key={item.name}
+                        name={item.name}
+                        data={item}
+                        onChange={this.handleCategorySelection}
+                        selectedItems={this.props.selectedItems || []}
+                        onTestClick={this.props.onTestClick}
+                        expandedTest={this.props.expandedTest}
+                      />
+                    </MarginContainer>
+                    )
+                  )}
+              </CardBody>
+            </Card>
+          </Collapse>
+        }
+        {!isCategory &&
+          <TestItem
+              key={this.props.data.name}
+              test={this.props.data}
+              checked={this.props.selectedItems.find(item => item.name === this.props.data.name)}
+              onChange={this.handleTestSelection}
+              onTestClick={this.props.onTestClick}
+              selected={this.props.data===this.props.expandedTest}
+            />
+        }
       </Container>
     );
   }

@@ -14,49 +14,55 @@
               "name": "nested_package",
               "children":
               [
-                {
-                 "blocked_by": "", 
-                 "channel": "beta, release, nightly, esr, dev", 
+                { 
                  "description": "This test case adds links using 'CTRL' + 'ENTER' keys.", 
                  "enabled": true, 
                  "file": "/Users/user_name/PycharmProjects/iris/tests/firefox/awesomebar/nested_package/add_links_keyboard_shortcuts.py",                 
-                 "fx_version": "all", 
                  "locale": "en-US, zh-CN, es-ES, de, fr, ru, ar, ko, pt-PT, vi, pl, tr, ro, ja", 
                  "name": "add_links_keyboard_shortcuts", 
                  "platform": ["linux", "osx", "win"], 
                  "tags": "foo,bar", 
-                 "test_case_id": "119484", 
-                 "test_suite_id": "1902"
+                 "values": {
+                   "blocked_by": "", 
+                   "channel": "beta, release, nightly, esr, dev",
+                   "fx_version": "all", 
+                   "test_case_id": "119484", 
+                   "test_suite_id": "1902"
+                 }
                 }, 
                 {
-                 "blocked_by": "1488708", 
-                 "channel": "beta, release, nightly, esr, dev", 
                  "description": "Alt+UP/DOWN Keys - in the Awesome Bar.", 
                  "enabled": false,
                  "file": "/Users/user_name/PycharmProjects/iris/tests/firefox/awesomebar/nested_package/alt_up_down_keys_in_awesomebar.py", 
-                 "fx_version": "all", 
                  "locale": "en-US, zh-CN, es-ES, de, fr, ru, ar, ko, pt-PT, vi, pl, tr, ro, ja", 
                  "name": "alt_up_down_keys_in_awesomebar", 
                  "platform": ["linux", "osx", "win"], 
                  "tags": "foo,bar", 
-                 "test_case_id": "108278", 
-                 "test_suite_id": "1902"
+                 "values": {
+                   "blocked_by": "1488708", 
+                   "channel": "beta, release, nightly, esr, dev",
+                   "fx_version": "all", 
+                   "test_case_id": "108278", 
+                   "test_suite_id": "1902"
+                 }
                 }
               ]
             },
             {
-             "blocked_by": "", 
-             "channel": "beta, release, nightly, esr, dev", 
              "description": "This test case does something.", 
              "enabled": true, 
              "file": "/Users/user_name/PycharmProjects/iris/tests/firefox/awesomebar/some_random_test.py",
-             "fx_version": "all", 
              "locale": "en-US, zh-CN, es-ES, de, fr, ru, ar, ko, pt-PT, vi, pl, tr, ro, ja", 
              "name": "some_random_test", 
              "platform": ["linux", "osx", "win"], 
              "tags": "who,what", 
-             "test_case_id": "119489", 
-             "test_suite_id": "1908"
+             "values": {
+               "blocked_by": "", 
+               "channel": "beta, release, nightly, esr, dev", 
+               "fx_version": "all", 
+               "test_case_id": "119489", 
+               "test_suite_id": "1908"
+             }
             }
           ]
         },
@@ -68,19 +74,21 @@
           "name": "private_browsing",
           "children": 
           [
-            {
-             "blocked_by": "", 
-             "channel": "beta, release, nightly, esr, dev", 
+            { 
              "description": "Private Browsing window is not restored after Firefox crash", 
              "enabled": true, 
-             "fx_version": "all", 
              "locale": "en-US, zh-CN, es-ES, de, fr, ru, ar, ko, pt-PT, vi, pl, tr, ro, ja", 
              "file": "/Users/user_name/PycharmProjects/iris/tests/firefox/private_browsing/browsing_after_crash.py", 
              "name": "browsing_after_crash", 
              "platform": ["linux", "osx", "win"], 
              "tags": "apple,banana", 
-             "test_case_id": "101748", 
-             "test_suite_id": "1826"
+             "values": {
+               "blocked_by": "", 
+               "channel": "beta, release, nightly, esr, dev",
+               "fx_version": "all",
+               "test_case_id": "101748", 
+               "test_suite_id": "1826"
+             }
             }
           ]
         }
@@ -144,7 +152,6 @@
              "locale": "en-US, zh-CN, es-ES, de, fr, ru, ar, ko, pt-PT, vi, pl, tr, ro, ja", 
              "file": "/Users/user_name/PycharmProjects/iris/tests/notepad/a_package/first_test.py", 
              "name": "first_test", 
-             "owner": "Jane Smith",
              "platform": ["linux", "osx", "win"], 
              "tags": "apple,banana"
             }
@@ -160,9 +167,11 @@
              "locale": "en-US, zh-CN, es-ES, de, fr, ru, ar, ko, pt-PT, vi, pl, tr, ro, ja", 
              "file": "/Users/user_name/PycharmProjects/iris/tests/notepad/b_package/second_test.py", 
              "name": "second_test", 
-             "owner": "Jane Smith",
              "platform": ["linux", "osx", "win"], 
-             "tags": "apple,banana"
+             "tags": "apple,banana",
+             "values": {
+              "owner": "Jane Smith"
+             }
             },
             {
              "description": "This is our third test.", 
@@ -170,9 +179,11 @@
              "locale": "en-US", 
              "file": "/Users/user_name/PycharmProjects/iris/tests/notepad/b_package/third_test.py", 
              "name": "third_test", 
-             "owner": "Joe Wong",
              "platform": ["linux", "osx", "win"], 
-             "tags": "orange,grape"
+             "tags": "orange,grape",
+             "values": {
+              "owner": "Joe Wong"
+             }
             }
           ]
         }

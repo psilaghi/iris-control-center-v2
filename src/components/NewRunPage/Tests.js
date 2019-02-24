@@ -36,12 +36,12 @@ class Tests extends React.Component {
     let tests;
     if (!selectedTests.length) {
       tests = {
-        ...this.props.selections
+        ...this.props.selectedItems
       };
       delete tests[categoryName];
     } else {
       tests = {
-        ...this.props.selections,
+        ...this.props.selectedItems,
         [categoryName]: selectedTests
       }
     }
@@ -63,7 +63,7 @@ class Tests extends React.Component {
         </Title>
         <Label>
           <SelectAllCheckbox
-            checked={this.props.tests === this.props.selections}
+            checked={this.props.tests === this.props.selectedItems}
             type="checkbox"
             onChange={this.handleSelectAll}
           />
@@ -72,13 +72,13 @@ class Tests extends React.Component {
           </Span>
         </Label>
         <Hr/>
-        {this.props.tests.map(categoryName => (
+        {this.props.tests.map(item => (
           <TestCategory
-            key={categoryName}
-            name={categoryName}
-            tests={this.props.tests[categoryName] || []}
+            key={item.name}
+            name={item.name}
+            data={item}
             onChange={this.handleTestSelection}
-            selectedTests={this.props.selections[categoryName] || []}
+            selectedItems={this.props.selectedItems[item.name] || []}
             onTestClick={this.props.onTestClick}
             expandedTest={this.props.expandedTest}
           />
