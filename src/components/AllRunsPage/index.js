@@ -3,14 +3,28 @@ import ApiClient from '../apiClient';
 import ReactTable from 'react-table';
 import 'react-table/react-table.css';
 import './style.css';
-import { Link } from 'react-router-dom';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faTrash } from '@fortawesome/free-solid-svg-icons';
-import { faEye } from '@fortawesome/free-solid-svg-icons';
 import styled from 'styled-components';
+import * as moment from 'moment';
+import Icon from '../Icon';
 
 const StyledReactTable = styled(ReactTable)`
   padding: 50px;
+`;
+const StatusCell = styled.div`
+  background-color: #FB003B;
+   ${props => !props.hasFailed && `
+    background-color: #30E60B;
+   `}
+  color: white;
+  display: flex;
+  font-size: 19px;
+  font-weight: bold;
+  justify-content: center;
+  width: 40px;
+`;
+
+const TableCheckIcon = styled(Icon)`
+  margin: auto;
 `;
 
 const Logo = styled.img`
@@ -19,6 +33,9 @@ const Logo = styled.img`
 
 const TABLE_COLUMNS = [{
   accessor: "failed",
+  Cell: data => <StatusCell hasFailed={data.value}>
+    {hasFailed ? (<TableCheckIcon icon="tablecheck"/>) : {data.value}}
+  </StatusCell>,
   className: "table__cell table__cell--centered"
 }, {
   Header: "App",
@@ -56,7 +73,7 @@ const TABLE_COLUMNS = [{
   className: "table__cell table__cell--centered"
 }, {
   Header: "Completed",
-  accessor: "id",
+  Cell: data => moment(data.original.id, "YYYYMMDDHHmmss").add(data.original.duration, 's').calendar(),
   className: "table__cell table__cell--centered"
 }];
 
@@ -69,31 +86,6 @@ class AllRunsPage extends React.Component {
   componentDidMount() {
     ApiClient.get('/data/runs.json').then(response => this.setState({runs: response.runs}));
   }
-
-  // handleDelete = (id) => {
-  //   ApiClient.get(`/delete?${id}`);
-  //   this.setState({runs: this.state.runs.filter(run => run.id !== id)});
-
-  // }
-
-  // _getColumns = () => [...TABLE_COLUMNS, {
-  //     Header: "Actions",
-  //     id: "action",
-  //     accessor: data => data.id,
-  //     Cell: row => (
-  //       <div>
-  //         <Link className="btn btn-primary table__cell-btn" role="button" to={`/runs/${row.value}`}>
-  //           <FontAwesomeIcon icon={faEye} size="lg" />
-  //         </Link>
-
-  //         <button className="btn btn-danger table__cell-btn" onClick={() => this.handleDelete(row.value)}>
-  //           <FontAwesomeIcon icon={faTrash} size="lg" />
-  //         </button>
-  //       </div>
-  //     ),
-  //     className: "table__cell table__cell--centered"
-  //   }
-  // ]
 
   render() {
     return (
