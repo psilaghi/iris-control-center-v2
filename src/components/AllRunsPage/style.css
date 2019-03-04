@@ -9,3 +9,35 @@
 .table__cell-btn {
     margin: 0 10px;
 }
+
+.ReactTable .rt-thead .rt-th {
+  border: none;
+}
+
+.ReactTable .rt-tbody .rt-td {
+  border: none;
+}
+
+.ReactTable .rt-tbody .rt-tr-group {
+  border: none;
+  background-color: #F1F8FF;
+  margin: 2px;
+}
+
+.ReactTable .rt-thead.-header {
+  box-shadow: none;
+  border-bottom: 1px solid #D7D7DB;
+  font-size: 18px;
+  font-weight: 600;
+  color: #737373
+}
+
+.ReactTable {
+  border: none;
+}
+
+.ReactTable .rt-tbody .rt-tr-group:hover {
+  background-color: #0179FF;
+  color: white;
+  font-weight: 600;
+}

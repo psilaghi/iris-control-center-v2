@@ -5,16 +5,22 @@ import 'react-table/react-table.css';
 import './style.css';
 import styled from 'styled-components';
 import * as moment from 'moment';
-import Icon from '../Icon';
 
 const StyledReactTable = styled(ReactTable)`
   padding: 50px;
 `;
 const StatusCell = styled.div`
-  background-color: #FB003B;
-   ${props => !props.hasFailed && `
+  ${props => props.failedTests ? `
+    background-color: #FB003B;
+    :before {
+      content: "${props.failedTests}";
+    }
+  ` : `
     background-color: #30E60B;
-   `}
+    :before {
+      content: "✓";
+    }
+  `}
   color: white;
   display: flex;
   font-size: 19px;
@@ -23,19 +29,13 @@ const StatusCell = styled.div`
   width: 40px;
 `;
 
-const TableCheckIcon = styled(Icon)`
-  margin: auto;
-`;
-
 const Logo = styled.img`
   height: 27px;
 `;
 
 const TABLE_COLUMNS = [{
   accessor: "failed",
-  Cell: data => <StatusCell hasFailed={data.value}>
-    {hasFailed ? (<TableCheckIcon icon="tablecheck"/>) : {data.value}}
-  </StatusCell>,
+  Cell: data => <StatusCell failedTests={data.value} />,
   className: "table__cell table__cell--centered"
 }, {
   Header: "App",
@@ -93,13 +93,20 @@ class AllRunsPage extends React.Component {
         <StyledReactTable
           data={this.state.runs}
           columns={TABLE_COLUMNS}
-          className="-striped -highlight"
+          className="-highlight"
           defaultPageSize={5}
           defaultSorted={[
             {
               id: "ID",
               desc: true
             }
+          ]}
+          resized={[{
+            "id": "failed",
+            "value": 40},
+            {
+            "id": "target",
+            "value": 50}
           ]}
         />
       </div>
