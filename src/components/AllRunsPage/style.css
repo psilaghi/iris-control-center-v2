@@ -26,7 +26,7 @@
 
 .ReactTable .rt-thead.-header {
   box-shadow: none;
-  border-bottom: 1px solid #D7D7DB;
+  border-bottom: 2px solid rgba(215, 215, 219, 0.5);
   font-size: 18px;
   font-weight: 600;
   color: #737373
@@ -34,10 +34,21 @@
 
 .ReactTable {
   border: none;
+  padding: 50px;
+  height: 411px;
 }
 
 .ReactTable .rt-tbody .rt-tr-group:hover {
   background-color: #0179FF;
   color: white;
   font-weight: 600;
+}
+
+.ReactTable .rt-thead .rt-th.-sort-desc {
+  background-color: rgba(12,12,13,0.1);
+  box-shadow: none;
+}
+.ReactTable .rt-thead .rt-th.-sort-asc {
+  background-color: rgba(12,12,13,0.1);
+  box-shadow: none;
 }

@@ -5,14 +5,14 @@ import Icon from '../Icon';
 const Container = styled.div`
   display: flex;
   flex-direction: column;
-  padding: 0 28px 0 23px;
+  padding: 22px 28px 0 23px;
   overflow: auto;
 `;
 const CloseButton = styled.button`
   margin: 0 auto;
   margin-right: 0;
   border: none;
-  padding: 22px;
+  padding-bottom: 19px;
   background: none;
   &:active,
   &:focus {
@@ -21,8 +21,18 @@ const CloseButton = styled.button`
   }
 `;
 const Details = styled.div`
-  overflow-x: scroll;
-  padding-bottom: 30px;
+  word-wrap: break-word;
+  font-size: 12px;
+`;
+const Title = styled.div`
+  font-size: 18px;
+  padding-bottom: 15px;
+`;
+const Detail = styled.div`
+  padding-bottom: 12px;
+`;
+const DetailTitle = styled.i`
+  color: #0060DF;
 `;
 
 function TestDetails(props) {
@@ -31,10 +41,10 @@ function TestDetails(props) {
       <CloseButton type="button" onClick={props.onClose}>
         <Icon icon="exit" />
       </CloseButton>
-      <h6>Details:</h6>
+      <Title>{props.test.name}</Title>
       <Details>
         {Object.keys(props.test).map(key => (
-          <div className="details" key={key}> <i>{key}:</i> {props.test[key].toString()}</div>
+          <Detail key={key}> <DetailTitle>{key}:</DetailTitle> {props.test[key].toString()}</Detail>
         ))}
       </Details>
     </Container>

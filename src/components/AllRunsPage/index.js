@@ -5,10 +5,11 @@ import 'react-table/react-table.css';
 import './style.css';
 import styled from 'styled-components';
 import * as moment from 'moment';
+import Icon from '../Icon';
 
-const StyledReactTable = styled(ReactTable)`
-  padding: 50px;
-`;
+const Container = styled.div`
+  overflow: auto;
+`
 const StatusCell = styled.div`
   ${props => props.failedTests ? `
     background-color: #FB003B;
@@ -34,6 +35,9 @@ const Logo = styled.img`
 `;
 
 const TABLE_COLUMNS = [{
+  // Header: () => (
+  //   <Icon icon="arrow_drop_down" />
+  // ),
   accessor: "failed",
   Cell: data => <StatusCell failedTests={data.value} />,
   className: "table__cell table__cell--centered"
@@ -89,12 +93,12 @@ class AllRunsPage extends React.Component {
 
   render() {
     return (
-      <div className="page">
-        <StyledReactTable
+      <Container className="page">
+        <ReactTable
           data={this.state.runs}
           columns={TABLE_COLUMNS}
           className="-highlight"
-          defaultPageSize={5}
+          // defaultPageSize={6}
           defaultSorted={[
             {
               id: "ID",
@@ -108,8 +112,10 @@ class AllRunsPage extends React.Component {
             "id": "target",
             "value": 50}
           ]}
+          showPagination={false}
+          minRows={6}
         />
-      </div>
+      </Container>
     )
   }
 }

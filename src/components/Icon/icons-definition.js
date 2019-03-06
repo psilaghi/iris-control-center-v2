@@ -22,7 +22,7 @@ export default {
         <rect id="Rectangle" fill="currentColor" x="3" y="10" width="18" height="2" rx="1"></rect>
     </g>
   `],
-  'arrowhead-right': [9, 19, `
+  'arrowhead-right': [10, 18, `
     <g id="Components" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
         <g transform="translate(-649.000000, -694.000000)" fill="#3280E6" id="Arrowhead-Right(1)">
             <g transform="translate(649.000000, 694.000000)">
@@ -43,4 +43,52 @@ export default {
       <path d="m17.2131393 29.4674215c-.4131924-.0000919-.8094294-.1711812-1.1015564-.4756358l-4.6742136-4.8699913c-.5904657-.6369605-.5820212-1.6494413.0189795-2.2756147.6010008-.6261734 1.572779-.6349716 2.1841332-.0197745l3.3607596 3.5015237 9.8407777-14.6473104c.4964206-.72490963 1.4606843-.89782159 2.1611494-.3875378.7004652.5102839.8756043 1.5132426.3925293 2.2478745l-10.9064984 16.2333042c-.2627657.3957611-.6805199.6496579-1.1405081.6931621-.0451554.0023745-.0903969.0023745-.1355522 0z" fill="#fff" fill-rule="evenodd" transform="translate(-11 -10)"/>
     </g>
   `],
+  'arrow_drop_down': [21, 20, `
+    <g id="Handover-for-All-Runs-Page" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Failed-Tests-S-1" transform="translate(-1217.000000, -248.000000)">
+            <g id="Table-Header" transform="translate(343.000000, 231.000000)">
+                <g id="Selected-Table-Label" transform="translate(751.000000, 0.000000)">
+                    <g id="Up-and-Down-Sort" transform="translate(118.000000, 0.000000)">
+                        <g id="ic/arrow_drop_down" transform="translate(-0.000000, 8.571429)">
+                            <g id="ic_arrow_drop_down_24px">
+                                <mask id="mask-2" fill="white">
+                                    <use xlink:href="#path-1"></use>
+                                </mask>
+                                <g id="Path"></g>
+                                <g id="c/grey/600" mask="url(#mask-2)" fill="#0060DF">
+                                    <rect id="Shape" x="0" y="0" width="20" height="21"></rect>
+                                </g>
+                            </g>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+  `],
+  'arrow_drop_up': [18, 18, `
+    <g id="Handover-for-All-Runs-Page" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Failed-Tests-S-1" transform="translate(-1217.000000, -238.000000)">
+            <g id="Table-Header" transform="translate(343.000000, 231.000000)">
+                <g id="Selected-Table-Label" transform="translate(751.000000, 0.000000)">
+                    <g id="Up-and-Down-Sort" transform="translate(118.000000, 0.000000)">
+                        <g id="ic/arrow_drop_up" transform="translate(-0.000000, 0.000000)">
+                            <g id="ic_arrow_drop_up_24px" transform="translate(5.833333, 7.875000)">
+                                <mask id="mask-2" fill="white">
+                                    <use xlink:href="#path-1"></use>
+                                </mask>
+                                <use id="Path" fill="#D7D7DB" xlink:href="#path-1"></use>
+                                <g id="c/grey/600-" mask="url(#mask-2)" fill="#B1B1B3">
+                                    <g transform="translate(-5.833333, -7.875000)" id="Shape">
+                                        <rect x="0" y="0" width="20" height="21"></rect>
+                                    </g>
+                                </g>
+                            </g>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+  `]
 };

@@ -19,7 +19,7 @@ const ExpandButton = styled.button`
 const SummaryContainer = styled.div`
   display: flex;
   align-items: center;
-  font-size: 20px;
+  font-size: 18px;
   height: 55px;
   background-color: #e5effc;
   &:hover {
@@ -40,7 +40,7 @@ const Checkbox = styled.input`
 `;
 const Container = styled.div`
   margin: 2px 0;
-  
+
 `;
 const Summary = styled.div`
   overflow: hidden;

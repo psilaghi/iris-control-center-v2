@@ -31,6 +31,38 @@
    "locale": "en-US",
    "target": "firefox",
    "total": 3
+  },
+  {
+   "duration": 132,
+   "failed": 0,
+   "id": "20190228164617",
+   "locale": "en-US",
+   "target": "firefox",
+   "total": 3
+  },
+  {
+   "duration": 132,
+   "failed": 0,
+   "id": "20190228164617",
+   "locale": "en-US",
+   "target": "firefox",
+   "total": 3
+  },
+  {
+   "duration": 132,
+   "failed": 0,
+   "id": "20190228164617",
+   "locale": "en-US",
+   "target": "firefox",
+   "total": 3
+  },
+   {
+   "duration": 250,
+   "failed": 1,
+   "id": "20181122194616",
+   "locale": "en-US",
+   "target": "notepad",
+   "total": 2
   }
  ]
 }
