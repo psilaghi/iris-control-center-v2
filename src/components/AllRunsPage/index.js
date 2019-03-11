@@ -6,6 +6,7 @@ import './style.css';
 import styled from 'styled-components';
 import * as moment from 'moment';
 import Icon from '../Icon';
+import { ReactTableDefaults } from 'react-table';
 
 const Container = styled.div`
   overflow: auto;
@@ -28,21 +29,38 @@ const StatusCell = styled.div`
   font-weight: bold;
   justify-content: center;
   width: 40px;
+  height: 100%;
+  align-items: center;
 `;
-
 const Logo = styled.img`
   height: 27px;
 `;
+const SortIconsContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  display: none;
+
+`;
+const HeaderCell = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+`;
 
 const TABLE_COLUMNS = [{
-  // Header: () => (
-  //   <Icon icon="arrow_drop_down" />
-  // ),
   accessor: "failed",
   Cell: data => <StatusCell failedTests={data.value} />,
-  className: "table__cell table__cell--centered"
+  className: "table__cell table__cell--centered status-cell"
 }, {
-  Header: "App",
+  Header: () => (
+    <HeaderCell>
+      <span>App</span>
+      <SortIconsContainer className="sort-icons">
+        <Icon icon="close" className="sort-up"/>
+        <Icon icon="close" className="sort-down"/>
+      </SortIconsContainer>
+    </HeaderCell>
+  ),
   accessor: "target",
   Cell: data => <Logo src={`/images/${data.value}.png`} />,
   className: "table__cell table__cell--centered"
@@ -98,7 +116,6 @@ class AllRunsPage extends React.Component {
           data={this.state.runs}
           columns={TABLE_COLUMNS}
           className="-highlight"
-          // defaultPageSize={6}
           defaultSorted={[
             {
               id: "ID",
@@ -110,10 +127,14 @@ class AllRunsPage extends React.Component {
             "value": 40},
             {
             "id": "target",
-            "value": 50}
+            "value": 60}
           ]}
           showPagination={false}
-          minRows={6}
+          minRows={0}
+          {...(!this.state.runs.length && {
+            TbodyComponent: () => (<div className="no-data-tbody">No test results yet.</div>),
+            NoDataComponent: () => null
+          })}
         />
       </Container>
     )

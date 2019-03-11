@@ -35,7 +35,7 @@
 .ReactTable {
   border: none;
   padding: 50px;
-  height: 411px;
+  height: 400px;
 }
 
 .ReactTable .rt-tbody .rt-tr-group:hover {
@@ -51,4 +51,32 @@
 .ReactTable .rt-thead .rt-th.-sort-asc {
   background-color: rgba(12,12,13,0.1);
   box-shadow: none;
+}
+
+.ReactTable .rt-td.status-cell {
+  padding: 0;
+  -webkit-box-shadow: 4px 0px 0px 0px rgba(255,255,255,1);
+  -moz-box-shadow: 4px 0px 0px 0px rgba(255,255,255,1);
+  box-shadow: 4px 0px 0px 0px rgba(255,255,255,1);
+}
+
+.no-data-tbody {
+  height: 300px;
+  font-weight: 600;
+  font-size: 28px;
+  color: rgba(215,215,219,0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.rt-th.-sort-asc .sort-icons, .rt-th.-sort-desc .sort-icons {
+  display: flex;
+}
+
+.-sort-asc .sort-up {
+  color:red;
+}
+.-sort-desc .sort-down {
+  color:red;
 }
