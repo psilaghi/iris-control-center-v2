@@ -24,7 +24,7 @@ class NewRunPage extends React.Component {
   }
 
   componentDidMount() {
-    ApiClient.get('/data/targets.json').then(response => {
+    ApiClient.get('/data/targets2.json').then(response => {
       const target = response.targets.find(item =>
         item.name.toLowerCase() === this.props.match.params.target
       );

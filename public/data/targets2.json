@@ -64,27 +64,47 @@
     }
    ],
    "tests": {
-    "awesomebar": {
-     "add_links_keyboard_shortcuts.py": {
-      "channel": "beta",
-      "description": "This test case adds links using 'CTRL' + 'ENTER' keys",
-      "module": "tests\\firefox\\awesomebar\\add_links_keyboard_shortcuts.py",
-      "name": "add_links_keyboard_shortcuts.py",
-      "package": "tests\\firefox\\awesomebar",
-      "test_case_id": "119484",
-      "test_suite_id": "1902"
-     }
+    "nested_package": {
+      "awesomebar": {
+        "add_links_keyboard_shortcuts.py": {
+          "channel": "beta",
+          "description": "This test case adds links using 'CTRL' + 'ENTER' keys",
+          "module": "tests\\firefox\\awesomebar\\add_links_keyboard_shortcuts.py",
+          "name": "add_links_keyboard_shortcuts.py",
+          "package": "tests\\firefox\\awesomebar",
+          "test_case_id": "119484",
+          "test_suite_id": "1902"
+        }
+      },
+      "random_test.py": {
+        "channel": "beta",
+        "description": "This test case does something.",
+        "module": "tests\\firefox\\awesomebar\\add_links_keyboard_shortcuts.py",
+        "name": "add_links_keyboard_shortcuts.py",
+        "package": "tests\\firefox\\awesomebar",
+        "test_case_id": "119484",
+        "test_suite_id": "1902"
+      },
+      "experiment": {
+      "text_search.py": {
+        "channel": "beta",
+        "description": "This is a test experiment for text search ",
+        "module": "tests\\firefox\\experiment\\text_search.py",
+        "name": "text_search.py",
+        "package": "tests\\firefox\\experiment",
+        "test_case_id": "119484",
+        "test_suite_id": "1902"
+      }
+      }
     },
-    "experiment": {
-     "text_search.py": {
-      "channel": "beta",
-      "description": "This is a test experiment for text search ",
-      "module": "tests\\firefox\\experiment\\text_search.py",
-      "name": "text_search.py",
-      "package": "tests\\firefox\\experiment",
-      "test_case_id": "119484",
-      "test_suite_id": "1902"
-     }
+    "random_test.py": {
+        "channel": "beta",
+        "description": "This test case does something.",
+        "module": "tests\\firefox\\awesomebar\\add_links_keyboard_shortcuts.py",
+        "name": "add_links_keyboard_shortcuts.py",
+        "package": "tests\\firefox\\awesomebar",
+        "test_case_id": "119484",
+        "test_suite_id": "1902"
     }
    }
   },
