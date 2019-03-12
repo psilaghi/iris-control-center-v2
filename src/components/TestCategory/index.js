@@ -83,6 +83,15 @@ class TestCategory extends React.Component {
     };
 
     handleCategorySelection = (categoryName, selectedTests) => {
+        const isEmpty = Object.keys(selectedTests).length === 0;
+        const isMissing =
+            Object.keys(selectedTests).indexOf(categoryName) === -1;
+        if (!isEmpty && isMissing) {
+            this.props.onChange(this.props.name, {
+                [categoryName]: selectedTests
+            });
+            return;
+        }
         this.props.onChange(this.props.name, selectedTests);
     };
 
@@ -94,6 +103,7 @@ class TestCategory extends React.Component {
             !isDisabled &&
             Object.keys(this.props.selectedItems).length ===
                 Object.keys(this.props.data).length;
+        const { selectedItems } = this.props;
         return (
             <Container>
                 {isCategory && (
@@ -122,6 +132,9 @@ class TestCategory extends React.Component {
                             <CardBody>
                                 {Object.keys(this.props.data).map(key => {
                                     const item = this.props.data[key];
+                                    console.log(this.props.selectedItems);
+                                    const isTest = !!(selectedItems[key] || {})
+                                        .name;
                                     return (
                                         <MarginContainer key={key}>
                                             <TestCategory
@@ -132,8 +145,10 @@ class TestCategory extends React.Component {
                                                     this.handleCategorySelection
                                                 }
                                                 selectedItems={
-                                                    this.props.selectedItems ||
-                                                    {}
+                                                    isTest
+                                                        ? selectedItems
+                                                        : selectedItems[key] ||
+                                                          {}
                                                 }
                                                 onTestClick={
                                                     this.props.onTestClick

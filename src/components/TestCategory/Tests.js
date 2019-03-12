@@ -33,7 +33,6 @@ const Hr = styled.hr`
 
 class Tests extends React.Component {
     handleTestSelection = (categoryName, selectedTests) => {
-        debugger;
         let tests;
         if (!Object.keys(selectedTests).length) {
             tests = {
