@@ -33,7 +33,6 @@ const Hr = styled.hr`
 
 class Tests extends React.Component {
     handleTestSelection = (categoryName, selectedTests) => {
-        debugger;
         let tests;
         if (!Object.keys(selectedTests).length) {
             tests = {
@@ -55,6 +54,7 @@ class Tests extends React.Component {
     };
 
     render() {
+        const { selectedItems } = this.props;
         return (
             <ContentContainer>
                 <Title>Tests</Title>
@@ -69,13 +69,18 @@ class Tests extends React.Component {
                 <Hr />
                 {Object.keys(this.props.tests).map(key => {
                     const item = this.props.tests[key];
+                    const isTest = !!(selectedItems[key] || {}).name;
                     return (
                         <TestCategory
                             key={key}
                             name={key}
                             data={item}
                             onChange={this.handleTestSelection}
-                            selectedItems={this.props.selectedItems[key] || {}}
+                            selectedItems={
+                                isTest
+                                    ? selectedItems
+                                    : selectedItems[key] || {}
+                            }
                             onTestClick={this.props.onTestClick}
                             expandedTest={this.props.expandedTest}
                         />

@@ -3,7 +3,7 @@
     display: flex;
 }
 .table__cell--centered {
-    justify-content: center;
+    /* justify-content: center; */
 }
 
 .table__cell-btn {
@@ -29,19 +29,24 @@
   border-bottom: 2px solid rgba(215, 215, 219, 0.5);
   font-size: 18px;
   font-weight: 600;
-  color: #737373
+  color: #737373;
+  margin-bottom: 2px;
 }
 
 .ReactTable {
   border: none;
-  padding: 50px;
-  height: 400px;
+  /* overflow: auto; */
+  padding: 50px 50px 16px 50px;
+  height: 370px;
 }
 
 .ReactTable .rt-tbody .rt-tr-group:hover {
-  background-color: #0179FF;
+  background-color: #C4DAF7;
   color: white;
   font-weight: 600;
+}
+.ReactTable .rt-tbody .rt-tr-group:hover button {
+  visibility: visible;
 }
 
 .ReactTable .rt-thead .rt-th.-sort-desc {
@@ -68,6 +73,8 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  border: 2px solid rgba(215, 215, 219, 0.5);
+  margin-top: 2px;
 }
 
 .rt-th.-sort-asc .sort-icons, .rt-th.-sort-desc .sort-icons {
@@ -75,8 +82,8 @@
 }
 
 .-sort-asc .sort-up {
-  color:red;
+  color: #0060DF;
 }
 .-sort-desc .sort-down {
-  color:red;
+  color: #0060DF;
 }
