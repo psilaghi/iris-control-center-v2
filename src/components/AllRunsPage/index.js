@@ -177,7 +177,10 @@ const TABLE_COLUMNS = [{
   className: "table__cell table__cell--centered"
 }, {
   id: "actions",
-  Cell: () => (<DeleteButton type="button"><Icon icon="trashcanblue"/></DeleteButton>),
+  Cell: data => {
+    console.log(data);
+    return (<DeleteButton type="button" onClick={() => this.handleDelete(data.original)}><Icon icon="trashcanblue"/></DeleteButton>)
+  },
   className: "table__cell table__cell--centered",
   sortable: false
 }];
@@ -190,6 +193,11 @@ class AllRunsPage extends React.Component {
 
   componentDidMount() {
     ApiClient.get('/data/runs.json').then(response => this.setState({runs: response.runs}));
+  }
+
+  handleDelete = (id) => {
+    ApiClient.get(`/delete?${id}`);
+    this.setState({runs: this.state.runs.filter(run => run.id !== id)});
   }
 
   render() {
