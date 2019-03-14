@@ -22,6 +22,7 @@
   border: none;
   background-color: #F1F8FF;
   margin: 2px;
+  /* height: 41px; */
 }
 
 .ReactTable .rt-thead.-header {

@@ -74,7 +74,7 @@ const DeleteAllButton = styled.button`
     outline: none;
     border: none;
   }
-  :hover {
+  :hover:not(:disabled) {
     background: #979797;
   }
   :disabled {
@@ -175,14 +175,6 @@ const TABLE_COLUMNS = [{
   ),
   Cell: data => moment(data.original.id, "YYYYMMDDHHmmss").add(data.original.duration, 's').calendar(),
   className: "table__cell table__cell--centered"
-}, {
-  id: "actions",
-  Cell: data => {
-    console.log(data);
-    return (<DeleteButton type="button" onClick={() => this.handleDelete(data.original)}><Icon icon="trashcanblue"/></DeleteButton>)
-  },
-  className: "table__cell table__cell--centered",
-  sortable: false
 }];
 
 class AllRunsPage extends React.Component {
@@ -196,9 +188,26 @@ class AllRunsPage extends React.Component {
   }
 
   handleDelete = (id) => {
-    ApiClient.get(`/delete?${id}`);
+    ApiClient.delete(`/delete?${id}`);
     this.setState({runs: this.state.runs.filter(run => run.id !== id)});
   }
+  handleDeleteAll = () => {
+    ApiClient.delete(`/deleteAll`);
+    this.setState({runs: []});
+  }
+
+  getColumns = () => [
+    ...TABLE_COLUMNS,
+    {
+      id: "actions",
+      Cell: data => {
+        console.log(data);
+        return (<DeleteButton type="button" onClick={() => this.handleDelete(data.original.id)}><Icon icon="trashcanblue"/></DeleteButton>)
+      },
+      className: "table__cell table__cell--centered",
+      sortable: false
+    }
+  ]
 
   render() {
     return (
@@ -206,7 +215,7 @@ class AllRunsPage extends React.Component {
         <SubContainer>
           <ReactTable
             data={this.state.runs}
-            columns={TABLE_COLUMNS}
+            columns={this.getColumns()}
             className="-highlight"
             defaultSorted={[
               {
@@ -232,7 +241,12 @@ class AllRunsPage extends React.Component {
               NoDataComponent: () => null
             })}
           />
-          <DeleteAllButton type="button" title="Delete all runs from local disk" disabled={!this.state.runs.length}>
+          <DeleteAllButton
+            type="button"
+            title="Delete all runs from local disk"
+            onClick={() => this.handleDeleteAll()}
+            disabled={!this.state.runs.length}
+          >
             Delete All
             <TrashIcon icon="trashcanblack"/>
           </DeleteAllButton>
