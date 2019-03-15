@@ -10,6 +10,7 @@
     "moment": "^2.24.0",
     "normalize": "^0.3.1",
     "react": "^16.8.0-alpha.1",
+    "react-confirm-alert": "^2.3.0",
     "react-dom": "^16.8.0-alpha.1",
     "react-router-dom": "^4.3.1",
     "react-scripts": "2.1.3",

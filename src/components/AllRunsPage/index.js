@@ -6,6 +6,8 @@ import './style.css';
 import styled from 'styled-components';
 import * as moment from 'moment';
 import Icon from '../Icon';
+import { confirmAlert } from 'react-confirm-alert';
+import 'react-confirm-alert/src/react-confirm-alert.css';
 
 const Container = styled.div`
   /* overflow: auto; */
@@ -93,7 +95,7 @@ const TrashIcon = styled(Icon)`
 
 const TABLE_COLUMNS = [{
   accessor: "failed",
-  Cell: data => <StatusCell failedTests={data.value} />,
+  Cell: data => <StatusCell failedTests={data.value} ...{data.value && {title: `${data.value} Failed`}} />,
   className: "table__cell table__cell--centered status-cell"
 }, {
   Header: () => (
@@ -191,10 +193,27 @@ class AllRunsPage extends React.Component {
     ApiClient.delete(`/delete?${id}`);
     this.setState({runs: this.state.runs.filter(run => run.id !== id)});
   }
+
   handleDeleteAll = () => {
     ApiClient.delete(`/deleteAll`);
     this.setState({runs: []});
   }
+
+  submitDeleteAll = () => {
+    confirmAlert({
+      title: 'Delete All Runs',
+      message: 'Permanently delete all runs? This cannot be undone.',
+      buttons: [
+        {
+          label: 'Delete',
+          onClick: () => this.handleDeleteAll()
+        },
+        {
+          label: 'Cancel',
+        }
+      ]
+    })
+  };
 
   getColumns = () => [
     ...TABLE_COLUMNS,
@@ -244,7 +263,7 @@ class AllRunsPage extends React.Component {
           <DeleteAllButton
             type="button"
             title="Delete all runs from local disk"
-            onClick={() => this.handleDeleteAll()}
+            onClick={this.submitDeleteAll}
             disabled={!this.state.runs.length}
           >
             Delete All
