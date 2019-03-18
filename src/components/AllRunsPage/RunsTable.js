@@ -59,6 +59,7 @@ const DeleteButton = styled.button`
     background: rgba(0,96,223,0.15);
   }
   visibility: hidden;
+  color: #0060DF;
 `;
 
 const TABLE_COLUMNS = [{
@@ -149,7 +150,7 @@ const TABLE_COLUMNS = [{
   className: "table__cell table__cell--centered"
 }];
 
-class RunsTable extends React.Component {  
+class RunsTable extends React.Component {
   getColumns = () => [
     ...TABLE_COLUMNS,
     {
@@ -192,10 +193,11 @@ class RunsTable extends React.Component {
         getTrProps={(state, rowInfo, column) => {
           return {
             onClick: () => {this.props.history.push(`/runs/${rowInfo.original.id}`)},
+            className: (rowInfo && (this.props.match && this.props.match.params.id === rowInfo.original.id)) ? "selected" : "",
             style: {
               ...(
                 rowInfo &&
-                (this.props.match.params.id === rowInfo.original.id) &&
+                (this.props.match && this.props.match.params.id === rowInfo.original.id) &&
                 {
                   background: '#0179FF',
                   color: 'white',

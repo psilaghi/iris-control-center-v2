@@ -49,6 +49,13 @@
 .ReactTable .rt-tbody .rt-tr-group:hover button {
   visibility: visible;
 }
+.ReactTable .rt-tr.selected button {
+  visibility: visible;
+  color: white;
+}
+.ReactTable .rt-tr.selected button:hover {
+  background: rgb(0,96,223);
+}
 
 .ReactTable .rt-thead .rt-th.-sort-desc {
   background-color: rgba(12,12,13,0.1);
