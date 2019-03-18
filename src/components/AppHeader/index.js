@@ -15,7 +15,7 @@ const Header = styled.header`
 const HeaderText = styled.div`
   color: white;
   font-size: 94px;
-  font-weight: 700;
+  font-weight: bold;
 `;
 
 function AppHeader(props) {

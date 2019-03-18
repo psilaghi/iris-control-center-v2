@@ -9,9 +9,9 @@
    "total": 2
   },
   {
-   "duration": 2340,
+   "duration": 96,
    "failed": 12,
-   "id": "20181121194612",
+   "id": "20181121182014",
    "locale": "en-US",
    "target": "firefox",
    "total": 312
@@ -57,9 +57,9 @@
    "total": 3
   },
    {
-   "duration": 250,
+   "duration": 96,
    "failed": 1,
-   "id": "20181122194621",
+   "id": "20181121182014",
    "locale": "en-US",
    "target": "notepad",
    "total": 2

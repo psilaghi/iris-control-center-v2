@@ -19,7 +19,7 @@ const GlobalStyle = createGlobalStyle`
     grid-template-columns: 271px 1fr;
     grid-template-rows: auto minmax(300px, 1fr);
   }
-  body {
+  html body {
     font-family: 'Open Sans';
   }
 `;

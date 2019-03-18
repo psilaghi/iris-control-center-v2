@@ -22,14 +22,14 @@
   border: none;
   background-color: #F1F8FF;
   margin: 2px;
-  /* height: 41px; */
+  /* max-height: 41px; */
 }
 
 .ReactTable .rt-thead.-header {
   box-shadow: none;
   border-bottom: 2px solid rgba(215, 215, 219, 0.5);
   font-size: 18px;
-  font-weight: 600;
+  font-weight: bold;
   color: #737373;
   margin-bottom: 2px;
 }
@@ -44,7 +44,7 @@
 .ReactTable .rt-tbody .rt-tr-group:hover {
   background-color: #C4DAF7;
   color: white;
-  font-weight: 600;
+  font-weight: bold;
 }
 .ReactTable .rt-tbody .rt-tr-group:hover button {
   visibility: visible;
@@ -68,7 +68,7 @@
 
 .no-data-tbody {
   height: 300px;
-  font-weight: 600;
+  font-weight: bold;
   font-size: 28px;
   color: rgba(215,215,219,0.5);
   display: flex;
@@ -87,4 +87,8 @@
 }
 .-sort-desc .sort-down {
   color: #0060DF;
+}
+
+.ReactTable .rt-tbody {
+  overflow: overlay;
 }

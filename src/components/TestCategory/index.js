@@ -132,7 +132,6 @@ class TestCategory extends React.Component {
                             <CardBody>
                                 {Object.keys(this.props.data).map(key => {
                                     const item = this.props.data[key];
-                                    console.log(this.props.selectedItems);
                                     const isTest = !!(selectedItems[key] || {})
                                         .name;
                                     return (
