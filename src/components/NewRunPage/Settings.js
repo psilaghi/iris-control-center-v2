@@ -67,6 +67,21 @@ const ContentContainer = styled.div`
           Settings
         </Title>
         <Section>
+          {this.props.settings.map(item =>
+            item.type==="list" && (
+              <Select
+                key={item}
+                label={item.label}
+                name={item.name}
+                options={item.value}
+                value={this.props.selections[item] || item.default}
+                onChange={this.handleChange}
+              />
+            )
+          )}
+        </Section>
+
+         {/* <Section>
           {DropdownItems.map(item =>
             this.props.settings[item] && (
               <Select
@@ -79,9 +94,25 @@ const ContentContainer = styled.div`
               />
             )
           )}
-        </Section>
+        </Section> */}
+
+
 
         <Section>
+          {this.props.settings.map(item =>
+            item.type==="checkbox" && (
+              <Checkbox
+                key={item}
+                label={item.label}
+                name={item.name}
+                checked={this.props.selections[item] || item.value}
+                onChange={this.handleChange}
+              />
+            )
+          )}
+        </Section>
+
+        {/* <Section>
           {CheckboxItems.map(item =>
             this.props.settings[item] && (
               <Checkbox
@@ -93,7 +124,7 @@ const ContentContainer = styled.div`
               />
             )
           )}
-        </Section>
+        </Section> */}
       </ContentContainer>
     );
   }
