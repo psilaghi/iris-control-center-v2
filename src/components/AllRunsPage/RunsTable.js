@@ -34,13 +34,11 @@ const Logo = styled.img`
 `;
 const SortIconsContainer = styled.div`
   display: none;
-  /* visibility: hidden; */
   float: right;
 `;
 const HeaderCell = styled.div`
   display: flex;
   align-items: center;
-  /* justify-content: center; */
 `;
 const DeleteButton = styled.button`
   border: none;
@@ -128,10 +126,10 @@ const TABLE_COLUMNS = [{
     var m = Math.floor(seconds % 3600 / 60);
     var s = Math.floor(seconds % 3600 % 60);
 
-    var dDisplay = d > 0 ? d + (d == 1 ? " day " : " days ") : "";
-    var hDisplay = h > 0 ? h + (h == 1 ? " hr " : " hrs ") : "";
-    var mDisplay = m > 0 ? m + (m == 1 ? " min " : " min ") : "";
-    var sDisplay = s > 0 ? s + (s == 1 ? " sec" : " sec") : "";
+    var dDisplay = d > 0 ? d + (d === 1 ? " day " : " days ") : "";
+    var hDisplay = h > 0 ? h + (h === 1 ? " hr " : " hrs ") : "";
+    var mDisplay = m > 0 ? m + (m === 1 ? " min " : " min ") : "";
+    var sDisplay = s > 0 ? s + (s === 1 ? " sec" : " sec") : "";
     return dDisplay + hDisplay + mDisplay + sDisplay;
   },
   className: "table__cell table__cell--centered"

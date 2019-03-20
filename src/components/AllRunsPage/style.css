@@ -61,9 +61,15 @@
   background-color: rgba(12,12,13,0.1);
   box-shadow: none;
 }
+.ReactTable .rt-thead .rt-th.-sort-desc span {
+  color: black;
+}
 .ReactTable .rt-thead .rt-th.-sort-asc {
   background-color: rgba(12,12,13,0.1);
   box-shadow: none;
+}
+.ReactTable .rt-thead .rt-th.-sort-asc span {
+  color: black;
 }
 
 .ReactTable .rt-td.status-cell {

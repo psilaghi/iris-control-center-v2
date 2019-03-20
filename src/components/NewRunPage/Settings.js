@@ -1,23 +1,10 @@
 import * as React from 'react';
-import ApiClient from '../apiClient';
 import styled from 'styled-components';
 import {
   Checkbox,
   Select
 } from '../inputs';
 
-const DropdownItems = [
-  'firefox',
-  'locale',
-  'mouse'
- ];
-const CheckboxItems = [
-  'email',
-  'highlight',
-  'override',
-  'report',
-  'save'
-]
 const LaunchButton = styled.button`
   background-color: #45a1ff;
   border: none;
@@ -70,61 +57,30 @@ const ContentContainer = styled.div`
           {this.props.settings.map(item =>
             item.type==="list" && (
               <Select
-                key={item}
+                key={item.name}
                 label={item.label}
                 name={item.name}
                 options={item.value}
-                value={this.props.selections[item] || item.default}
+                value={this.props.selections[item.name] || item.default}
                 onChange={this.handleChange}
               />
             )
           )}
         </Section>
-
-         {/* <Section>
-          {DropdownItems.map(item =>
-            this.props.settings[item] && (
-              <Select
-                key={item}
-                label={this.props.settings[item].label}
-                name={item}
-                options={this.props.settings[item].value}
-                value={this.props.selections[item] || this.props.settings[item].value[0]}
-                onChange={this.handleChange}
-              />
-            )
-          )}
-        </Section> */}
-
-
 
         <Section>
           {this.props.settings.map(item =>
             item.type==="checkbox" && (
               <Checkbox
-                key={item}
+                key={item.name}
                 label={item.label}
                 name={item.name}
-                checked={this.props.selections[item] || item.value}
+                checked={this.props.selections[item.name] || item.value}
                 onChange={this.handleChange}
               />
             )
           )}
         </Section>
-
-        {/* <Section>
-          {CheckboxItems.map(item =>
-            this.props.settings[item] && (
-              <Checkbox
-                key={item}
-                label={this.props.settings[item].label}
-                name={item}
-                checked={this.props.selections[item] || false}
-                onChange={this.handleChange}
-              />
-            )
-          )}
-        </Section> */}
       </ContentContainer>
     );
   }

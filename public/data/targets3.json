@@ -53,7 +53,7 @@
                     "label": "Create TestRail report",
                     "name": "report",
                     "type": "checkbox",
-                    "value": false
+                    "value": true
                 }
             ],
             "tests": {

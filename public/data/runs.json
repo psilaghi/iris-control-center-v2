@@ -11,7 +11,7 @@
   {
    "duration": 96,
    "failed": 12,
-   "id": "20181121182014",
+   "id": "20181121182015",
    "locale": "en-US",
    "target": "firefox",
    "total": 312
@@ -59,7 +59,7 @@
    {
    "duration": 96,
    "failed": 1,
-   "id": "20181121182014",
+   "id": "20181121182021",
    "locale": "en-US",
    "target": "notepad",
    "total": 2
