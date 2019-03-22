@@ -1,0 +1,130 @@
+{
+ "meta": {
+  "args": "/Users/username/.local/share/virtualenvs/iris-qxLEFYfH/bin/iris -o", 
+  "config": "10.13, 64-bit, x86_64", 
+  "end_time": 1542824441, 
+  "errors": 0, 
+  "failed": 0, 
+  "iris_branch": "dev", 
+  "iris_branch_head": "fb42579fb9e6363391c571a95c2e344e63ea8fd7", 
+  "iris_repo": "/Users/username/PycharmProjects/iris2", 
+  "iris_version": 2.0, 
+  "locale": "en-US", 
+  "log": "./runs/20181122194616/iris_log.log", 
+  "params": {
+   "a_value": true,
+   "b_value": 1
+  }, 
+  "passed": 1, 
+  "platform": "osx", 
+  "run_id": "20181122194616", 
+  "skipped": 1, 
+  "start_time": 1542824431, 
+  "total": 2, 
+  "total_time": 9,
+  "values": {
+    "build_id": "20181119162153", 
+    "version": "64.0"
+    }
+  }, 
+  "failed_tests": [
+    {
+      "name": "amazing",
+      "children": [
+        {
+          "asserts": [
+            {
+              "actual": false, 
+              "error": "\n----------------------------------------------------------------------------------------------------------\n\u00bb Traceback (most recent call last):                                                                     \u00ab\n\u00bb   File \"/Users/mwobensmith/.local/share/virtualenvs/iris-qxLEFYfH/bin/iris\", line 11, in <module>      \u00ab\n\u00bb     load_entry_point('iris', 'console_scripts', 'iris')()                                              \u00ab\n\u00bb   File \"/Users/mwobensmith/PycharmProjects/iris/iris/__main__.py\", line 38, in main                    \u00ab\n\u00bb     run_iris()                                                                                         \u00ab\n\u00bb   File \"/Users/mwobensmith/PycharmProjects/iris/iris/__main__.py\", line 108, in run_iris               \u00ab\n\u00bb     run(master_test_list, tests, browser)                                                              \u00ab\n\u00bb   File \"/Users/mwobensmith/PycharmProjects/iris/iris/test_runner.py\", line 69, in run                  \u00ab\n\u00bb     current.run()                                                                                      \u00ab\n\u00bb   File \"/Users/mwobensmith/PycharmProjects/iris/iris/tests/experiments/empty.py\", line 22, in run      \u00ab\n\u00bb     assert_true(self, False, 'test')                                                                   \u00ab\n\u00bb   File \"/Users/mwobensmith/PycharmProjects/iris/iris/asserts.py\", line 62, in assert_true              \u00ab\n\u00bb     assert_equal(test_case, actual, True, message)                                                     \u00ab\n\u00bb   File \"/Users/mwobensmith/PycharmProjects/iris/iris/asserts.py\", line 33, in assert_equal             \u00ab\n\u00bb     Result('FAILED', message, actual, expected, print_error(format_stack(traceback.extract_stack())))) \u00ab\n----------------------------------------------------------------------------------------------------------\n", 
+              "expected": true, 
+              "message": "test", 
+              "outcome": "FAILED"
+            }
+          ], 
+          "debug_image_directory": "./runs/20181122194616/amazing/test_name/debug_images", 
+          "debug_images": [
+           "2018_11_21_10_20_32_770970_confirm_firefox_launch_not_found.jpg", 
+           "2018_11_21_10_20_33_196900_confirm_firefox_launch_not_found.jpg", 
+           "2018_11_21_10_20_33_621642_confirm_firefox_launch_not_found.jpg", 
+           "2018_11_21_10_20_34_087372_confirm_firefox_launch_not_found.jpg", 
+           "2018_11_21_10_20_34_589795_confirm_firefox_launch_not_found.jpg", 
+           "2018_11_21_10_20_35_006360_confirm_firefox_launch.jpg", 
+           "2018_11_21_10_20_35_411807_confirm_firefox_launch.jpg"
+          ], 
+          "description": "This is an empty test case that does nothing", 
+          "name": "test_name", 
+          "result": "FAILED", 
+          "time": 8,
+          "values": {
+            "fx_args": "/Users/mwobensmith/.iris2/runs/20181122194616/Firefox.app/Contents/MacOS/firefox,-no-remote,-new-tab,http://127.0.0.1:2000?current=1&total=1&title=TEST_NAME,-foreground,-profile,/var/folders/zd/y66q9mp50cd42d644jbznxxm0000gn/T/iris_3qlqAm/experiments_empty",
+            "pref_iris.enabled": true, 
+            "profile": "like_new"
+          }
+        }
+      ]
+    }
+  ],
+  "all_tests": [
+    {
+      "name": "amazing",
+      "children": [
+        {
+          "asserts": [
+            {
+              "actual": false, 
+              "error": "\n----------------------------------------------------------------------------------------------------------\n\u00bb Traceback (most recent call last):                                                                     \u00ab\n\u00bb   File \"/Users/mwobensmith/.local/share/virtualenvs/iris-qxLEFYfH/bin/iris\", line 11, in <module>      \u00ab\n\u00bb     load_entry_point('iris', 'console_scripts', 'iris')()                                              \u00ab\n\u00bb   File \"/Users/mwobensmith/PycharmProjects/iris/iris/__main__.py\", line 38, in main                    \u00ab\n\u00bb     run_iris()                                                                                         \u00ab\n\u00bb   File \"/Users/mwobensmith/PycharmProjects/iris/iris/__main__.py\", line 108, in run_iris               \u00ab\n\u00bb     run(master_test_list, tests, browser)                                                              \u00ab\n\u00bb   File \"/Users/mwobensmith/PycharmProjects/iris/iris/test_runner.py\", line 69, in run                  \u00ab\n\u00bb     current.run()                                                                                      \u00ab\n\u00bb   File \"/Users/mwobensmith/PycharmProjects/iris/iris/tests/experiments/empty.py\", line 22, in run      \u00ab\n\u00bb     assert_true(self, False, 'test')                                                                   \u00ab\n\u00bb   File \"/Users/mwobensmith/PycharmProjects/iris/iris/asserts.py\", line 62, in assert_true              \u00ab\n\u00bb     assert_equal(test_case, actual, True, message)                                                     \u00ab\n\u00bb   File \"/Users/mwobensmith/PycharmProjects/iris/iris/asserts.py\", line 33, in assert_equal             \u00ab\n\u00bb     Result('FAILED', message, actual, expected, print_error(format_stack(traceback.extract_stack())))) \u00ab\n----------------------------------------------------------------------------------------------------------\n", 
+              "expected": true, 
+              "message": "test", 
+              "outcome": "FAILED"
+            }
+          ], 
+          "debug_image_directory": "./runs/20181122194616/amazing/test_name/debug_images", 
+          "debug_images": [
+           "2018_11_21_10_20_32_770970_confirm_firefox_launch_not_found.jpg", 
+           "2018_11_21_10_20_33_196900_confirm_firefox_launch_not_found.jpg", 
+           "2018_11_21_10_20_33_621642_confirm_firefox_launch_not_found.jpg", 
+           "2018_11_21_10_20_34_087372_confirm_firefox_launch_not_found.jpg", 
+           "2018_11_21_10_20_34_589795_confirm_firefox_launch_not_found.jpg", 
+           "2018_11_21_10_20_35_006360_confirm_firefox_launch.jpg", 
+           "2018_11_21_10_20_35_411807_confirm_firefox_launch.jpg"
+          ], 
+          "description": "This is an empty test case that does nothing", 
+          "name": "test_name", 
+          "result": "FAILED", 
+          "time": 8,
+          "values": {
+            "fx_args": "/Users/username/.iris2/runs/20181122194616/Firefox.app/Contents/MacOS/firefox,-no-remote,-new-tab,http://127.0.0.1:2000?current=1&total=1&title=TEST_NAME,-foreground,-profile,/var/folders/zd/y66q9mp50cd42d644jbznxxm0000gn/T/iris_3qlqAm/experiments_empty",
+            "pref_iris.enabled": true, 
+            "profile": "like_new" 
+          }        
+        }
+      ]
+    },
+    {
+      "name": "stupendous",
+      "children": [
+       { 
+        "debug_image_directory": "./runs/20181122194616/stupendous/my_test/debug_images", 
+        "debug_images": [
+         "2018_11_21_10_20_32_770970_confirm_firefox_launch_not_found.jpg", 
+         "2018_11_21_10_20_33_196900_confirm_firefox_launch_not_found.jpg", 
+         "2018_11_21_10_20_33_621642_confirm_firefox_launch_not_found.jpg", 
+         "2018_11_21_10_20_34_087372_confirm_firefox_launch_not_found.jpg", 
+         "2018_11_21_10_20_34_589795_confirm_firefox_launch_not_found.jpg", 
+         "2018_11_21_10_20_35_006360_confirm_firefox_launch.jpg", 
+         "2018_11_21_10_20_35_411807_confirm_firefox_launch.jpg"
+        ], 
+        "description": "This is another test case", 
+        "name": "my_test", 
+        "result": "PASSED", 
+        "time": 8,
+        "values": {
+          "fx_args": "/Users/username/.iris2/runs/20181122194616/Firefox.app/Contents/MacOS/firefox,-no-remote,-new-tab,http://127.0.0.1:2000?current=1&total=1&title=TEST_NAME,-foreground,-profile,/var/folders/zd/y66q9mp50cd42d644jbznxxm0000gn/T/iris_3qlqAm/experiments_empty",
+          "pref_iris.enabled": true, 
+          "profile": "like_new" 
+        }        
+      }
+      ]
+    }
+  ]
+}

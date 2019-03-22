@@ -6,7 +6,7 @@ import Icon from '../Icon';
 import { confirmAlert } from 'react-confirm-alert';
 import 'react-confirm-alert/src/react-confirm-alert.css';
 import RunsTable from './RunsTable';
-import RunDetails from './RunDetails';
+import RunDetails from './RunDetails/';
 import { Route } from 'react-router-dom';
 
 const DeleteAllButton = styled.button`

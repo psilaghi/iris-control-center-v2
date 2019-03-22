@@ -75,7 +75,7 @@ const ContentContainer = styled.div`
                 key={item.name}
                 label={item.label}
                 name={item.name}
-                checked={this.props.selections[item.name] || item.value}
+                checked={this.props.selections[item.name] === undefined ? item.value : this.props.selections[item.name]}
                 onChange={this.handleChange}
               />
             )
