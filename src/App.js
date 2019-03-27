@@ -6,6 +6,7 @@ import {
   BrowserRouter as Router
 } from 'react-router-dom';
 import styled, { createGlobalStyle } from 'styled-components';
+import ApiClient from './components/apiClient';
 
 const GlobalStyle = createGlobalStyle`
   html, body, #root {
@@ -13,7 +14,7 @@ const GlobalStyle = createGlobalStyle`
   }
   #root {
     display: grid;
-    grid-template-areas: 
+    grid-template-areas:
       "header header"
       "Navbar content";
     grid-template-columns: 271px 1fr;
@@ -34,6 +35,10 @@ const StyledAppContent = styled(AppContent)`
 `;
 
 class App extends Component {
+  componentDidMount() {
+    window.addEventListener("beforeunload", function (e) {ApiClient.get('/cancel');});
+  }
+
   render() {
     return (
       <Router>

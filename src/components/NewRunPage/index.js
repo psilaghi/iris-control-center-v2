@@ -42,6 +42,7 @@ class NewRunPage extends React.Component {
   handleLaunch = () => {
     const {expandedTest, ...data} = this.state;
     ApiClient.post('/go', data);
+    console.log(data);
   }
 
   handleTestSelection = (selectedTests) => {
