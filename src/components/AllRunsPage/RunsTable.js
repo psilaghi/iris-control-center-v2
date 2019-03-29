@@ -63,7 +63,7 @@ const DeleteButton = styled.button`
 const TABLE_COLUMNS = [{
   accessor: "failed",
   Cell: data => <StatusCell failedTests={data.value} {...(data.value && {title: `${data.value} Failed`})} />,
-  className: "table__cell table__cell--centered status-cell"
+  className: "table__cell status-cell"
 }, {
   Header: () => (
     <HeaderCell>
@@ -75,7 +75,7 @@ const TABLE_COLUMNS = [{
   ),
   accessor: "target",
   Cell: data => <Logo src={`/images/${data.value}.png`} />,
-  className: "table__cell table__cell--centered"
+  className: "table__cell"
 }, {
   Header: () => (
     <HeaderCell>
@@ -86,7 +86,7 @@ const TABLE_COLUMNS = [{
     </HeaderCell>
   ),
   accessor: "id",
-  className: "table__cell table__cell--centered"
+  className: "table__cell"
 }, {
   Header: () => (
     <HeaderCell>
@@ -97,7 +97,7 @@ const TABLE_COLUMNS = [{
     </HeaderCell>
   ),
   accessor: "locale",
-  className: "table__cell table__cell--centered"
+  className: "table__cell"
 }, {
   Header: () => (
     <HeaderCell>
@@ -108,7 +108,7 @@ const TABLE_COLUMNS = [{
     </HeaderCell>
   ),
   accessor: "total",
-  className: "table__cell table__cell--centered"
+  className: "table__cell"
 }, {
   Header: () => (
     <HeaderCell>
@@ -132,7 +132,7 @@ const TABLE_COLUMNS = [{
     var sDisplay = s > 0 ? s + (s === 1 ? " sec" : " sec") : "";
     return dDisplay + hDisplay + mDisplay + sDisplay;
   },
-  className: "table__cell table__cell--centered"
+  className: "table__cell"
 }, {
   Header: () => (
     <HeaderCell>
@@ -145,7 +145,7 @@ const TABLE_COLUMNS = [{
   id: "completed",
   accessor: data => moment(data.id, "YYYYMMDDHHmmss").add(data.duration, 's').unix(),
   Cell: data => moment(data.original.id, "YYYYMMDDHHmmss").add(data.original.duration, 's').calendar(),
-  className: "table__cell table__cell--centered"
+  className: "table__cell"
 }];
 
 class RunsTable extends React.Component {
@@ -154,7 +154,7 @@ class RunsTable extends React.Component {
     {
       id: "actions",
       Cell: data => (<DeleteButton type="button" onClick={() => this.props.onDelete(data.original.id)}><Icon icon="trashcanblue"/></DeleteButton>),
-      className: "table__cell table__cell--centered",
+      className: "table__cell",
       sortable: false
     }
   ]
@@ -199,7 +199,7 @@ class RunsTable extends React.Component {
                 {
                   background: '#0179FF',
                   color: 'white',
-                  'font-weight': 'bold'
+                  fontWeight: 'bold'
                 })
             }
           }

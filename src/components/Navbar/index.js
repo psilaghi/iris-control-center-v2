@@ -29,7 +29,7 @@ class Navbar extends React.Component {
   }
 
   componentDidMount() {
-    ApiClient.get('/data/targets.json').then(response => {
+    ApiClient.get('/data/targets_latest.json').then(response => {
       const parsedResponse = response.targets.map(target => {
         return {
           path: `/${target.name.toLowerCase()}`,
@@ -49,12 +49,12 @@ class Navbar extends React.Component {
             <Route path="/runs">
               <NavbarItem label="All Runs" basePath="/runs"/>
             </Route>
-            
+
             <Route path="/new">
-              <NavbarItem 
-                label="Create New Run" 
-                basePath="/new" 
-                sublinks={this.state.targets} 
+              <NavbarItem
+                label="Create New Run"
+                basePath="/new"
+                sublinks={this.state.targets}
               />
             </Route>
           </Ul>

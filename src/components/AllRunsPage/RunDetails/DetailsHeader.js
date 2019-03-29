@@ -16,14 +16,16 @@ const StyledNavLink = styled(NavLink)`
   margin-right: 60px;
   &:active,
   &:link,
+  &:hover,
   &:visited {
     color: inherit;
-  }
-  &:hover {
     text-decoration: none;
+  }
+  &.active {
     color: black;
     border-bottom: 3px solid #0060DF;
   }
+  ${props => props.disabled && 'pointer-events: none;'}
 `;
 
 const StyledUl = styled.ul`
@@ -40,9 +42,9 @@ class DetailsHeader extends React.Component {
     return (
       <StyledNav>
         <StyledUl>
-          <StyledLi><StyledNavLink to={`${this.props.basePath}/failed`}>Failed Tests</StyledNavLink></StyledLi>
-          <StyledLi><StyledNavLink to={`${this.props.basePath}/tests`}>All Tests</StyledNavLink></StyledLi>
-          <StyledLi><StyledNavLink to={`${this.props.basePath}/details`}>Run Details</StyledNavLink></StyledLi>
+          <StyledLi><StyledNavLink to={`${this.props.basePath}/failed`} disabled={this.props.disabled}>Failed Tests</StyledNavLink></StyledLi>
+          <StyledLi><StyledNavLink to={`${this.props.basePath}/tests`} disabled={this.props.disabled}>All Tests</StyledNavLink></StyledLi>
+          <StyledLi><StyledNavLink to={`${this.props.basePath}/details`} disabled={this.props.disabled}>Run Details</StyledNavLink></StyledLi>
         </StyledUl>
       </StyledNav>
     )

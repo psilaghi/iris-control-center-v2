@@ -2,9 +2,6 @@
     align-items: center;
     display: flex;
 }
-.table__cell--centered {
-    /* justify-content: center; */
-}
 
 .table__cell-btn {
     margin: 0 10px;
@@ -33,10 +30,12 @@
   color: #737373;
   margin-bottom: 2px;
 }
+/* .no-data-tbody .ReactTable .rt-thead.-header {
+  color: #B1B1B3;
+} */
 
 .ReactTable {
   border: none;
-  /* overflow: auto; */
   padding: 50px 50px 16px 50px;
   height: 370px;
 }

@@ -1,6 +1,6 @@
 import * as React from 'react';
-import TestCategory from '../TestCategory';
 import styled from 'styled-components';
+import CheckboxTree from '../tree/CheckboxTree';
 
 const ContentContainer = styled.div`
     border-right: 1px solid lightgray;
@@ -32,60 +32,41 @@ const Hr = styled.hr`
 `;
 
 class Tests extends React.Component {
-    handleTestSelection = (categoryName, selectedTests) => {
-        let tests;
-        if (!Object.keys(selectedTests).length) {
-            tests = {
-                ...this.props.selectedItems
-            };
-            delete tests[categoryName];
-        } else {
-            tests = {
-                ...this.props.selectedItems,
-                [categoryName]: selectedTests
-            };
-        }
-
-        this.props.onSelect(tests);
-    };
+    constructor(props) {
+        super(props);
+        this.state = {
+            checked: [],
+            expanded: []
+        };
+    }
 
     handleSelectAll = event => {
         this.props.onSelect(event.target.checked ? this.props.tests : {});
     };
 
     render() {
-        const { selectedItems } = this.props;
+        // const { selectedItems } = this.props;
+        const { tests } = this.props;
         return (
             <ContentContainer>
                 <Title>Tests</Title>
                 <Label>
                     <SelectAllCheckbox
-                        checked={this.props.tests === this.props.selectedItems}
+                        checked={tests === this.props.selectedItems}
                         type="checkbox"
                         onChange={this.handleSelectAll}
                     />
                     <Span>Select all tests</Span>
                 </Label>
                 <Hr />
-                {Object.keys(this.props.tests).map(key => {
-                    const item = this.props.tests[key];
-                    const isTest = !!(selectedItems[key] || {}).name;
-                    return (
-                        <TestCategory
-                            key={key}
-                            name={key}
-                            data={item}
-                            onChange={this.handleTestSelection}
-                            selectedItems={
-                                isTest
-                                    ? selectedItems
-                                    : selectedItems[key] || {}
-                            }
-                            onTestClick={this.props.onTestClick}
-                            expandedTest={this.props.expandedTest}
-                        />
-                    );
-                })}
+                <CheckboxTree
+                    nodes={tests}
+                    checked={this.state.checked}
+                    expanded={this.state.expanded}
+                    onCheck={checked => this.setState({ checked })}
+                    onExpand={expanded => this.setState({ expanded })}
+                    onTestClick={this.props.onTestClick}
+                />
             </ContentContainer>
         );
     }

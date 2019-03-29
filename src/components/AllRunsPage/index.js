@@ -88,7 +88,9 @@ class AllRunsPage extends React.Component {
           Delete All
           <TrashIcon icon="trashcanblack"/>
         </DeleteAllButton>
-        <Route path={`${this.props.match.path}/:id`} component={RunDetails} />
+        <Route path={`${this.props.match.path}/:id`}>
+          <RunDetails />
+        </Route>
       </div>
     )
   }
