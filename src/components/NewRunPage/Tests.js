@@ -34,10 +34,10 @@ const Hr = styled.hr`
 class Tests extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {
-            checked: [],
-            expanded: []
-        };
+        // this.state = {
+        //     checked: [],
+        //     expanded: []
+        // };
     }
 
     handleSelectAll = event => {
@@ -61,10 +61,10 @@ class Tests extends React.Component {
                 <Hr />
                 <CheckboxTree
                     nodes={tests}
-                    checked={this.state.checked}
-                    expanded={this.state.expanded}
-                    onCheck={checked => this.setState({ checked })}
-                    onExpand={expanded => this.setState({ expanded })}
+                    checked={this.props.checked}
+                    expanded={this.props.expanded}
+                    onCheck={this.props.onCheck}
+                    onExpand={this.props.onExpand}
                     onTestClick={this.props.onTestClick}
                 />
             </ContentContainer>

@@ -19,7 +19,9 @@ class NewRunPage extends React.Component {
             expandedTest: null,
             targetData: null,
             allData: {},
-            selectedItems: {}
+            selectedItems: {},
+            checked: [],
+            expanded: []
         };
     }
 
@@ -41,8 +43,16 @@ class NewRunPage extends React.Component {
         }
     }
     handleLaunch = () => {
-        const { expandedTest, ...data } = this.state;
-        ApiClient.post('/go', data);
+      const {
+          tests,
+          expandedTest,
+          targetData,
+          allData,
+          ...data
+      } = this.state;
+      // const { expandedTest, ...data } = this.state;
+      ApiClient.post('/go', data);
+      console.log(data);
     };
 
     handleTestSelection = selectedTests => {
@@ -79,6 +89,10 @@ class NewRunPage extends React.Component {
                             onSelect={this.handleTestSelection}
                             onTestClick={this.handleExpandedTest}
                             tests={this.state.targetData.tests}
+                            checked={this.state.checked}
+                            expanded={this.state.expanded}
+                            onCheck={checked => this.setState({ checked })}
+                            onExpand={expanded => this.setState({ expanded })}
                         />
                         {this.state.expandedTest ? (
                             <TestDetails
