@@ -91,16 +91,20 @@ class NodeModel {
         });
     }
 
-    serializeList(key) {
+    serializeList(key, showPath) {
         const list = [];
+        const path = [];
 
         Object.keys(this.flatNodes).forEach(value => {
             if (this.flatNodes[value][key]) {
                 list.push(value);
+                if (showPath) {
+                    path.push(this.flatNodes[value].data.file);
+                }
             }
         });
 
-        return list;
+        return [list, path];
     }
 
     expandAllNodes(expand) {

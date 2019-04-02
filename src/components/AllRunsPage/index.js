@@ -9,6 +9,9 @@ import RunsTable from './RunsTable';
 import RunDetails from './RunDetails/';
 import { Route } from 'react-router-dom';
 
+const Container = styled.div`
+  padding: 50px;
+`;
 const DeleteAllButton = styled.button`
   height: 32px;
   width: 132px;
@@ -24,14 +27,17 @@ const DeleteAllButton = styled.button`
     background: #979797;
   }
   :disabled {
-    opacity: 0.6;
+    opacity: 0.7;
   }
-  float: right;
-  margin-right: 50px;
   font-size: 13px;
   display: flex;
   align-items: center;
   justify-content: center;
+  margin: 16px 0 25px 0;
+`;
+const ButtonContainer = styled.div`
+  display: flex;
+  justify-content: flex-end;
 `;
 const TrashIcon = styled(Icon)`
   margin-left: 12px;
@@ -75,23 +81,25 @@ class AllRunsPage extends React.Component {
 
   render() {
     return (
-      <div>
+      <Container>
         <Route path={`${this.props.match.path}/:id`}>
           <RunsTable runs={this.state.runs} onDelete={this.handleDelete}/>
         </Route>
-        <DeleteAllButton
-          type="button"
-          title="Delete all runs from local disk"
-          onClick={this.submitDeleteAll}
-          disabled={!this.state.runs.length}
-        >
-          Delete All
-          <TrashIcon icon="trashcanblack"/>
-        </DeleteAllButton>
+        <ButtonContainer>
+          <DeleteAllButton
+            type="button"
+            title="Delete all runs from local disk"
+            onClick={this.submitDeleteAll}
+            disabled={!this.state.runs.length}
+          >
+            Delete All
+            <TrashIcon icon="trashcanblack"/>
+          </DeleteAllButton>
+        </ButtonContainer>
         <Route path={`${this.props.match.path}/:id`}>
           <RunDetails />
         </Route>
-      </div>
+      </Container>
     )
   }
 }

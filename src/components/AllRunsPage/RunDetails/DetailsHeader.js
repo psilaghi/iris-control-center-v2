@@ -4,11 +4,11 @@ import { NavLink } from 'react-router-dom';
 
 const StyledNav = styled.nav`
   box-shadow: none;
-  border-bottom: 2px solid rgba(215, 215, 219, 0.5);
+  border-bottom: 1px solid #D7D7DB;
   font-size: 18px;
   font-weight: bold;
   color: #B1B1B3;
-  margin: 35px 50px 13px 50px;
+  margin-bottom: 10px;
 `;
 
 const StyledNavLink = styled(NavLink)`

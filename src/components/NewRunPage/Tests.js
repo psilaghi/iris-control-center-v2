@@ -32,20 +32,11 @@ const Hr = styled.hr`
 `;
 
 class Tests extends React.Component {
-    constructor(props) {
-        super(props);
-        // this.state = {
-        //     checked: [],
-        //     expanded: []
-        // };
-    }
-
     handleSelectAll = event => {
         this.props.onSelect(event.target.checked ? this.props.tests : {});
     };
 
     render() {
-        // const { selectedItems } = this.props;
         const { tests } = this.props;
         return (
             <ContentContainer>

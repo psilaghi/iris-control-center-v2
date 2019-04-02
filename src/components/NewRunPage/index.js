@@ -43,16 +43,18 @@ class NewRunPage extends React.Component {
         }
     }
     handleLaunch = () => {
-      const {
-          tests,
-          expandedTest,
-          targetData,
-          allData,
-          ...data
-      } = this.state;
-      // const { expandedTest, ...data } = this.state;
-      ApiClient.post('/go', data);
-      console.log(data);
+        const {
+            tests,
+            expandedTest,
+            targetData,
+            allData,
+            selectedItems,
+            checked,
+            expanded,
+            ...data
+        } = this.state;
+        ApiClient.post('/go', data);
+        console.log(data);
     };
 
     handleTestSelection = selectedTests => {
@@ -79,6 +81,9 @@ class NewRunPage extends React.Component {
         });
     };
 
+    onCheck = data => {
+        this.setState({ checked: data[0], testsPath: data[1][0].substring(data[1][0].indexOf('tests\\')) });
+    };
     render() {
         return (
             <MainGrid>
@@ -91,7 +96,7 @@ class NewRunPage extends React.Component {
                             tests={this.state.targetData.tests}
                             checked={this.state.checked}
                             expanded={this.state.expanded}
-                            onCheck={checked => this.setState({ checked })}
+                            onCheck={this.onCheck}
                             onExpand={expanded => this.setState({ expanded })}
                         />
                         {this.state.expandedTest ? (

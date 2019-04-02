@@ -97,7 +97,10 @@ class CheckboxTree extends React.Component {
         const node = model.getNode(nodeInfo.name);
 
         model.toggleChecked(nodeInfo, nodeInfo.checked, noCascade);
-        onCheck(model.serializeList('checked'), { ...node, ...nodeInfo });
+        onCheck(model.serializeList('checked', 'showPath'), {
+            ...node,
+            ...nodeInfo
+        });
     };
 
     onExpand = nodeInfo => {
@@ -106,7 +109,7 @@ class CheckboxTree extends React.Component {
         const node = model.getNode(nodeInfo.name);
 
         model.toggleNode(nodeInfo.name, 'expanded', nodeInfo.expanded);
-        onExpand(model.serializeList('expanded'), { ...node, ...nodeInfo });
+        onExpand(model.serializeList('expanded')[0], { ...node, ...nodeInfo });
     };
 
     onNodeClick = nodeInfo => {

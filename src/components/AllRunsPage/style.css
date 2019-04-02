@@ -18,13 +18,13 @@
 .ReactTable .rt-tbody .rt-tr-group {
   border: none;
   background-color: #F1F8FF;
-  margin: 2px;
-  /* max-height: 41px; */
+  margin: 2px 0 2px 0;
+  max-height: 40px;
 }
 
 .ReactTable .rt-thead.-header {
   box-shadow: none;
-  border-bottom: 2px solid rgba(215, 215, 219, 0.5);
+  border-bottom: 1px solid #D7D7DB;
   font-size: 18px;
   font-weight: bold;
   color: #737373;
@@ -36,8 +36,8 @@
 
 .ReactTable {
   border: none;
-  padding: 50px 50px 16px 50px;
-  height: 370px;
+  /* padding-bottom: 16px; */
+  /* height: 370px; */
 }
 
 .ReactTable .rt-tbody .rt-tr-group:hover {
@@ -86,7 +86,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  border: 2px solid rgba(215, 215, 219, 0.5);
+  border: 1px solid #D7D7DB;
   margin-top: 2px;
 }
 
