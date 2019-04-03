@@ -82,7 +82,7 @@ class NewRunPage extends React.Component {
     };
 
     onCheck = data => {
-        this.setState({ checked: data[0], testsPath: data[1][0].substring(data[1][0].indexOf('tests\\')) });
+        this.setState({ checked: data[0], testsPath: data[1] });
     };
     render() {
         return (

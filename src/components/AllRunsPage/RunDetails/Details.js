@@ -4,7 +4,9 @@ class Details extends React.Component {
   render() {
     return (
       <div>
-        run details content
+        {this.props.details.meta && Object.keys(this.props.details.meta).map(item => (
+          <div>{item}</div>
+        ))}
       </div>
     )
   }

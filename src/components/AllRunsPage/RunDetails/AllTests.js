@@ -4,7 +4,9 @@ class AllTests extends React.Component {
   render() {
     return (
       <div>
-        all tests content
+        {this.props.details.tests && this.props.details.tests.all_tests.map(item =>
+          <div>{item.name}</div>
+        )}
       </div>
     )
   }

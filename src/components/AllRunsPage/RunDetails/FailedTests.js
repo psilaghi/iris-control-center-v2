@@ -4,9 +4,8 @@ class FailedTests extends React.Component {
   render() {
     return (
       <div>
-        {/* {console.log(this.props.details)} */}
-        {this.props.details.map(item =>
-          <div>{item}</div>
+        {this.props.details.tests && this.props.details.tests.failed_tests.map(item =>
+          <div>{item.name}</div>
         )}
       </div>
     )
