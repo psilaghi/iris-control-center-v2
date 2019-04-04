@@ -28,7 +28,9 @@ const SummaryContainer = styled.span`
     display: flex;
     align-items: center;
     font-size: 20px;
-    height: 40px;
+    height: auto;
+    min-height: 40px;
+    max-height: 55px;
     background-color: #e5effc;
     &:hover {
         background-color: #c4daf7;
@@ -43,6 +45,16 @@ const Container = styled.li`
     .card {
         border: none;
     }
+`;
+
+const Description = styled.div`
+  font-size: 12px;
+  color: gray;
+  margin-left: 33px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  padding-right: 20px;
 `;
 
 class TreeNode extends React.Component {
@@ -121,6 +133,7 @@ class TreeNode extends React.Component {
                         />
 
                         <span key={1}>{name}</span>
+                        {isLeaf && (<Description>{this.props.description}</Description>)}
                     </label>
                     {isLeaf ? (
                         <ExpandButton

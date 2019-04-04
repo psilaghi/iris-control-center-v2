@@ -150,7 +150,6 @@ class CheckboxTree extends React.Component {
         );
     }
     onArrowClick = itemName => {
-        debugger;
         const { model } = this.state;
         const item = model.getNode(itemName);
         this.props.onTestClick(item);
@@ -187,6 +186,7 @@ class CheckboxTree extends React.Component {
                         expanded={flatNode.expanded}
                         isLeaf={flatNode.isLeaf}
                         treeId={id}
+                        description={node.description || ""}
                         name={node.name}
                         onCheck={this.onCheck}
                         onClick={onClick && this.onNodeClick}

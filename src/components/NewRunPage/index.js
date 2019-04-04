@@ -31,7 +31,9 @@ class NewRunPage extends React.Component {
                 item =>
                     item.name.toLowerCase() === this.props.match.params.target
             );
-            this.setState({ allData: response.targets, targetData: target });
+            const temp = {};
+            target.settings.map (item => temp[item.name] = item.default || false);
+            this.setState({ allData: response.targets, targetData: target, args: temp });
         });
     }
     componentWillReceiveProps(newProps) {

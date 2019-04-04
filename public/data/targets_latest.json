@@ -5,7 +5,7 @@
    "name": "Firefox",
    "settings": [
     {
-     "default": "beta",
+     "default": "local",
      "label": "Firefox",
      "name": "firefox",
      "type": "list",
