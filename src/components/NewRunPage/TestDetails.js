@@ -44,11 +44,16 @@ function TestDetails(props) {
             <Title>{props.test.name}</Title>
             <Details>
                 {Object.keys(props.test).map(key => (
-                    <Detail key={key}>
-                      {' '}
-                      <DetailTitle>{key}:</DetailTitle>{' '}
-                      {props.test[key].toString()}
-                    </Detail>
+                  <Detail key={key}>
+                    {' '}
+                    {typeof(props.test[key]) === 'object' ?
+                      (Object.keys(props.test[key]).map(objKey => (
+                        <DetailTitle>{objKey}: </DetailTitle>
+                        props.test[key][objKey]
+                      ))) : (
+                    <DetailTitle>{key}: </DetailTitle>
+                    props.test[key])}
+                  </Detail>
                 ))}
             </Details>
         </Container>
