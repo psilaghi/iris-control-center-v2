@@ -5,7 +5,11 @@ import styled from 'styled-components';
 import Icon from '../Icon/index';
 
 const Checkbox = styled.input`
-    margin: 10px;
+  margin: 10px;
+  border-radius: 2px;
+  &:hover {
+    box-shadow: inset 0px 0px 0px 2px rgba(0,96,223,1);
+  }
 `;
 
 const ExpandButton = styled.button`
@@ -22,6 +26,9 @@ const ExpandButton = styled.button`
     }
     display: flex;
     font-size: 15px;
+    /* &:hover {
+      color: darkblue;
+    } */
 `;
 
 const SummaryContainer = styled.span`
@@ -55,6 +62,10 @@ const Description = styled.div`
   text-overflow: ellipsis;
   white-space: nowrap;
   padding-right: 20px;
+`;
+
+const Label = styled.label`
+  margin: 0;
 `;
 
 class TreeNode extends React.Component {
@@ -123,7 +134,7 @@ class TreeNode extends React.Component {
         return (
             <Container>
                 <SummaryContainer>
-                    <label key={0} htmlFor={inputId}>
+                    <Label key={0} htmlFor={inputId}>
                         <Checkbox
                             type="checkbox"
                             disabled={disabled}
@@ -134,7 +145,7 @@ class TreeNode extends React.Component {
 
                         <span key={1}>{name}</span>
                         {isLeaf && (<Description>{this.props.description}</Description>)}
-                    </label>
+                    </Label>
                     {isLeaf ? (
                         <ExpandButton
                             type="button"

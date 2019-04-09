@@ -43,18 +43,21 @@ function TestDetails(props) {
             </CloseButton>
             <Title>{props.test.name}</Title>
             <Details>
-                {Object.keys(props.test).map(key => (
-                  <Detail key={key}>
-                    {' '}
-                    {typeof(props.test[key]) === 'object' ?
-                      (Object.keys(props.test[key]).map(objKey => (
-                        <DetailTitle>{objKey}: </DetailTitle>
-                        props.test[key][objKey]
-                      ))) : (
-                    <DetailTitle>{key}: </DetailTitle>
-                    props.test[key])}
-                  </Detail>
-                ))}
+                {Object.keys(props.test).map(key =>
+                    typeof props.test[key] === 'object' ? (
+                        Object.keys(props.test[key]).map(objKey => (
+                            <Detail key={key}>
+                                <DetailTitle>{objKey}: </DetailTitle>
+                                {props.test[key][objKey]}
+                            </Detail>
+                        ))
+                    ) : (
+                        <Detail key={key}>
+                            <DetailTitle>{key}: </DetailTitle>
+                            {props.test[key]}
+                        </Detail>
+                    )
+                )}
             </Details>
         </Container>
     );

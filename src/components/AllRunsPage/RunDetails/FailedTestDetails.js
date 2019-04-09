@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-class AllTests extends React.Component {
+class FailedTestDetails extends React.Component {
   render() {
     return (
       <div>
@@ -12,4 +12,4 @@ class AllTests extends React.Component {
   }
 }
 
-export default AllTests;
+export default FailedTestDetails;

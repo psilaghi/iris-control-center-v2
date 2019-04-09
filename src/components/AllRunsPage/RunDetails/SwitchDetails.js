@@ -18,9 +18,9 @@ class SwitchDetails extends React.Component {
   render() {
     return (
       <Switch>
-        <Route path={`${this.props.match.path}/failed`} render={ _ => <FailedTests details={this.state.details} />} />
-        <Route path={`${this.props.match.path}/tests`} render={ _ => <AllTests details={this.state.details} />} />
-        <Route path={`${this.props.match.path}/details`} render={ _ => <Details details={this.state.details} />} />
+        <Route path={`${this.props.match.path}/failed`} render={ () => <FailedTests details={this.state.details.tests && this.state.details.tests.failed_tests} />} />
+        <Route path={`${this.props.match.path}/tests`} render={ () => <AllTests details={this.state.details.tests && this.state.details.tests.all_tests} />} />
+        <Route path={`${this.props.match.path}/details`} render={ () => <Details details={this.state.details && this.state.details.meta} />} />
         <Redirect to={`${this.props.match.path}/failed`} />
       </Switch>
     )
