@@ -142,6 +142,18 @@ class NodeModel {
 
         return this;
     }
+
+    getAllSelectedData() {
+        const allLeafs = [];
+        const allPaths = [];
+        Object.keys(this.flatNodes).forEach(value => {
+            if (this.flatNodes[value].isLeaf) {
+                allLeafs.push(value);
+                allPaths.push(this.flatNodes[value].data.file);
+            }
+        });
+        return [allLeafs, allPaths];
+    }
 }
 
 export default NodeModel;

@@ -91,6 +91,9 @@ class CheckboxTree extends React.Component {
         return newState;
     }
 
+    selectAllData = () => {
+        return this.state.model.getAllSelectedData();
+    };
     onCheck = nodeInfo => {
         const { noCascade, onCheck } = this.props;
         const model = this.state.model.clone();
@@ -186,7 +189,7 @@ class CheckboxTree extends React.Component {
                         expanded={flatNode.expanded}
                         isLeaf={flatNode.isLeaf}
                         treeId={id}
-                        description={node.description || ""}
+                        description={node.description || ''}
                         name={node.name}
                         onCheck={this.onCheck}
                         onClick={onClick && this.onNodeClick}

@@ -29,7 +29,7 @@ class Navbar extends React.Component {
   }
 
   componentDidMount() {
-    ApiClient.get('/data/targets_latest.json').then(response => {
+    ApiClient.get('/data/targets.json').then(response => {
       const parsedResponse = response.targets.map(target => {
         return {
           path: `/${target.name.toLowerCase()}`,

@@ -21,29 +21,36 @@ class NewRunPage extends React.Component {
             allData: {},
             selectedItems: {},
             checked: [],
-            expanded: []
+            expanded: [],
+            isSelectAll: false
         };
     }
 
     componentDidMount() {
-        ApiClient.get('/data/targets_latest.json').then(response => {
+        ApiClient.get('/data/targets.json').then(response => {
             const target = response.targets.find(
                 item =>
                     item.name.toLowerCase() === this.props.match.params.target
             );
             const temp = {};
-            target.settings.map (item => temp[item.name] = item.default || false);
-            this.setState({ allData: response.targets, targetData: target, args: temp });
+            target.settings.map(
+                item => (temp[item.name] = item.default || false)
+            );
+            this.setState({
+                allData: response.targets,
+                targetData: target,
+                args: temp
+            });
         });
     }
-    componentWillReceiveProps(newProps) {
-        if (newProps.match.params.target !== this.props.match.params.target) {
-            const target = this.state.allData.find(
-                item => item.name.toLowerCase() === newProps.match.params.target
-            );
-            this.setState({ targetData: target });
-        }
-    }
+    // componentWillReceiveProps(newProps) {
+    //     if (newProps.match.params.target !== this.props.match.params.target) {
+    //         const target = this.state.allData.find(
+    //             item => item.name.toLowerCase() === newProps.match.params.target
+    //         );
+    //         this.setState({ targetData: target });
+    //     }
+    // }
     handleLaunch = () => {
         const {
             tests,
@@ -53,15 +60,22 @@ class NewRunPage extends React.Component {
             selectedItems,
             checked,
             expanded,
+            isSelectAll,
+            testsPath,
             ...data
         } = this.state;
+        data.target = targetData.name.toLowerCase();
+        data.tests = testsPath;
         ApiClient.post('/go', data);
         console.log(data);
     };
 
-    handleTestSelection = selectedTests => {
+    handleSelectAll = data => {
+        const isSelectAllValue = this.state.isSelectAll;
         this.setState({
-            selectedItems: selectedTests
+            checked: data[0],
+            testsPath: data[1],
+            isSelectAll: !isSelectAllValue
         });
     };
 
@@ -92,8 +106,9 @@ class NewRunPage extends React.Component {
                 {this.state.targetData ? (
                     <React.Fragment>
                         <Tests
-                            expandedTest={this.state.expandedTest}
-                            onSelect={this.handleTestSelection}
+                            isSelectAll={this.state.isSelectAll}
+                            // expandedTest={this.state.expandedTest}
+                            onSelectAll={this.handleSelectAll}
                             onTestClick={this.handleExpandedTest}
                             tests={this.state.targetData.tests}
                             checked={this.state.checked}

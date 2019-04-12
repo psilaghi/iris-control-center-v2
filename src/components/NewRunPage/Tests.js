@@ -32,8 +32,17 @@ const Hr = styled.hr`
 `;
 
 class Tests extends React.Component {
-    handleSelectAll = event => {
-        this.props.onSelect(event.target.checked ? this.props.tests : {});
+    constructor(props) {
+        super(props);
+        this.checkboxRef = React.createRef();
+    }
+
+    onSelectAll = () => {
+        let data = [[], []];
+        if (!this.props.isSelectAll) {
+            data = this.checkboxRef.current.selectAllData();
+        }
+        this.props.onSelectAll(data);
     };
 
     render() {
@@ -43,14 +52,15 @@ class Tests extends React.Component {
                 <Title>Tests</Title>
                 <Label>
                     <SelectAllCheckbox
-                        checked={tests === this.props.selectedItems}
+                        checked={this.props.isSelectAll}
                         type="checkbox"
-                        onChange={this.handleSelectAll}
+                        onChange={this.onSelectAll}
                     />
                     <Span>Select all tests</Span>
                 </Label>
                 <Hr />
                 <CheckboxTree
+                    ref={this.checkboxRef}
                     nodes={tests}
                     checked={this.props.checked}
                     expanded={this.props.expanded}

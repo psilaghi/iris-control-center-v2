@@ -2,11 +2,26 @@ import * as React from 'react';
 import styled from 'styled-components';
 import FailedTestsList from './FailedTestsList';
 import FailedTestDetails from './FailedTestDetails';
+import Icon from '../../Icon';
 
 const MainGrid = styled.div`
     display: grid;
-    grid-template-columns: minmax(500px, 1fr) 400px;
+    /* grid-template-columns: minmax(500px, 1fr) 400px; */
+    grid-template-columns: 50% 1fr;
     height: 100%;
+`;
+const NoDataContainer = styled.div`
+  /* font-size: 28px; */
+  /* color: rgba(215,215,219,0.5); */
+  display: flex;
+  /* flex-direction: column; */
+  align-items: center;
+  justify-content: center;
+  /* height: 397px; */
+  border: 1px solid #D7D7DB;
+`;
+const SyledIcon = styled(Icon)`
+  font-size: 100px;
 `;
 
 class FailedTests extends React.Component {
@@ -16,16 +31,28 @@ class FailedTests extends React.Component {
     };
   }
 
+  handleExpandedTest = test => {
+        this.setState({
+            expandedTest: test
+        });
+    };
+
   render() {
     return (
       <MainGrid>
         <FailedTestsList
           list={this.props.details}
-          onTestClick={selectedTests => this.setState({ selectedTests })}
+          onTestClick={this.handleExpandedTest}
           expanded={this.state.expanded}
           onExpand={expanded => this.setState({ expanded })}
         />
-        <FailedTestDetails details={this.state.selectedTests} />
+        {this.state.expandedTest ? (
+          <FailedTestDetails test={this.state.expandedTest.data} />
+          ) : (
+            <NoDataContainer>
+              <SyledIcon icon="PoitingFingerLeft"/>
+            </NoDataContainer>
+          )}
       </MainGrid>
     )
   }
