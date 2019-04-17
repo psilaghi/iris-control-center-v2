@@ -25,7 +25,9 @@ class CheckboxTree extends React.Component {
         disabled: PropTypes.bool,
         id: PropTypes.string,
         name: PropTypes.string,
+        expandBtnPosition: PropTypes.string,
         noCascade: PropTypes.bool,
+        showCheckbox: PropTypes.bool,
         onCheck: PropTypes.func,
         onClick: PropTypes.func,
         onExpand: PropTypes.func
@@ -40,7 +42,9 @@ class CheckboxTree extends React.Component {
         noCascade: false,
         onCheck: () => {},
         onClick: null,
-        onExpand: () => {}
+        onExpand: () => {},
+        showCheckbox: false,
+        expandBtnPosition: 'right'
     };
 
     constructor(props) {
@@ -159,7 +163,7 @@ class CheckboxTree extends React.Component {
     };
     renderTreeNodes(nodes, parent = {}) {
         const { noCascade, onClick } = this.props;
-        const { id, model } = this.state;
+        const { model, id } = this.state;
 
         const treeNodes = nodes.map(node => {
             const flatNode = model.getNode(node.name);
@@ -195,6 +199,10 @@ class CheckboxTree extends React.Component {
                         onClick={onClick && this.onNodeClick}
                         onExpand={this.onExpand}
                         onArrowExpand={this.onArrowClick}
+                        showCheckbox={this.props.showCheckbox}
+                        expandBtnPosition={this.props.expandBtnPosition}
+                        showDescription={this.props.showDescription}
+                        selectedItem={this.props.selectedItem}
                     >
                         {children}
                     </TreeNode>

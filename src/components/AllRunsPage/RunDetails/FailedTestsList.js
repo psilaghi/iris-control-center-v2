@@ -20,6 +20,8 @@ class FailedTestsList extends React.Component {
           onCheck={this.props.onCheck}
           onExpand={this.props.onExpand}
           onTestClick={this.props.onTestClick}
+          selectedItem={this.props.selectedTest}
+          expandBtnPosition='left'
         />)}
       </div>
     )

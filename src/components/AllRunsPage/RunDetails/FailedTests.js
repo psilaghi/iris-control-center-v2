@@ -7,8 +7,8 @@ import Icon from '../../Icon';
 const MainGrid = styled.div`
     display: grid;
     /* grid-template-columns: minmax(500px, 1fr) 400px; */
-    grid-template-columns: 50% 1fr;
-    height: 100%;
+    grid-template-columns: 30% 1fr;
+    height: 400px;
 `;
 const NoDataContainer = styled.div`
   /* font-size: 28px; */
@@ -45,6 +45,7 @@ class FailedTests extends React.Component {
           onTestClick={this.handleExpandedTest}
           expanded={this.state.expanded}
           onExpand={expanded => this.setState({ expanded })}
+          selectedTest={(this.state.expandedTest || {}).name}
         />
         {this.state.expandedTest ? (
           <FailedTestDetails test={this.state.expandedTest.data} />

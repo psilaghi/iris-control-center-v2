@@ -24,7 +24,7 @@ class RunDetails extends React.Component {
     return (
       <div>
         <DetailsHeader {...(this.props.match ? {basePath: this.props.match.url} : {disabled: true})}/>
-        {(this.props.match && this.props.match.params.id) ? (<SwitchDetails />) :
+        {(this.props.match && this.props.match.params.id) ? (<SwitchDetails key={this.props.match.params.id} />) :
         (<NoDataContainer>
           <SyledIcon icon="PoitingFingerUp"/>
           <div>

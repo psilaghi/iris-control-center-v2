@@ -61,12 +61,15 @@ class Tests extends React.Component {
                 <Hr />
                 <CheckboxTree
                     ref={this.checkboxRef}
+                    showCheckbox
+                    showDescription
                     nodes={tests}
                     checked={this.props.checked}
                     expanded={this.props.expanded}
                     onCheck={this.props.onCheck}
                     onExpand={this.props.onExpand}
                     onTestClick={this.props.onTestClick}
+                    selectedItem={this.props.selectedTest}
                 />
             </ContentContainer>
         );

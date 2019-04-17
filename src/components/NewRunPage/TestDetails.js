@@ -46,7 +46,7 @@ function TestDetails(props) {
                 {Object.keys(props.test).map(key =>
                     typeof props.test[key] === 'object' ? (
                         Object.keys(props.test[key]).map(objKey => (
-                            <Detail key={key}>
+                            <Detail key={objKey}>
                                 <DetailTitle>{objKey}: </DetailTitle>
                                 {props.test[key][objKey]}
                             </Detail>

@@ -1,19 +1,11 @@
-//https://github.com/jakezatecky/react-checkbox-tree/blob/master/src/js/NodeModel.js
 import PropTypes from 'prop-types';
 import React from 'react';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import Icon from '../Icon/index';
-
-const Checkbox = styled.input`
-  margin: 10px;
-  border-radius: 2px;
-  &:hover {
-    box-shadow: inset 0px 0px 0px 2px rgba(0,96,223,1);
-  }
-`;
+import { CheckboxWithLabel } from '../inputs/index';
 
 const ExpandButton = styled.button`
-    margin: auto;
+    margin: ${props => (props.noMargin ? 0 : 'auto')};
     margin-right: 0;
     border: none;
     padding: 10px;
@@ -26,46 +18,42 @@ const ExpandButton = styled.button`
     }
     display: flex;
     font-size: 15px;
-    /* &:hover {
-      color: darkblue;
-    } */
+    cursor: pointer;
+`;
+
+const CarrotIcon = styled(Icon)`
+  ${props => (props.expanded && 'transform: rotate(90deg);')}
+`;
+
+const leafStyles = `
+    font-size: 18px;
+    height: auto;
+    max-height: 55px;
+    padding-top: 5px;
+    padding-bottom: 5px;
 `;
 
 const SummaryContainer = styled.span`
     display: flex;
     align-items: center;
     font-size: 20px;
-    height: auto;
-    min-height: 40px;
-    max-height: 55px;
-    background-color: #e5effc;
+    height: 40px;
+    background-color: ${props => (props.isSelected ? '#0A84FF' : '#e5effc')};
+    color: ${props => (props.isSelected && 'white')};
     &:hover {
-        background-color: #c4daf7;
+        background-color: ${props =>
+            props.isSelected ? '#0A84FF' : '#c4daf7'};
     }
+    ${props =>
+        props.isLeaf
+            ? css`
+                  ${leafStyles}
+              `
+            : ''}
 `;
 
 const Container = styled.li`
-    margin: 8px 0;
-    .card-body {
-        padding: 0;
-    }
-    .card {
-        border: none;
-    }
-`;
-
-const Description = styled.div`
-  font-size: 12px;
-  color: gray;
-  margin-left: 33px;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  padding-right: 20px;
-`;
-
-const Label = styled.label`
-  margin: 0;
+    margin: ${props => (props.isLeaf ? '3px' : '8px')} 0;
 `;
 
 class TreeNode extends React.Component {
@@ -81,13 +69,16 @@ class TreeNode extends React.Component {
         onExpand: PropTypes.func.isRequired,
         children: PropTypes.node,
         title: PropTypes.string,
+        expandBtnPosition: PropTypes.string,
         onClick: PropTypes.func
     };
 
     static defaultProps = {
         children: null,
         title: null,
-        onClick: () => {}
+        onClick: () => {},
+        showCheckbox: false,
+        expandBtnPosition: 'right'
     };
 
     onCheck = () => {
@@ -121,39 +112,51 @@ class TreeNode extends React.Component {
 
     render() {
         const {
-            disabled,
             expanded,
             isLeaf,
-            checked,
             treeId,
-            name
+            name,
+            expandBtnPosition
         } = this.props;
         const inputId = `${treeId}-${String(name)
             .split(' ')
             .join('_')}`;
-        return (
-            <Container>
-                <SummaryContainer>
-                    <Label key={0} htmlFor={inputId}>
-                        <Checkbox
-                            type="checkbox"
-                            disabled={disabled}
-                            checked={checked === 1}
-                            onClick={this.onCheck}
-                            onChange={() => {}}
-                        />
 
-                        <span key={1}>{name}</span>
-                        {isLeaf && (<Description>{this.props.description}</Description>)}
-                    </Label>
-                    {isLeaf ? (
+        const showLeftBtn = !isLeaf && expandBtnPosition !== 'right';
+        const showRightBtn = !isLeaf && expandBtnPosition === 'right';
+
+        const checkboxProps = {
+            name,
+            id: inputId,
+            checked: this.props.checked,
+            description: this.props.description,
+            showCheckbox: this.props.showCheckbox,
+            showDescription: this.props.showDescription
+        };
+        const isSelected = this.props.selectedItem === name;
+        return (
+            <Container isLeaf={isLeaf}>
+                <SummaryContainer isLeaf={isLeaf} isSelected={isSelected}>
+                    {showLeftBtn && (
+                        <ExpandButton noMargin onClick={this.onExpand}>
+                            <CarrotIcon expanded={expanded}
+                                icon="CarrotRight"
+                            />
+                        </ExpandButton>
+                    )}
+                    <CheckboxWithLabel
+                        {...checkboxProps}
+                        onCheck={this.onCheck}
+                    />
+                    {isLeaf && (
                         <ExpandButton
                             type="button"
                             onClick={this.onArrowExpand}
                         >
                             <Icon icon="arrowhead-right" />
                         </ExpandButton>
-                    ) : (
+                    )}
+                    {showRightBtn && (
                         <ExpandButton type="button" onClick={this.onExpand}>
                             <Icon icon={expanded ? 'close' : 'open'} />
                         </ExpandButton>

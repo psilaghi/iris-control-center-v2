@@ -107,7 +107,6 @@ class NewRunPage extends React.Component {
                     <React.Fragment>
                         <Tests
                             isSelectAll={this.state.isSelectAll}
-                            // expandedTest={this.state.expandedTest}
                             onSelectAll={this.handleSelectAll}
                             onTestClick={this.handleExpandedTest}
                             tests={this.state.targetData.tests}
@@ -115,6 +114,7 @@ class NewRunPage extends React.Component {
                             expanded={this.state.expanded}
                             onCheck={this.onCheck}
                             onExpand={expanded => this.setState({ expanded })}
+                            selectedTest={(this.state.expandedTest || {}).name}
                         />
                         {this.state.expandedTest ? (
                             <TestDetails
