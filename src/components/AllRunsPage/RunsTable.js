@@ -153,7 +153,15 @@ class RunsTable extends React.Component {
     ...TABLE_COLUMNS,
     {
       id: "actions",
-      Cell: data => (<DeleteButton type="button" onClick={() => this.props.onDelete(data.original.id)}><Icon icon="trashcanblue"/></DeleteButton>),
+      Cell: data => (
+        <DeleteButton
+          type="button"
+          onClick={(event) => {
+            event.stopPropagation();
+            this.props.onDelete(data.original.id);
+          }}>
+          <Icon icon="trashcanblue"/>
+        </DeleteButton>),
       className: "table__cell",
       sortable: false
     }

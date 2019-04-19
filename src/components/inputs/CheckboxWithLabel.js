@@ -11,7 +11,7 @@ const Checkbox = styled.input`
 
 const Description = styled.div`
     font-size: 12px;
-    color: gray;
+    color: ${props => (props.isSelected ? 'white' : 'gray')};
     margin-left: 33px;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -40,7 +40,7 @@ const CheckboxWithLabel = props => (
 
         <Name key={1}>{props.name}</Name>
         {props.showDescription && (
-            <Description>{props.description}</Description>
+            <Description isSelected = {props.isSelected}>{props.description}</Description>
         )}
     </Label>
 );

@@ -21,6 +21,10 @@ const ExpandButton = styled.button`
     cursor: pointer;
 `;
 
+const TestExpandButton = styled(ExpandButton)`
+  ${props => (!props.isSelected && 'display: none;')};
+  color: ${props => (props.isSelected ? 'white' : '#0060df')};
+`;
 const CarrotIcon = styled(Icon)`
   ${props => (props.expanded && 'transform: rotate(90deg);')}
 `;
@@ -43,6 +47,9 @@ const SummaryContainer = styled.span`
     &:hover {
         background-color: ${props =>
             props.isSelected ? '#0A84FF' : '#c4daf7'};
+        ${TestExpandButton}{
+          display: initial;
+        }
     }
     ${props =>
         props.isLeaf
@@ -147,14 +154,16 @@ class TreeNode extends React.Component {
                     <CheckboxWithLabel
                         {...checkboxProps}
                         onCheck={this.onCheck}
+                        isSelected={isSelected}
                     />
                     {isLeaf && (
-                        <ExpandButton
+                        <TestExpandButton
                             type="button"
                             onClick={this.onArrowExpand}
+                            isSelected={isSelected}
                         >
                             <Icon icon="arrowhead-right" />
-                        </ExpandButton>
+                        </TestExpandButton>
                     )}
                     {showRightBtn && (
                         <ExpandButton type="button" onClick={this.onExpand}>
