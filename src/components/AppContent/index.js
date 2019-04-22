@@ -7,8 +7,8 @@ function AppContent(props) {
   return (
     <main className={props.className}>
       <Switch>
+        <Route path="/runs/:id" component={AllRunsPage} />
         <Route path="/runs" component={AllRunsPage} />
-        {/* <Route path="/new/:target" component={NewRunPage} /> */}
         <Route path="/new/:target" render={routeProps => <NewRunPage {...routeProps} key={routeProps.match.params.target} />} />
         <Redirect to="/runs" />
       </Switch>

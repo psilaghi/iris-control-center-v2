@@ -7,7 +7,6 @@ import { confirmAlert } from 'react-confirm-alert';
 import 'react-confirm-alert/src/react-confirm-alert.css';
 import RunsTable from './RunsTable';
 import RunDetails from './RunDetails/';
-import { Route } from 'react-router-dom';
 
 const Container = styled.div`
   padding: 50px;
@@ -56,11 +55,15 @@ class AllRunsPage extends React.Component {
   handleDelete = (id) => {
     ApiClient.get(`/delete?${id}`);
     this.setState({runs: this.state.runs.filter(run => run.id !== id)});
+    if (this.props.match.params.id === id) {
+      this.props.history.push('/runs')
+    }
   }
 
   handleDeleteAll = () => {
     ApiClient.get(`/deleteAll`);
     this.setState({runs: []});
+    this.props.history.push('/runs');
   }
 
   submitDeleteAll = () => {
@@ -82,9 +85,7 @@ class AllRunsPage extends React.Component {
   render() {
     return (
       <Container>
-        <Route path={`${this.props.match.path}/:id`}>
-          <RunsTable runs={this.state.runs} onDelete={this.handleDelete}/>
-        </Route>
+        <RunsTable runs={this.state.runs} onDelete={this.handleDelete}/>
         <ButtonContainer>
           <DeleteAllButton
             type="button"
@@ -96,9 +97,7 @@ class AllRunsPage extends React.Component {
             <TrashIcon icon="trashcanblack"/>
           </DeleteAllButton>
         </ButtonContainer>
-        <Route path={`${this.props.match.path}/:id`}>
-          <RunDetails />
-        </Route>
+        <RunDetails />
       </Container>
     )
   }
