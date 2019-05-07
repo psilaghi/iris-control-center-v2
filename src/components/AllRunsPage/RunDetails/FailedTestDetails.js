@@ -1,22 +1,3 @@
-// import * as React from 'react';
-
-// class FailedTestDetails extends React.Component {
-//   render() {
-//     return (
-//       <div>
-//         {this.props.details && Object.keys(this.props.details).map(item =>
-//           <div>
-//             <div>{item}: </div>
-//             {this.props.details[item]}
-//           </div>
-//         )}
-//       </div>
-//     )
-//   }
-// }
-
-// export default FailedTestDetails;
-
 import * as React from 'react';
 import styled from 'styled-components';
 import Icon from '../../Icon';
@@ -24,28 +5,19 @@ import Icon from '../../Icon';
 const Container = styled.div`
     display: flex;
     flex-direction: column;
-    padding: 22px 28px 0 23px;
     overflow: auto;
-`;
-const CloseButton = styled.button`
-    margin: 0 auto;
-    margin-right: 0;
-    border: none;
-    padding: 0 0 19px 0;
-    background: none;
-    &:active,
-    &:focus {
-        outline: none;
-        border: none;
-    }
+    border: 1px solid #D7D7DB;
+    margin-left: 10px;
 `;
 const Details = styled.div`
     word-wrap: break-word;
     font-size: 12px;
+    padding-left: 10px;
 `;
 const Title = styled.div`
-    font-size: 18px;
-    padding-bottom: 15px;
+    font-size: 21px;
+    color: #4A4A4F;
+    padding-left: 40px;
 `;
 const Detail = styled.div`
     padding-bottom: 12px;
@@ -53,31 +25,48 @@ const Detail = styled.div`
 const DetailTitle = styled.i`
     color: #0060df;
 `;
+const Description = styled.div`
+  font-size: 15px;
+  color: #737373;
+  white-space: nowrap;
+  padding-left: 40px;
+`;
+const Summary = styled.div`
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  min-height: 84px;
+  background-color: #F9F9FA;
+  margin-bottom: 12px;
+`;
 
 function FailedTestDetails(props) {
-    return (
-        <Container>
-            <CloseButton type="button" onClick={props.onClose}>
-                <Icon icon="exit" />
-            </CloseButton>
-            <Title>{props.test.name}</Title>
-            <Details>
-                {Object.keys(props.test).map(key =>
-                    typeof props.test[key] === 'object' ? (
-                        Object.keys(props.test[key]).map(objKey => (
-                            <Detail key={key}>
-                                <DetailTitle>{objKey}: </DetailTitle>
-                                {props.test[key][objKey]}
-                            </Detail>
-                        ))
+    const renderDetails = (data, keyName) => {
+        return (
+            <Details key={keyName}>
+                {Object.keys(data).map(key =>
+                    data[key] && typeof data[key] === 'object' ? (
+                        <Detail key={key}>
+                            <DetailTitle>{key}: </DetailTitle>
+                            {renderDetails(data[key], key)}
+                        </Detail>
                     ) : (
                         <Detail key={key}>
                             <DetailTitle>{key}: </DetailTitle>
-                            {props.test[key]}
+                            {data[key] || 'null'}
                         </Detail>
                     )
                 )}
             </Details>
+        );
+    };
+    return (
+        <Container>
+            <Summary>
+              <Title>{props.test.name}</Title>
+              <Description>{props.test.description}</Description>
+            </Summary>
+            {renderDetails(props.test, 'test')}
         </Container>
     );
 }

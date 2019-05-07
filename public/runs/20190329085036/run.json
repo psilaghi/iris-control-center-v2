@@ -271,7 +271,7 @@
       "result": "PASSED",
       "time": 61.59986615180969,
       "values": {
-       "locale": "[en-US]",
+       "locale": ["en-US","ro"],
        "test_case_id": "225143",
        "test_suite_id": "3063"
       }
@@ -305,7 +305,7 @@
       "result": "ERROR",
       "time": 20.6988525390625,
       "values": {
-       "locale": "[en-US]",
+       "locale": ["en-US","ro"],
        "test_case_id": "219584",
        "test_suite_id": "3063"
       }

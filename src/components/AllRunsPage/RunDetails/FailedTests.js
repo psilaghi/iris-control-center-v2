@@ -8,17 +8,14 @@ const MainGrid = styled.div`
     display: grid;
     /* grid-template-columns: minmax(500px, 1fr) 400px; */
     grid-template-columns: 30% 1fr;
-    height: 400px;
+    /* height: 400px; */
 `;
 const NoDataContainer = styled.div`
-  /* font-size: 28px; */
-  /* color: rgba(215,215,219,0.5); */
   display: flex;
-  /* flex-direction: column; */
   align-items: center;
   justify-content: center;
-  /* height: 397px; */
   border: 1px solid #D7D7DB;
+  margin-left: 10px;
 `;
 const SyledIcon = styled(Icon)`
   font-size: 100px;

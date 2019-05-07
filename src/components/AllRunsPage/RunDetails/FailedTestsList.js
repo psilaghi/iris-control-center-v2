@@ -5,13 +5,6 @@ class FailedTestsList extends React.Component {
   render() {
     return (
       <div>
-        {/* {this.props.list && this.props.list.map(item =>
-          <div>
-            {item.children.map(testItem =>
-              <div onClick={() => this.props.onSelect(testItem)}>{testItem.name}</div>
-            )}
-          </div>
-        )} */}
         {this.props.list && (
         <CheckboxTree
           nodes={this.props.list}
