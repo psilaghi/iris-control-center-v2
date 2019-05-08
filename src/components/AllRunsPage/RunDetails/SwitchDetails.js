@@ -1,7 +1,7 @@
 import * as React from 'react';
 import FailedTests from './FailedTests';
 import AllTests from './AllTests';
-import Details from './Details';
+import SelectedRunDetails from './SelectedRunDetails';
 import { Route, Switch, Redirect, withRouter } from 'react-router-dom';
 import ApiClient from '../../apiClient';
 
@@ -20,7 +20,7 @@ class SwitchDetails extends React.Component {
       <Switch>
         <Route path={`${this.props.match.path}/failed`} render={ () => <FailedTests details={this.state.details.tests && this.state.details.tests.failed_tests} />} />
         <Route path={`${this.props.match.path}/tests`} render={ () => <AllTests details={this.state.details.tests && this.state.details.tests.all_tests} />} />
-        <Route path={`${this.props.match.path}/details`} render={ () => <Details details={this.state.details && this.state.details.meta} />} />
+        <Route path={`${this.props.match.path}/details`} render={ () => <SelectedRunDetails details={this.state.details && this.state.details.meta} />} />
         <Redirect to={`${this.props.match.path}/failed`} />
       </Switch>
     )

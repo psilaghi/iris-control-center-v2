@@ -16,6 +16,7 @@ const NoDataContainer = styled.div`
   justify-content: center;
   border: 1px solid #D7D7DB;
   margin-left: 10px;
+  min-height: 150px;
 `;
 const SyledIcon = styled(Icon)`
   font-size: 100px;

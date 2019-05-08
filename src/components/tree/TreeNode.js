@@ -8,7 +8,7 @@ const ExpandButton = styled.button`
     margin: ${props => (props.noMargin ? 0 : 'auto')};
     margin-right: 0;
     border: none;
-    padding: 10px;
+    padding-right: 10px;
     background: none;
     color: #0060df;
     &:active,
