@@ -2,11 +2,12 @@ import * as React from 'react';
 import styled from 'styled-components';
 
 const Container = styled.div`
-    display: flex;
-    flex-direction: column;
+    /* display: flex;
+    flex-direction: column; */
     overflow: auto;
     border: 1px solid #D7D7DB;
     /* margin-left: 10px; */
+    padding: 10px;
 `;
 const Details = styled.div`
     word-wrap: break-word;
@@ -15,6 +16,11 @@ const Details = styled.div`
 `;
 const Detail = styled.div`
     padding-bottom: 12px;
+    float: right;
+    width: 50%;
+    &:nth-child(odd) {
+        float: left;
+    }
 `;
 const DetailTitle = styled.i`
     color: #0060df;
