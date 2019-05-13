@@ -1,12 +1,9 @@
 import * as React from 'react';
 import styled from 'styled-components';
-import {
-  InputLabel,
-  InputWrapper
-} from '../styledComponents';
+import { InputLabel, InputWrapper } from '../styledComponents';
 
 function withLabel(WrappedComponent) {
-  const StyledWrappedComponent = styled(({error, ...rest}) => <WrappedComponent {...rest} />)`
+  const StyledWrappedComponent = styled(({ error, ...rest }) => <WrappedComponent {...rest} />)`
     min-width: 200px;
     max-width: 400px;
   `;
@@ -18,7 +15,7 @@ function withLabel(WrappedComponent) {
         <StyledWrappedComponent {...rest} />
       </InputWrapper>
     );
-  }
+  };
 }
 
 export default withLabel;

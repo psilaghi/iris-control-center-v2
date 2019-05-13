@@ -23,6 +23,54 @@
    "locale": "en-US",
    "target": "firefox",
    "total": 20
-  }
+  },
+  {
+    "duration": 405.26403307914734,
+    "failed": 8,
+    "id": "20190329085037",
+    "locale": "en-US",
+    "target": "firefox",
+    "total": 20
+   },
+   {
+    "duration": 405.26403307914734,
+    "failed": 8,
+    "id": "20190329085038",
+    "locale": "en-US",
+    "target": "firefox",
+    "total": 20
+   },
+   {
+    "duration": 405.26403307914734,
+    "failed": 8,
+    "id": "20190329085039",
+    "locale": "en-US",
+    "target": "firefox",
+    "total": 20
+   },
+   {
+    "duration": 405.26403307914734,
+    "failed": 8,
+    "id": "20190329085040",
+    "locale": "en-US",
+    "target": "firefox",
+    "total": 20
+   },
+   {
+    "duration": 405.26403307914734,
+    "failed": 8,
+    "id": "20190329085041",
+    "locale": "en-US",
+    "target": "firefox",
+    "total": 20
+   },
+   {
+    "duration": 405.26403307914734,
+    "failed": 8,
+    "id": "20190329085042",
+    "locale": "en-US",
+    "target": "firefox",
+    "total": 20
+   }
  ]
 }

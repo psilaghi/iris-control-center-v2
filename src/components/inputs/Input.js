@@ -1,20 +1,14 @@
 import * as React from 'react';
 import withLabel from './withLabel';
-import {
-  Input as StyledInput
-} from '../styledComponents';
+import { Input as StyledInput } from '../styledComponents';
 
 class Input extends React.Component {
-  handleChange = (event) => {
+  handleChange = event => {
     this.props.onChange(event.target.name, event.target.value);
-  }
+  };
 
   render() {
-    const {
-      value,
-      onChange,
-      ...rest
-    } = this.props;
+    const { value, onChange, ...rest } = this.props;
 
     return (
       <StyledInput

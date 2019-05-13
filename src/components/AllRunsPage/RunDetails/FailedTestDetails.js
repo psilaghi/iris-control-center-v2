@@ -3,27 +3,27 @@ import styled from 'styled-components';
 import Icon from '../../Icon';
 
 const Container = styled.div`
-    display: flex;
-    flex-direction: column;
-    overflow: auto;
-    border: 1px solid #D7D7DB;
-    margin-left: 10px;
+  display: flex;
+  flex-direction: column;
+  overflow: auto;
+  border: 1px solid #d7d7db;
+  margin-left: 10px;
 `;
 const Details = styled.div`
-    word-wrap: break-word;
-    font-size: 12px;
-    padding-left: 10px;
+  word-wrap: break-word;
+  font-size: 12px;
+  padding-left: 10px;
 `;
 const Title = styled.div`
-    font-size: 21px;
-    color: #4A4A4F;
-    padding-left: 40px;
+  font-size: 21px;
+  color: #4a4a4f;
+  padding-left: 40px;
 `;
 const Detail = styled.div`
-    padding-bottom: 12px;
+  padding-bottom: 12px;
 `;
 const DetailTitle = styled.i`
-    color: #0060df;
+  color: #0060df;
 `;
 const Description = styled.div`
   font-size: 15px;
@@ -36,39 +36,39 @@ const Summary = styled.div`
   justify-content: center;
   flex-direction: column;
   min-height: 84px;
-  background-color: #F9F9FA;
+  background-color: #f9f9fa;
   margin-bottom: 12px;
 `;
 
 function FailedTestDetails(props) {
-    const renderDetails = (data, keyName) => {
-        return (
-            <Details key={keyName}>
-                {Object.keys(data).map(key =>
-                    data[key] && typeof data[key] === 'object' ? (
-                        <Detail key={key}>
-                            <DetailTitle>{key}: </DetailTitle>
-                            {renderDetails(data[key], key)}
-                        </Detail>
-                    ) : (
-                        <Detail key={key}>
-                            <DetailTitle>{key}: </DetailTitle>
-                            {data[key] || 'null'}
-                        </Detail>
-                    )
-                )}
-            </Details>
-        );
-    };
+  const renderDetails = (data, keyName) => {
     return (
-        <Container>
-            <Summary>
-              <Title>{props.test.name}</Title>
-              <Description>{props.test.description}</Description>
-            </Summary>
-            {renderDetails(props.test, 'test')}
-        </Container>
+      <Details key={keyName}>
+        {Object.keys(data).map(key =>
+          data[key] && typeof data[key] === 'object' ? (
+            <Detail key={key}>
+              <DetailTitle>{key}: </DetailTitle>
+              {renderDetails(data[key], key)}
+            </Detail>
+          ) : (
+            <Detail key={key}>
+              <DetailTitle>{key}: </DetailTitle>
+              {data[key] || 'null'}
+            </Detail>
+          )
+        )}
+      </Details>
     );
+  };
+  return (
+    <Container>
+      <Summary>
+        <Title>{props.test.name}</Title>
+        <Description>{props.test.description}</Description>
+      </Summary>
+      {renderDetails(props.test, 'test')}
+    </Container>
+  );
 }
 
 export default FailedTestDetails;

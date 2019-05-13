@@ -1,7 +1,6 @@
 import { initRequest } from './fetch';
 
 class ApiClient {
-
   parseResponse(response) {
     if (response.ok) {
       return response.json();
@@ -9,15 +8,14 @@ class ApiClient {
       return {};
     }
   }
-  
+
   get(url) {
     return fetch(
       url,
       initRequest({
         method: 'GET'
       })
-    )
-    .then(this.parseResponse);
+    ).then(this.parseResponse);
   }
 
   post(url, payload) {
@@ -27,8 +25,7 @@ class ApiClient {
         body: JSON.stringify(payload),
         method: 'POST'
       })
-    )
-    .then(this.parseResponse);
+    ).then(this.parseResponse);
   }
 
   delete(url) {
@@ -37,9 +34,8 @@ class ApiClient {
       initRequest({
         method: 'DELETE'
       })
-    )
-    .then(this.parseResponse);
-    }
-};
+    ).then(this.parseResponse);
+  }
+}
 
 export default new ApiClient();

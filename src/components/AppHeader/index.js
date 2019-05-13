@@ -3,18 +3,18 @@ import styled from 'styled-components';
 
 const Header = styled.header`
   align-items: center;
-  background-color: #1A1919;
+  background-color: #1a1919;
   box-sizing: border-box;
   display: flex;
   font-family: 'ZillaSlab';
-  height: 150px;
+  /* height: 150px; */
   justify-content: space-between;
-  padding: 20px 50px;
+  padding: 0 50px;
 `;
 
 const HeaderText = styled.div`
   color: white;
-  font-size: 94px;
+  font-size: 60px;
   font-weight: bold;
 `;
 

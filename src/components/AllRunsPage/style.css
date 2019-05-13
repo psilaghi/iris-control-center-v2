@@ -1,10 +1,10 @@
 .table__cell {
-    align-items: center;
-    display: flex;
+  align-items: center;
+  display: flex;
 }
 
 .table__cell-btn {
-    margin: 0 10px;
+  margin: 0 10px;
 }
 
 .ReactTable .rt-thead .rt-th {
@@ -17,14 +17,14 @@
 
 .ReactTable .rt-tbody .rt-tr-group {
   border: none;
-  background-color: #F1F8FF;
+  background-color: #f1f8ff;
   margin: 2px 0 2px 0;
   max-height: 40px;
 }
 
 .ReactTable .rt-thead.-header {
   box-shadow: none;
-  border-bottom: 1px solid #D7D7DB;
+  border-bottom: 1px solid #d7d7db;
   font-size: 18px;
   font-weight: bold;
   color: #737373;
@@ -37,11 +37,11 @@
 .ReactTable {
   border: none;
   /* padding-bottom: 16px; */
-  /* height: 370px; */
+  height: 211px;
 }
 
 .ReactTable .rt-tbody .rt-tr-group:hover {
-  background-color: #C4DAF7;
+  background-color: #c4daf7;
   color: white;
   font-weight: bold;
 }
@@ -53,18 +53,18 @@
   color: white;
 }
 .ReactTable .rt-tr.selected button:hover {
-  background: rgb(0,96,223);
+  background: rgb(0, 96, 223);
 }
 
 .ReactTable .rt-thead .rt-th.-sort-desc {
-  background-color: rgba(12,12,13,0.1);
+  background-color: rgba(12, 12, 13, 0.1);
   box-shadow: none;
 }
 .ReactTable .rt-thead .rt-th.-sort-desc span {
   color: black;
 }
 .ReactTable .rt-thead .rt-th.-sort-asc {
-  background-color: rgba(12,12,13,0.1);
+  background-color: rgba(12, 12, 13, 0.1);
   box-shadow: none;
 }
 .ReactTable .rt-thead .rt-th.-sort-asc span {
@@ -73,32 +73,33 @@
 
 .ReactTable .rt-td.status-cell {
   padding: 0;
-  -webkit-box-shadow: 4px 0px 0px 0px rgba(255,255,255,1);
-  -moz-box-shadow: 4px 0px 0px 0px rgba(255,255,255,1);
-  box-shadow: 4px 0px 0px 0px rgba(255,255,255,1);
+  -webkit-box-shadow: 4px 0px 0px 0px rgba(255, 255, 255, 1);
+  -moz-box-shadow: 4px 0px 0px 0px rgba(255, 255, 255, 1);
+  box-shadow: 4px 0px 0px 0px rgba(255, 255, 255, 1);
 }
 
 .no-data-tbody {
   height: 300px;
   font-weight: bold;
   font-size: 28px;
-  color: rgba(215,215,219,0.5);
+  color: rgba(215, 215, 219, 0.5);
   display: flex;
   align-items: center;
   justify-content: center;
-  border: 1px solid #D7D7DB;
+  border: 1px solid #d7d7db;
   margin-top: 2px;
 }
 
-.rt-th.-sort-asc .sort-icons, .rt-th.-sort-desc .sort-icons {
+.rt-th.-sort-asc .sort-icons,
+.rt-th.-sort-desc .sort-icons {
   display: flex;
 }
 
 .-sort-asc .sort-up {
-  color: #0060DF;
+  color: #0060df;
 }
 .-sort-desc .sort-down {
-  color: #0060DF;
+  color: #0060df;
 }
 
 .ReactTable .rt-tbody {

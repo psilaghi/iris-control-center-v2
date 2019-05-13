@@ -1,20 +1,19 @@
 import * as React from 'react';
 import styled from 'styled-components';
-import {
-  Checkbox,
-  Select
-} from '../inputs';
+import { Checkbox, Select } from '../inputs';
 
 const LaunchButton = styled.button`
   background-color: #45a1ff;
   border: none;
   border-radius: 5px;
-  box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14), 0 3px 1px -2px rgba(0,0,0,0.12), 0 1px 5px 0 rgba(0,0,0,0.2);
+  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.12),
+    0 1px 5px 0 rgba(0, 0, 0, 0.2);
   color: white;
   font-size: 21px;
   height: 62px;
-  margin: 20px;
+  margin: 10px;
   width: 192px;
+  ${props => props.disabled && 'opacity: 0.5;'}
 `;
 const Title = styled.h1`
   color: #737373;
@@ -29,61 +28,65 @@ const ContentContainer = styled.div`
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
-  padding: 35px;
+  padding: 30px;
 
   ${LaunchButton} {
     align-self: center;
   }
 `;
 
- class Settings extends React.Component {
+class Settings extends React.Component {
   handleChange = (name, value) => {
-    this.props.onSelect(
-      {
-        ...this.props.selections,
-        [name]: value
-      }
-    );
-  }
+    this.props.onSelect({
+      ...this.props.selections,
+      [name]: value
+    });
+  };
 
-  render(){
+  render() {
     return (
       <ContentContainer>
-        <LaunchButton type="button" onClick={this.props.onLaunch}>Launch Tests</LaunchButton>
-        <Title>
-          Settings
-        </Title>
+        <LaunchButton type="button" onClick={this.props.onLaunch} disabled={this.props.disabled}>
+          Launch Tests
+        </LaunchButton>
+        <Title>Settings</Title>
         <Section>
-          {this.props.settings.map(item =>
-            item.type==="list" && (
-              <Select
-                key={item.name}
-                label={item.label}
-                name={item.name}
-                options={item.value}
-                value={this.props.selections[item.name] || item.default}
-                onChange={this.handleChange}
-              />
-            )
+          {this.props.settings.map(
+            item =>
+              item.type === 'list' && (
+                <Select
+                  key={item.name}
+                  label={item.label}
+                  name={item.name}
+                  options={item.value}
+                  value={this.props.selections[item.name] || item.default}
+                  onChange={this.handleChange}
+                />
+              )
           )}
         </Section>
 
         <Section>
-          {this.props.settings.map(item =>
-            item.type==="checkbox" && (
-              <Checkbox
-                key={item.name}
-                label={item.label}
-                name={item.name}
-                checked={this.props.selections[item.name] === undefined ? item.value : this.props.selections[item.name]}
-                onChange={this.handleChange}
-              />
-            )
+          {this.props.settings.map(
+            item =>
+              item.type === 'checkbox' && (
+                <Checkbox
+                  key={item.name}
+                  label={item.label}
+                  name={item.name}
+                  checked={
+                    this.props.selections[item.name] === undefined
+                      ? item.value
+                      : this.props.selections[item.name]
+                  }
+                  onChange={this.handleChange}
+                />
+              )
           )}
         </Section>
       </ContentContainer>
     );
   }
- }
+}
 
 export default Settings;

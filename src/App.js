@@ -2,9 +2,7 @@ import React, { Component } from 'react';
 import AppHeader from './components/AppHeader';
 import Navbar from './components/Navbar';
 import AppContent from './components/AppContent';
-import {
-  BrowserRouter as Router
-} from 'react-router-dom';
+import { BrowserRouter as Router } from 'react-router-dom';
 import styled, { createGlobalStyle } from 'styled-components';
 import ApiClient from './components/apiClient';
 
@@ -36,7 +34,9 @@ const StyledAppContent = styled(AppContent)`
 
 class App extends Component {
   componentDidMount() {
-    window.addEventListener("beforeunload", function (e) {ApiClient.get('/cancel');});
+    window.addEventListener('beforeunload', function(e) {
+      ApiClient.get('/cancel');
+    });
   }
 
   render() {

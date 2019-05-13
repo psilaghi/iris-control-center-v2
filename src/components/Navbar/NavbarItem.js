@@ -9,7 +9,9 @@ const Span = styled.span`
 
 const Li = styled.li`
   padding-left: 8px;
-  ${props => props.selected && `
+  ${props =>
+    props.selected &&
+    `
     box-shadow: inset 8px 0px 0px 0px rgba(69,161,255,1);
     background-color: white;
   `}
@@ -31,23 +33,25 @@ const StyledNavLink = styled(NavLink)`
     text-decoration: none;
   }
 
-  ${props => props.selected && `
+  ${props =>
+    props.selected &&
+    `
     font-weight: bold;
-    ${props.dark && `
+    ${props.dark &&
+      `
       background-color: rgba(0,15,64, 0.59);
       ${Span} {
         color: white;
       }
     `}
   `}
-  
 `;
 
 const Ul = styled.ul`
   list-style: none;
   padding: 10px 0;
   margin: 0;
-  background-color: #EDEDF0;
+  background-color: #ededf0;
   ${StyledNavLink} {
     height: 48px;
     padding: 0 17px;
@@ -66,12 +70,9 @@ const Logo = styled.img`
 function NavbarItem(props) {
   return (
     <Li selected={props.match}>
-      <StyledNavLink 
-        selected={props.match} 
-        to={props.sublinks ? 
-          `${props.basePath}${props.sublinks[0].path}` : 
-          props.basePath
-        }
+      <StyledNavLink
+        selected={props.match}
+        to={props.sublinks ? `${props.basePath}${props.sublinks[0].path}` : props.basePath}
       >
         <Span>{props.label}</Span>
         <ExpandIcon icon={props.match ? 'close' : 'open'} />
@@ -80,15 +81,13 @@ function NavbarItem(props) {
         <Ul>
           {props.sublinks.map(item => (
             <li key={item.path}>
-              <StyledNavLink 
+              <StyledNavLink
                 dark="true"
-                selected={props.location.pathname === `${props.basePath}${item.path}`} 
+                selected={props.location.pathname === `${props.basePath}${item.path}`}
                 to={`${props.basePath}${item.path}`}
               >
                 <Logo src={item.icon} />
-                <Span>
-                  {item.label}
-                </Span>
+                <Span>{item.label}</Span>
               </StyledNavLink>
             </li>
           ))}

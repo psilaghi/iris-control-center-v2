@@ -6,15 +6,18 @@ import styled from 'styled-components';
 import * as moment from 'moment';
 import Icon from '../Icon';
 import 'react-confirm-alert/src/react-confirm-alert.css';
-import {withRouter} from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 
 const StatusCell = styled.div`
-  ${props => props.failedTests ? `
+  ${props =>
+    props.failedTests
+      ? `
     background-color: #FB003B;
     :before {
       content: "${props.failedTests}";
     }
-  ` : `
+  `
+      : `
     background-color: #30E60B;
     :before {
       content: "✓";
@@ -54,118 +57,136 @@ const DeleteButton = styled.button`
   }
   :hover {
     border-radius: 50%;
-    background: rgba(0,96,223,0.15);
+    background: rgba(0, 96, 223, 0.15);
   }
   visibility: hidden;
-  color: #0060DF;
+  color: #0060df;
 `;
 
-const TABLE_COLUMNS = [{
-  accessor: "failed",
-  Cell: data => <StatusCell failedTests={data.value} {...(data.value && {title: `${data.value} Failed`})} />,
-  className: "table__cell status-cell"
-}, {
-  Header: () => (
-    <HeaderCell>
-      <span>App</span>
-      <SortIconsContainer className="sort-icons">
-        <Icon icon="sort"/>
-      </SortIconsContainer>
-    </HeaderCell>
-  ),
-  accessor: "target",
-  Cell: data => <Logo src={`/images/${data.value}.png`} />,
-  className: "table__cell"
-}, {
-  Header: () => (
-    <HeaderCell>
-      <span>ID #</span>
-      <SortIconsContainer className="sort-icons">
-        <Icon icon="sort"/>
-      </SortIconsContainer>
-    </HeaderCell>
-  ),
-  accessor: "id",
-  className: "table__cell"
-}, {
-  Header: () => (
-    <HeaderCell>
-      <span>Locale</span>
-      <SortIconsContainer className="sort-icons">
-        <Icon icon="sort"/>
-      </SortIconsContainer>
-    </HeaderCell>
-  ),
-  accessor: "locale",
-  className: "table__cell"
-}, {
-  Header: () => (
-    <HeaderCell>
-      <span>Total Tests</span>
-      <SortIconsContainer className="sort-icons">
-        <Icon icon="sort"/>
-      </SortIconsContainer>
-    </HeaderCell>
-  ),
-  accessor: "total",
-  className: "table__cell"
-}, {
-  Header: () => (
-    <HeaderCell>
-      <span>Duration</span>
-      <SortIconsContainer className="sort-icons">
-        <Icon icon="sort"/>
-      </SortIconsContainer>
-    </HeaderCell>
-  ),
-  accessor: "duration",
-  Cell: seconds => {
-    seconds = Number(seconds.value);
-    var d = Math.floor(seconds / (3600*24));
-    var h = Math.floor(seconds % (3600*24) / 3600);
-    var m = Math.floor(seconds % 3600 / 60);
-    var s = Math.floor(seconds % 3600 % 60);
-
-    var dDisplay = d > 0 ? d + (d === 1 ? " day " : " days ") : "";
-    var hDisplay = h > 0 ? h + (h === 1 ? " hr " : " hrs ") : "";
-    var mDisplay = m > 0 ? m + (m === 1 ? " min " : " min ") : "";
-    var sDisplay = s > 0 ? s + (s === 1 ? " sec" : " sec") : "";
-    return dDisplay + hDisplay + mDisplay + sDisplay;
+const TABLE_COLUMNS = [
+  {
+    accessor: 'failed',
+    Cell: data => (
+      <StatusCell failedTests={data.value} {...data.value && { title: `${data.value} Failed` }} />
+    ),
+    className: 'table__cell status-cell'
   },
-  className: "table__cell"
-}, {
-  Header: () => (
-    <HeaderCell>
-      <span>Completed</span>
-      <SortIconsContainer className="sort-icons">
-        <Icon icon="sort"/>
-      </SortIconsContainer>
-    </HeaderCell>
-  ),
-  id: "completed",
-  accessor: data => moment(data.id, "YYYYMMDDHHmmss").add(data.duration, 's').unix(),
-  Cell: data => moment(data.original.id, "YYYYMMDDHHmmss").add(data.original.duration, 's').calendar(),
-  className: "table__cell"
-}];
+  {
+    Header: () => (
+      <HeaderCell>
+        <span>App</span>
+        <SortIconsContainer className="sort-icons">
+          <Icon icon="sort" />
+        </SortIconsContainer>
+      </HeaderCell>
+    ),
+    accessor: 'target',
+    Cell: data => <Logo src={`/images/${data.value}.png`} />,
+    className: 'table__cell'
+  },
+  {
+    Header: () => (
+      <HeaderCell>
+        <span>ID #</span>
+        <SortIconsContainer className="sort-icons">
+          <Icon icon="sort" />
+        </SortIconsContainer>
+      </HeaderCell>
+    ),
+    accessor: 'id',
+    className: 'table__cell'
+  },
+  {
+    Header: () => (
+      <HeaderCell>
+        <span>Locale</span>
+        <SortIconsContainer className="sort-icons">
+          <Icon icon="sort" />
+        </SortIconsContainer>
+      </HeaderCell>
+    ),
+    accessor: 'locale',
+    className: 'table__cell'
+  },
+  {
+    Header: () => (
+      <HeaderCell>
+        <span>Total Tests</span>
+        <SortIconsContainer className="sort-icons">
+          <Icon icon="sort" />
+        </SortIconsContainer>
+      </HeaderCell>
+    ),
+    accessor: 'total',
+    className: 'table__cell'
+  },
+  {
+    Header: () => (
+      <HeaderCell>
+        <span>Duration</span>
+        <SortIconsContainer className="sort-icons">
+          <Icon icon="sort" />
+        </SortIconsContainer>
+      </HeaderCell>
+    ),
+    accessor: 'duration',
+    Cell: seconds => {
+      seconds = Number(seconds.value);
+      var d = Math.floor(seconds / (3600 * 24));
+      var h = Math.floor((seconds % (3600 * 24)) / 3600);
+      var m = Math.floor((seconds % 3600) / 60);
+      var s = Math.floor((seconds % 3600) % 60);
+
+      var dDisplay = d > 0 ? d + (d === 1 ? ' day ' : ' days ') : '';
+      var hDisplay = h > 0 ? h + (h === 1 ? ' hr ' : ' hrs ') : '';
+      var mDisplay = m > 0 ? m + (m === 1 ? ' min ' : ' min ') : '';
+      var sDisplay = s > 0 ? s + (s === 1 ? ' sec' : ' sec') : '';
+      return dDisplay + hDisplay + mDisplay + sDisplay;
+    },
+    className: 'table__cell'
+  },
+  {
+    Header: () => (
+      <HeaderCell>
+        <span>Completed</span>
+        <SortIconsContainer className="sort-icons">
+          <Icon icon="sort" />
+        </SortIconsContainer>
+      </HeaderCell>
+    ),
+    id: 'completed',
+    accessor: data =>
+      moment(data.id, 'YYYYMMDDHHmmss')
+        .add(data.duration, 's')
+        .unix(),
+    Cell: data =>
+      moment(data.original.id, 'YYYYMMDDHHmmss')
+        .add(data.original.duration, 's')
+        .calendar(),
+    className: 'table__cell'
+  }
+];
 
 class RunsTable extends React.Component {
   getColumns = () => [
     ...TABLE_COLUMNS,
     {
-      id: "actions",
+      id: 'actions',
       Cell: data => (
         <DeleteButton
           type="button"
-          onClick={(event) => {
+          onClick={event => {
             event.stopPropagation();
             this.props.onDelete(data.original.id);
-          }}>
-          <Icon icon="trashcanblue"/>
-        </DeleteButton>),
-      className: "table__cell",
+          }}
+        >
+          <Icon icon="trashcanblue" />
+        </DeleteButton>
+      ),
+      className: 'table__cell',
       sortable: false
     }
-  ]
+  ];
 
   render() {
     return (
@@ -175,45 +196,52 @@ class RunsTable extends React.Component {
         className="-highlight"
         defaultSorted={[
           {
-            id: "ID",
+            id: 'ID',
             desc: true
           }
         ]}
-        resized={[{
-          "id": "failed",
-          "value": 40},
+        resized={[
           {
-          "id": "target",
-          "value": 60},
+            id: 'failed',
+            value: 40
+          },
           {
-          "id": "actions",
-          "value": 50}
+            id: 'target',
+            value: 60
+          },
+          {
+            id: 'actions',
+            value: 50
+          }
         ]}
         showPagination={false}
         resizable={false}
-        minRows={6}
-        {...(!this.props.runs.length && {
-          TbodyComponent: () => (<div className="no-data-tbody">No test results yet.</div>),
+        minRows={4}
+        {...!this.props.runs.length && {
+          TbodyComponent: () => <div className="no-data-tbody">No test results yet.</div>,
           NoDataComponent: () => null
-        })}
+        }}
         getTrProps={(state, rowInfo, column) => {
           return {
-            onClick: () => {this.props.history.push(`/runs/${rowInfo.original.id}`)},
-            className: (rowInfo && (this.props.match && this.props.match.params.id === rowInfo.original.id)) ? "selected" : "",
+            onClick: () => {
+              this.props.history.push(`/runs/${rowInfo.original.id}`);
+            },
+            className:
+              rowInfo && (this.props.match && this.props.match.params.id === rowInfo.original.id)
+                ? 'selected'
+                : '',
             style: {
-              ...(
-                rowInfo &&
-                (this.props.match && this.props.match.params.id === rowInfo.original.id) &&
-                {
+              ...(rowInfo &&
+                (this.props.match && this.props.match.params.id === rowInfo.original.id) && {
                   background: '#0179FF',
                   color: 'white',
                   fontWeight: 'bold'
                 })
             }
-          }
+          };
         }}
       />
-    )
+    );
   }
 }
 

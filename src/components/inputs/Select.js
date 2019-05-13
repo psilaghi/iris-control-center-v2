@@ -6,7 +6,7 @@ import ReactSelect from 'react-select';
 const StyledSelect = styled(ReactSelect)``;
 
 class Select extends React.Component {
-  handleChange = (value) => {
+  handleChange = value => {
     if (!this.props.isMulti && Array.isArray(value) && value.length === 0) {
       value = null;
     }
@@ -20,13 +20,13 @@ class Select extends React.Component {
     } else {
       this.props.onChange(value);
     }
-  }
+  };
 
   render() {
     let { disabled, name, onChange, options, value, ...rest } = this.props;
 
     if (options && typeof options[0] === 'string') {
-      options = options.map(value => ({label: value, value: value}));
+      options = options.map(value => ({ label: value, value: value }));
     }
     if (typeof value === 'string') {
       value = {

@@ -5,8 +5,8 @@ import { Route } from 'react-router-dom';
 import ApiClient from '../apiClient';
 
 const Aside = styled.aside`
-	width: 271px;
-  background-color: #D7D7DB;
+  width: 271px;
+  background-color: #d7d7db;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -36,8 +36,8 @@ class Navbar extends React.Component {
           label: `${target.name}`,
           icon: `/images/${target.icon}`
         };
-      })
-      this.setState({targets: parsedResponse});
+      });
+      this.setState({ targets: parsedResponse });
     });
   }
 
@@ -47,21 +47,17 @@ class Navbar extends React.Component {
         <Nav>
           <Ul>
             <Route path="/runs">
-              <NavbarItem label="All Runs" basePath="/runs"/>
+              <NavbarItem label="All Runs" basePath="/runs" />
             </Route>
 
             <Route path="/new">
-              <NavbarItem
-                label="Create New Run"
-                basePath="/new"
-                sublinks={this.state.targets}
-              />
+              <NavbarItem label="Create New Run" basePath="/new" sublinks={this.state.targets} />
             </Route>
           </Ul>
         </Nav>
       </Aside>
     );
-  };
-};
+  }
+}
 
 export default Navbar;

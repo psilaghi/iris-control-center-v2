@@ -28,7 +28,9 @@ const SummaryContainer = styled.div`
       display: flex;
     }
   }
-  ${props => props.selected && `
+  ${props =>
+    props.selected &&
+    `
     background-color: #c4daf7;
     ${ExpandButton} {
       display: flex;
@@ -40,7 +42,6 @@ const Checkbox = styled.input`
 `;
 const Container = styled.div`
   margin: 2px 0;
-
 `;
 const Summary = styled.div`
   overflow: hidden;
@@ -69,16 +70,16 @@ class TestItem extends React.Component {
     };
   }
 
-  handleChange = (event) => {
+  handleChange = event => {
     const action = event.target.checked ? 'add' : 'remove';
     this.props.onChange(this.props.test, action);
-  }
+  };
 
-  toggleExpand = (event) => {
+  toggleExpand = event => {
     if (event.target.type !== 'checkbox') {
       this.props.onTestClick(this.props.test);
     }
-  }
+  };
 
   render() {
     return (
@@ -86,19 +87,11 @@ class TestItem extends React.Component {
         <SummaryContainer onClick={this.toggleCollapse} selected={this.props.selected}>
           <Summary>
             <Title>
-              <Checkbox
-                type="checkbox"
-                checked={this.props.checked}
-                onChange={this.handleChange}
-              />
-              <span>
-                {this.props.test.name}
-              </span>
+              <Checkbox type="checkbox" checked={this.props.checked} onChange={this.handleChange} />
+              <span>{this.props.test.name}</span>
             </Title>
             <Description>
-              <span>
-                {this.props.test.description}
-              </span>
+              <span>{this.props.test.description}</span>
             </Description>
           </Summary>
           <ExpandButton type="button" onClick={this.toggleExpand}>

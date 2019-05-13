@@ -5,16 +5,16 @@ import FailedTestDetails from './FailedTestDetails';
 import Icon from '../../Icon';
 
 const MainGrid = styled.div`
-    display: grid;
-    /* grid-template-columns: minmax(500px, 1fr) 400px; */
-    grid-template-columns: 30% 1fr;
-    /* height: 400px; */
+  display: grid;
+  /* grid-template-columns: minmax(500px, 1fr) 400px; */
+  grid-template-columns: 30% 1fr;
+  /* height: 400px; */
 `;
 const NoDataContainer = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  border: 1px solid #D7D7DB;
+  border: 1px solid #d7d7db;
   margin-left: 10px;
   min-height: 150px;
 `;
@@ -25,15 +25,14 @@ const SyledIcon = styled(Icon)`
 class AllTests extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
-    };
+    this.state = {};
   }
 
   handleExpandedTest = test => {
-        this.setState({
-            expandedTest: test
-        });
-    };
+    this.setState({
+      expandedTest: test
+    });
+  };
 
   render() {
     return (
@@ -47,13 +46,13 @@ class AllTests extends React.Component {
         />
         {this.state.expandedTest ? (
           <FailedTestDetails test={this.state.expandedTest.data} />
-          ) : (
-            <NoDataContainer>
-              <SyledIcon icon="PoitingFingerLeft"/>
-            </NoDataContainer>
-          )}
+        ) : (
+          <NoDataContainer>
+            <SyledIcon icon="PoitingFingerLeft" />
+          </NoDataContainer>
+        )}
       </MainGrid>
-    )
+    );
   }
 }
 

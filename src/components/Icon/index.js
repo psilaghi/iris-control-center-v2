@@ -1,6 +1,6 @@
 import * as React from 'react';
 import styled from 'styled-components';
-import iconsDefinition from "./icons-definition";
+import iconsDefinition from './icons-definition';
 
 const iconSizes = {
   xs: 0.75,
@@ -16,7 +16,7 @@ const Svg = styled.svg`
   height: 1em;
   justify-content: center;
   font-size: ${props => `${iconSizes[props.size] || 1}em;`}
-  ${props => props.danger && `color: ${props.theme.colors.danger};`}
+    ${props => props.danger && `color: ${props.theme.colors.danger};`};
 `;
 
 const ANIMATIONS = {
@@ -51,7 +51,9 @@ function Icon(props) {
   const iconData = getIconData(props.icon, props.prefix);
   return (
     <Svg
-      className={(props.className || '') + (props.animation ? ` ${ANIMATIONS[props.animation]}` : '')}
+      className={
+        (props.className || '') + (props.animation ? ` ${ANIMATIONS[props.animation]}` : '')
+      }
       danger={props.danger}
       preserveAspectRatio="xMidYMid meet"
       size={props.size}
@@ -59,11 +61,13 @@ function Icon(props) {
       viewBox={`0 0 ${iconData.width} ${iconData.height}`}
     >
       {/**
-        * @TODO find a better approach to avoid dangerouslySetInnerHTML usage,
-        * maybe a HOC decorator and each icon defined as a standalone component or
-        * extract the tags from custom icons and generate the icon content using tags and children
-        */}
-      {iconData.definition && (<g fill="currentColor" dangerouslySetInnerHTML={{__html: iconData.definition}}></g>)}
+       * @TODO find a better approach to avoid dangerouslySetInnerHTML usage,
+       * maybe a HOC decorator and each icon defined as a standalone component or
+       * extract the tags from custom icons and generate the icon content using tags and children
+       */}
+      {iconData.definition && (
+        <g fill="currentColor" dangerouslySetInnerHTML={{ __html: iconData.definition }} />
+      )}
     </Svg>
   );
 }
