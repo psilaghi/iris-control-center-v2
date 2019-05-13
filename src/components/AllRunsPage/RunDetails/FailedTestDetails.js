@@ -38,6 +38,7 @@ const Summary = styled.div`
   min-height: 84px;
   background-color: #f9f9fa;
   margin-bottom: 12px;
+  overflow: auto;
 `;
 
 function FailedTestDetails(props) {

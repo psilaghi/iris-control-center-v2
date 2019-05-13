@@ -8,8 +8,8 @@ const StyledNav = styled.nav`
   font-size: 18px;
   font-weight: bold;
   color: #b1b1b3;
-  margin-bottom: 10px;
-  margin-top: 20px;
+  margin-bottom: 5px;
+  margin-top: 25px;
 `;
 
 const StyledNavLink = styled(NavLink)`

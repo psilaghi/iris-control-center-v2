@@ -2,10 +2,15 @@ import * as React from 'react';
 import AllRunsPage from '../AllRunsPage';
 import NewRunPage from '../NewRunPage';
 import { Route, Switch, Redirect } from 'react-router-dom';
+import styled from 'styled-components';
+
+const Main = styled.main`
+  overflow: auto;
+`;
 
 function AppContent(props) {
   return (
-    <main className={props.className}>
+    <Main className={props.className}>
       <Switch>
         <Route path="/runs/:id" component={AllRunsPage} />
         <Route path="/runs" component={AllRunsPage} />
@@ -15,7 +20,7 @@ function AppContent(props) {
         />
         <Redirect to="/runs" />
       </Switch>
-    </main>
+    </Main>
   );
 }
 

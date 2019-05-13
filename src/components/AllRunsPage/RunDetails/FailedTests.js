@@ -8,7 +8,7 @@ const MainGrid = styled.div`
   display: grid;
   /* grid-template-columns: minmax(500px, 1fr) 400px; */
   grid-template-columns: 30% 1fr;
-  /* height: 400px; */
+  /* height: 500px; */
 `;
 const NoDataContainer = styled.div`
   display: flex;

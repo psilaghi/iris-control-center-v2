@@ -12,7 +12,7 @@ const NoDataContainer = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  height: 397px;
+  height: 500px;
   border: 1px solid #d7d7db;
 `;
 const SyledIcon = styled(Icon)`

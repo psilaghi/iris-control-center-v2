@@ -28,7 +28,6 @@ const DetailTitle = styled.i`
 
 function SelectedRunDetails(props) {
   const renderDetails = (data, keyName) => {
-    // console.log(data, keyName);
     return (
       <Details key={keyName}>
         {Object.keys(data).map(key =>
