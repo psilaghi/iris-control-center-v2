@@ -1,0 +1,34 @@
+Generated File. Do not edit.
+
+[HEADER]
+Version|0.19t|$
+Arch|x86_64-msvc|$
+
+[PLUGINS]
+NPSWF64_32_0_0_171.dll|$
+C:\Windows\system32\Macromed\Flash\NPSWF64_32_0_0_171.dll|$
+32.0.0.171|$
+1554880205635|0|0|0|0|$
+Shockwave Flash 32.0 r0|$
+Shockwave Flash|$
+2
+0|application/x-shockwave-flash|Adobe Flash movie|swf|$
+1|application/futuresplash|FutureSplash movie|spl|$
+
+[INVALID]
+C:\Program Files\VideoLAN\VLC\npvlc.dll|$
+1429193712000|$
+C:\Program Files\Microsoft Silverlight\5.1.50907.0\npctrl.dll|$
+1493841722000|$
+C:\Program Files\Microsoft Silverlight\5.1.50907.0\npctrlui.dll|$
+1493841722000|$
+C:\Program Files\Java\jre1.8.0_161\bin\plugin2\npjp2.dll|$
+1516694689681|$
+C:\Program Files\Java\jre1.8.0_161\bin\dtplugin\npdeployJava1.dll|$
+1516694689422|$
+C:\Users\paul.silaghi\AppData\LocalLow\Unity\WebPlayer\loader\npUnity3D32.dll|$
+1468488254000|$
+C:\Users\paul.silaghi\AppData\Local\Google\Update\1.3.34.7\npGoogleUpdate3.dll|$
+1553761681776|$
+C:\PROGRAM FILES (X86)\FOXIT SOFTWARE\FOXIT READER\plugins\npFoxitReaderPlugin.dll|$
+1537382762000|$

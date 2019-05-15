@@ -5,7 +5,7 @@ import Icon from '../Icon';
 const Container = styled.div`
   display: flex;
   flex-direction: column;
-  padding: 22px 28px 0 23px;
+  padding: 22px 28px 0 13px;
   overflow: auto;
 `;
 const CloseButton = styled.button`
@@ -23,10 +23,12 @@ const CloseButton = styled.button`
 const Details = styled.div`
   word-wrap: break-word;
   font-size: 12px;
+  padding-left: 10px;
 `;
 const Title = styled.div`
   font-size: 18px;
   padding-bottom: 15px;
+  padding-left: 10px;
 `;
 const Detail = styled.div`
   padding-bottom: 12px;
@@ -36,29 +38,33 @@ const DetailTitle = styled.i`
 `;
 
 function TestDetails(props) {
+  const renderDetails = (data, keyName) => {
+    return (
+      <Details key={keyName}>
+        {Object.keys(data).map(key =>
+          data[key] && typeof data[key] === 'object' ? (
+            <Detail key={key}>
+              <DetailTitle>{key}: </DetailTitle>
+              {renderDetails(data[key], key)}
+            </Detail>
+          ) : (
+            <Detail key={key}>
+              <DetailTitle>{key}: </DetailTitle>
+              {data[key] || 'null'}
+            </Detail>
+          )
+        )}
+      </Details>
+    );
+  };
+
   return (
     <Container>
       <CloseButton type="button" onClick={props.onClose}>
         <Icon icon="exit" />
       </CloseButton>
       <Title>{props.test.name}</Title>
-      <Details>
-        {Object.keys(props.test).map(key =>
-          typeof props.test[key] === 'object' ? (
-            Object.keys(props.test[key]).map(objKey => (
-              <Detail key={objKey}>
-                <DetailTitle>{objKey}: </DetailTitle>
-                {props.test[key][objKey]}
-              </Detail>
-            ))
-          ) : (
-            <Detail key={key}>
-              <DetailTitle>{key}: </DetailTitle>
-              {props.test[key]}
-            </Detail>
-          )
-        )}
-      </Details>
+      {renderDetails(props.test, 'test')}
     </Container>
   );
 }

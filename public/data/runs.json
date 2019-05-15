@@ -1,22 +1,6 @@
 {
  "runs": [
   {
-   "duration": 414.96660470962524,
-   "failed": 0,
-   "id": "20190328093712",
-   "locale": "en-US",
-   "target": "firefox",
-   "total": 20
-  },
-  {
-   "duration": 397.46233677864075,
-   "failed": 8,
-   "id": "20190328095544",
-   "locale": "en-US",
-   "target": "firefox",
-   "total": 20
-  },
-  {
    "duration": 405.26403307914734,
    "failed": 8,
    "id": "20190329085036",
@@ -25,52 +9,28 @@
    "total": 20
   },
   {
-    "duration": 405.26403307914734,
-    "failed": 8,
-    "id": "20190329085037",
-    "locale": "en-US",
-    "target": "firefox",
-    "total": 20
-   },
-   {
-    "duration": 405.26403307914734,
-    "failed": 8,
-    "id": "20190329085038",
-    "locale": "en-US",
-    "target": "firefox",
-    "total": 20
-   },
-   {
-    "duration": 405.26403307914734,
-    "failed": 8,
-    "id": "20190329085039",
-    "locale": "en-US",
-    "target": "firefox",
-    "total": 20
-   },
-   {
-    "duration": 405.26403307914734,
-    "failed": 8,
-    "id": "20190329085040",
-    "locale": "en-US",
-    "target": "firefox",
-    "total": 20
-   },
-   {
-    "duration": 405.26403307914734,
-    "failed": 8,
-    "id": "20190329085041",
-    "locale": "en-US",
-    "target": "firefox",
-    "total": 20
-   },
-   {
-    "duration": 405.26403307914734,
-    "failed": 8,
-    "id": "20190329085042",
-    "locale": "en-US",
-    "target": "firefox",
-    "total": 20
-   }
+   "duration": 128.23933100700378,
+   "failed": 0,
+   "id": "20190510115226",
+   "locale": "en-US",
+   "target": "firefox",
+   "total": 3
+  },
+  {
+   "duration": 507.30459117889404,
+   "failed": 1,
+   "id": "20190510122940",
+   "locale": "en-US",
+   "target": "firefox",
+   "total": 14
+  },
+  {
+   "duration": 62.23074388504028,
+   "failed": 0,
+   "id": "20190514115422",
+   "locale": "en-US",
+   "target": "firefox",
+   "total": 1
+  }
  ]
 }

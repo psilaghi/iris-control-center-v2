@@ -88,7 +88,10 @@
        "file": "c:\\github\\iris2\\tests\\firefox\\antivirus\\insecure_pages_do_not_show.py",
        "name": "insecure_pages_do_not_show",
        "values": {
-        "locale": "[en-US]",
+        "locale": [
+         "en-US"
+        ],
+        "platform": "all",
         "test_case_id": "225143",
         "test_suite_id": "3063"
        }
@@ -98,7 +101,10 @@
        "file": "c:\\github\\iris2\\tests\\firefox\\antivirus\\no_bluescreen_after_private.py",
        "name": "no_bluescreen_after_private",
        "values": {
-        "locale": "[en-US]",
+        "locale": [
+         "en-US"
+        ],
+        "platform": "all",
         "test_case_id": "219584",
         "test_suite_id": "3063"
        }
@@ -108,7 +114,10 @@
        "file": "c:\\github\\iris2\\tests\\firefox\\antivirus\\no_crash_closing_pinned.py",
        "name": "no_crash_closing_pinned",
        "values": {
-        "locale": "[en-US]",
+        "locale": [
+         "en-US"
+        ],
+        "platform": "all",
         "test_case_id": "219585",
         "test_suite_id": "3063"
        }
@@ -126,6 +135,7 @@
         "locale": [
          "en-US"
         ],
+        "platform": "all",
         "test_case_id": "217874",
         "test_suite_id": "3063"
        }
@@ -138,6 +148,7 @@
         "locale": [
          "en-US"
         ],
+        "platform": "all",
         "test_case_id": "217866",
         "test_suite_id": "3063"
        }
@@ -150,6 +161,7 @@
         "locale": [
          "en-US"
         ],
+        "platform": "all",
         "test_case_id": "217858",
         "test_suite_id": "3063"
        }
@@ -162,6 +174,7 @@
         "locale": [
          "en-US"
         ],
+        "platform": "all",
         "test_case_id": "219663",
         "test_suite_id": "3063"
        }
@@ -172,9 +185,9 @@
        "name": "no_navigation_issues",
        "values": {
         "locale": [
-         "en-US",
-         "ro"
+         "en-US"
         ],
+        "platform": "all",
         "test_case_id": "217876",
         "test_suite_id": "3063"
        }
@@ -187,6 +200,7 @@
         "locale": [
          "en-US"
         ],
+        "platform": "all",
         "preferences": {
          "media.autoplay.default": 0
         },
@@ -202,6 +216,7 @@
         "locale": [
          "en-US"
         ],
+        "platform": "all",
         "test_case_id": "217869",
         "test_suite_id": "3063"
        }
@@ -214,6 +229,7 @@
         "locale": [
          "en-US"
         ],
+        "platform": "all",
         "test_case_id": "217855",
         "test_suite_id": "3063"
        }
@@ -226,6 +242,7 @@
         "locale": [
          "en-US"
         ],
+        "platform": "all",
         "test_case_id": "217877",
         "test_suite_id": "3063"
        }
@@ -238,6 +255,7 @@
         "locale": [
          "en-US"
         ],
+        "platform": "all",
         "test_case_id": "225144",
         "test_suite_id": "3063"
        }
@@ -250,6 +268,7 @@
         "locale": [
          "en-US"
         ],
+        "platform": "all",
         "test_case_id": "217857",
         "test_suite_id": "3063"
        }
@@ -268,6 +287,7 @@
         "locale": [
          "en-US"
         ],
+        "platform": "all",
         "test_case_id": "119484",
         "test_suite_id": "1902"
        }
@@ -281,6 +301,7 @@
         "locale": [
          "en-US"
         ],
+        "platform": "all",
         "test_case_id": "108278",
         "test_suite_id": "1902"
        }
@@ -293,6 +314,7 @@
         "locale": [
          "en-US"
         ],
+        "platform": "all",
         "test_case_id": "108255",
         "test_suite_id": "1902"
        }
@@ -305,6 +327,7 @@
         "locale": [
          "en-US"
         ],
+        "platform": "all",
         "test_case_id": "117526",
         "test_suite_id": "1902"
        }
@@ -317,6 +340,7 @@
         "locale": [
          "en-US"
         ],
+        "platform": "all",
         "test_case_id": "108262",
         "test_suite_id": "1902"
        }
@@ -329,6 +353,7 @@
         "locale": [
          "en-US"
         ],
+        "platform": "all",
         "test_case_id": "117530",
         "test_suite_id": "1902"
        }
@@ -341,6 +366,7 @@
         "locale": [
          "en-US"
         ],
+        "platform": "all",
         "test_case_id": "108258",
         "test_suite_id": "1902"
        }
@@ -353,6 +379,7 @@
         "locale": [
          "en-US"
         ],
+        "platform": "all",
         "test_case_id": "108263",
         "test_suite_id": "1902"
        }
@@ -365,6 +392,7 @@
         "locale": [
          "en-US"
         ],
+        "platform": "all",
         "preferences": {
          "browser.contentblocking.enabled": false
         },
@@ -380,6 +408,7 @@
         "locale": [
          "en-US"
         ],
+        "platform": "all",
         "test_case_id": "117524",
         "test_suite_id": "1902"
        }
@@ -389,10 +418,10 @@
        "file": "c:\\github\\iris2\\tests\\firefox\\awesomebar\\focus_settings_gear_and_click_a_search_result.py",
        "name": "focus_settings_gear_and_click_a_search_result",
        "values": {
-        "blocked_by": "issue_84",
         "locale": [
          "en-US"
         ],
+        "platform": "all",
         "test_case_id": "108264",
         "test_suite_id": "1902"
        }
@@ -405,6 +434,7 @@
         "locale": [
          "en-US"
         ],
+        "platform": "all",
         "test_case_id": "120136",
         "test_suite_id": "1902"
        }
@@ -417,6 +447,7 @@
         "locale": [
          "en-US"
         ],
+        "platform": "all",
         "test_case_id": "108282",
         "test_suite_id": "1902"
        }
@@ -429,6 +460,7 @@
         "locale": [
          "en-US"
         ],
+        "platform": "all",
         "test_case_id": "108256",
         "test_suite_id": "1902"
        }
@@ -454,6 +486,7 @@
          "ro",
          "ja"
         ],
+        "platform": "all",
         "test_case_id": "117529",
         "test_suite_id": "1902"
        }
@@ -463,9 +496,11 @@
        "file": "c:\\github\\iris2\\tests\\firefox\\awesomebar\\navigate_through_one_off_searches_using_keyboard_keys.py",
        "name": "navigate_through_one_off_searches_using_keyboard_keys",
        "values": {
+        "blocked_by": "1488708",
         "locale": [
          "en-US"
         ],
+        "platform": "all",
         "test_case_id": "108267",
         "test_suite_id": "1902"
        }
@@ -480,6 +515,7 @@
         "locale": [
          "en-US"
         ],
+        "platform": "all",
         "set_profile_pref": {
          "app.update.auto": true,
          "app.update.badgeWaitTime": 10,
@@ -500,6 +536,7 @@
         "locale": [
          "en-US"
         ],
+        "platform": "all",
         "test_case_id": "108248",
         "test_suite_id": "1902"
        }
@@ -512,6 +549,7 @@
         "locale": [
          "en-US"
         ],
+        "platform": "all",
         "test_case_id": "108253",
         "test_suite_id": "1902"
        }
@@ -524,6 +562,7 @@
         "locale": [
          "en-US"
         ],
+        "platform": "all",
         "test_case_id": "117527",
         "test_suite_id": "1902"
        }
@@ -536,6 +575,7 @@
         "locale": [
          "en-US"
         ],
+        "platform": "all",
         "preferences": {
          "browser.contentblocking.enabled": false
         },
@@ -548,10 +588,10 @@
        "file": "c:\\github\\iris2\\tests\\firefox\\awesomebar\\perform_a_search_using_an_one_off.py",
        "name": "perform_a_search_using_an_one_off",
        "values": {
-        "blocked_by": "issue_84",
         "locale": [
          "en-US"
         ],
+        "platform": "all",
         "test_case_id": "108249",
         "test_suite_id": "1902"
        }
@@ -564,6 +604,7 @@
         "locale": [
          "en-US"
         ],
+        "platform": "all",
         "test_case_id": "108259",
         "test_suite_id": "1902"
        }
@@ -576,6 +617,7 @@
         "locale": [
          "en-US"
         ],
+        "platform": "all",
         "test_case_id": "117523",
         "test_suite_id": "1902"
        }
@@ -588,6 +630,7 @@
         "locale": [
          "en-US"
         ],
+        "platform": "all",
         "test_case_id": "108277",
         "test_suite_id": "1902"
        }
@@ -600,6 +643,7 @@
         "locale": [
          "en-US"
         ],
+        "platform": "all",
         "test_case_id": "108261",
         "test_suite_id": "1902"
        }
@@ -612,6 +656,7 @@
         "locale": [
          "en-US"
         ],
+        "platform": "all",
         "test_case_id": "108250",
         "test_suite_id": "1902"
        }
@@ -624,6 +669,7 @@
         "locale": [
          "en-US"
         ],
+        "platform": "all",
         "set_profile_pref": {
          "browser.contentblocking.enabled": false
         },
@@ -639,6 +685,7 @@
         "locale": [
          "en-US"
         ],
+        "platform": "all",
         "set_profile_pref": {
          "browser.contentblocking.enabled": false
         },
@@ -655,6 +702,7 @@
         "locale": [
          "en-US"
         ],
+        "platform": "all",
         "set_profile_pref": {
          "browser.contentblocking.enabled": false
         },
@@ -670,6 +718,7 @@
         "locale": [
          "en-US"
         ],
+        "platform": "all",
         "test_case_id": "108274",
         "test_suite_id": "1902"
        }
@@ -682,6 +731,7 @@
         "locale": [
          "en-US"
         ],
+        "platform": "all",
         "test_case_id": "108257",
         "test_suite_id": "1902"
        }
@@ -707,6 +757,7 @@
          "ro",
          "ja"
         ],
+        "platform": "all",
         "test_case_id": "118809",
         "test_suite_id": "1902"
        }
@@ -723,14 +774,18 @@
        "values": {
         "locale": [
          "en-US"
-        ]
+        ],
+        "platform": "all"
        }
       },
       {
        "description": "This test will verify if PyAutoGUI mouse is working properly in a frame buffer environment.",
        "file": "c:\\github\\iris2\\tests\\firefox\\ci_tests\\basic_mouse_functions.py",
        "name": "basic_mouse_functions",
-       "values": {}
+       "values": {
+        "locale": "all",
+        "platform": "all"
+       }
       },
       {
        "description": "Created to test fake keyboard inputs",
@@ -753,7 +808,10 @@
        "file": "c:\\github\\iris2\\tests\\firefox\\history\\bookmark_website_from_library.py",
        "name": "bookmark_website_from_library",
        "values": {
-        "locale": "[en-US]",
+        "locale": [
+         "en-US"
+        ],
+        "platform": "all",
         "profile": "ten_bookmarks",
         "test_case_id": "174043",
         "test_suite_id": "2000"
@@ -764,7 +822,10 @@
        "file": "c:\\github\\iris2\\tests\\firefox\\history\\bookmark_website_from_library_change_name_folder_tags.py",
        "name": "bookmark_website_from_library_change_name_folder_tags",
        "values": {
-        "locale": "[en-US]",
+        "locale": [
+         "en-US"
+        ],
+        "platform": "all",
         "test_case_id": "174044",
         "test_suite_id": "2000"
        }
@@ -774,7 +835,10 @@
        "file": "c:\\github\\iris2\\tests\\firefox\\history\\bookmarks_toolbar_navigate_through_history.py",
        "name": "bookmarks_toolbar_navigate_through_history",
        "values": {
-        "locale": "[en-US]",
+        "locale": [
+         "en-US"
+        ],
+        "platform": "all",
         "profile": "ten_bookmarks",
         "test_case_id": "174032",
         "test_suite_id": "2000"
@@ -785,7 +849,10 @@
        "file": "c:\\github\\iris2\\tests\\firefox\\history\\bookmarks_toolbar_open_all_in_tabs.py",
        "name": "bookmarks_toolbar_open_all_in_tabs",
        "values": {
-        "locale": "[en-US]",
+        "locale": [
+         "en-US"
+        ],
+        "platform": "all",
         "test_case_id": "120126",
         "test_suite_id": "2000"
        }
@@ -795,7 +862,10 @@
        "file": "c:\\github\\iris2\\tests\\firefox\\history\\bookmarks_toolbar_open_all_tabs_specific_time_range.py",
        "name": "bookmarks_toolbar_open_all_tabs_specific_time_range",
        "values": {
-        "locale": "[en-US]",
+        "locale": [
+         "en-US"
+        ],
+        "platform": "all",
         "test_case_id": "174035",
         "test_suite_id": "2000"
        }
@@ -805,7 +875,10 @@
        "file": "c:\\github\\iris2\\tests\\firefox\\history\\bookmarks_toolbar_open_site.py",
        "name": "bookmarks_toolbar_open_site",
        "values": {
-        "locale": "[en-US]",
+        "locale": [
+         "en-US"
+        ],
+        "platform": "all",
         "profile": "ten_bookmarks",
         "test_case_id": "120128",
         "test_suite_id": "2000"
@@ -816,7 +889,10 @@
        "file": "c:\\github\\iris2\\tests\\firefox\\history\\clear_all_history.py",
        "name": "clear_all_history",
        "values": {
-        "locale": "[en-US]",
+        "locale": [
+         "en-US"
+        ],
+        "platform": "all",
         "test_case_id": "172045",
         "test_suite_id": "2000"
        }
@@ -826,7 +902,10 @@
        "file": "c:\\github\\iris2\\tests\\firefox\\history\\clear_recent_history_no_selections.py",
        "name": "clear_recent_history_no_selections",
        "values": {
-        "locale": "[en-US]",
+        "locale": [
+         "en-US"
+        ],
+        "platform": "all",
         "test_case_id": "172046",
         "test_suite_id": "2000"
        }
@@ -836,7 +915,10 @@
        "file": "c:\\github\\iris2\\tests\\firefox\\history\\clear_recent_history_predefined_time_range.py",
        "name": "clear_recent_history_predefined_time_range",
        "values": {
-        "locale": "[en-US]",
+        "locale": [
+         "en-US"
+        ],
+        "platform": "all",
         "test_case_id": "172044",
         "test_suite_id": "2000"
        }
@@ -846,7 +928,10 @@
        "file": "c:\\github\\iris2\\tests\\firefox\\history\\clear_recent_history_window.py",
        "name": "clear_recent_history_window",
        "values": {
-        "locale": "[en-US]",
+        "locale": [
+         "en-US"
+        ],
+        "platform": "all",
         "profile": "brand_new",
         "test_case_id": "172043",
         "test_suite_id": "2000"
@@ -857,7 +942,10 @@
        "file": "c:\\github\\iris2\\tests\\firefox\\history\\click_website_from_library.py",
        "name": "click_website_from_library",
        "values": {
-        "locale": "[en-US]",
+        "locale": [
+         "en-US"
+        ],
+        "platform": "all",
         "test_case_id": "172043",
         "test_suite_id": "2000"
        }
@@ -867,7 +955,10 @@
        "file": "c:\\github\\iris2\\tests\\firefox\\history\\copy_history_menu_into_bookmark_toolbar.py",
        "name": "copy_history_menu_into_bookmark_toolbar",
        "values": {
-        "locale": "[en-US]",
+        "locale": [
+         "en-US"
+        ],
+        "platform": "all",
         "profile": "ten_bookmarks",
         "test_case_id": "174031",
         "test_suite_id": "2000"
@@ -878,7 +969,10 @@
        "file": "c:\\github\\iris2\\tests\\firefox\\history\\copy_history_time_range_paste_it_bookmark_toolbar.py",
        "name": "copy_history_time_range_paste_it_bookmark_toolbar",
        "values": {
-        "locale": "[en-US]",
+        "locale": [
+         "en-US"
+        ],
+        "platform": "all",
         "test_case_id": "174034",
         "test_suite_id": "2000"
        }
@@ -888,7 +982,10 @@
        "file": "c:\\github\\iris2\\tests\\firefox\\history\\copy_site_from_library_paste_it_on_bookmark_toolbar.py",
        "name": "copy_site_from_library_paste_it_on_bookmark_toolbar",
        "values": {
-        "locale": "[en-US]",
+        "locale": [
+         "en-US"
+        ],
+        "platform": "all",
         "test_case_id": "174045",
         "test_suite_id": "2000"
        }
@@ -898,7 +995,10 @@
        "file": "c:\\github\\iris2\\tests\\firefox\\history\\custom_clear_recent_history_window.py",
        "name": "custom_clear_recent_history_window",
        "values": {
-        "locale": "[en-US]",
+        "locale": [
+         "en-US"
+        ],
+        "platform": "all",
         "preferences": {
          "datareporting.policy.firstRunURL": ""
         },
@@ -912,7 +1012,10 @@
        "file": "c:\\github\\iris2\\tests\\firefox\\history\\delete_history_from_library_context_menu.py",
        "name": "delete_history_from_library_context_menu",
        "values": {
-        "locale": "[en-US]",
+        "locale": [
+         "en-US"
+        ],
+        "platform": "all",
         "profile": "brand_new",
         "test_case_id": "178346",
         "test_suite_id": "2000"
@@ -923,7 +1026,10 @@
        "file": "c:\\github\\iris2\\tests\\firefox\\history\\delete_history_time_range_from_library.py",
        "name": "delete_history_time_range_from_library",
        "values": {
-        "locale": "[en-US]",
+        "locale": [
+         "en-US"
+        ],
+        "platform": "all",
         "test_case_id": "174036",
         "test_suite_id": "2000"
        }
@@ -933,7 +1039,10 @@
        "file": "c:\\github\\iris2\\tests\\firefox\\history\\dismiss_clear_recent_history_window.py",
        "name": "dismiss_clear_recent_history_window",
        "values": {
-        "locale": "[en-US]",
+        "locale": [
+         "en-US"
+        ],
+        "platform": "all",
         "profile": "brand_new",
         "test_case_id": "172048",
         "test_suite_id": "2000"
@@ -944,7 +1053,10 @@
        "file": "c:\\github\\iris2\\tests\\firefox\\history\\forget_history_last_5_mins.py",
        "name": "forget_history_last_5_mins",
        "values": {
-        "locale": "[en-US]",
+        "locale": [
+         "en-US"
+        ],
+        "platform": "all",
         "test_case_id": "174072",
         "test_suite_id": "2000"
        }
@@ -954,7 +1066,10 @@
        "file": "c:\\github\\iris2\\tests\\firefox\\history\\history_menu.py",
        "name": "history_menu",
        "values": {
-        "locale": "[en-US]",
+        "locale": [
+         "en-US"
+        ],
+        "platform": "all",
         "profile": "brand_new",
         "test_case_id": "118799",
         "test_suite_id": "2000"
@@ -965,7 +1080,10 @@
        "file": "c:\\github\\iris2\\tests\\firefox\\history\\history_menu_copy_site_to_url_bar.py",
        "name": "history_menu_copy_site_to_url_bar",
        "values": {
-        "locale": "[en-US]",
+        "locale": [
+         "en-US"
+        ],
+        "platform": "all",
         "profile": "ten_bookmarks",
         "test_case_id": "174047",
         "test_suite_id": "2000"
@@ -976,7 +1094,10 @@
        "file": "c:\\github\\iris2\\tests\\firefox\\history\\history_menu_delete_page.py",
        "name": "history_menu_delete_page",
        "values": {
-        "locale": "[en-US]",
+        "locale": [
+         "en-US"
+        ],
+        "platform": "all",
         "profile": "ten_bookmarks",
         "test_case_id": "174048",
         "test_suite_id": "2000"
@@ -987,7 +1108,10 @@
        "file": "c:\\github\\iris2\\tests\\firefox\\history\\history_menu_delete_site_verify_if_remembered.py",
        "name": "history_menu_delete_site_verify_if_remembered",
        "values": {
-        "locale": "[en-US]",
+        "locale": [
+         "en-US"
+        ],
+        "platform": "all",
         "test_case_id": "174049",
         "test_suite_id": "2000"
        }
@@ -997,7 +1121,10 @@
        "file": "c:\\github\\iris2\\tests\\firefox\\history\\history_menu_delete_site_verify_is_not_remembered.py",
        "name": "history_menu_delete_site_verify_is_not_remembered",
        "values": {
-        "locale": "[en-US]",
+        "locale": [
+         "en-US"
+        ],
+        "platform": "all",
         "test_case_id": "216273",
         "test_suite_id": "2000"
        }
@@ -1007,7 +1134,10 @@
        "file": "c:\\github\\iris2\\tests\\firefox\\history\\history_menu_forget_page.py",
        "name": "history_menu_forget_page",
        "values": {
-        "locale": "[en-US]",
+        "locale": [
+         "en-US"
+        ],
+        "platform": "all",
         "test_case_id": "174050",
         "test_suite_id": "2000"
        }
@@ -1017,7 +1147,10 @@
        "file": "c:\\github\\iris2\\tests\\firefox\\history\\history_menu_forgotten_site_verify_is_not_remembered.py",
        "name": "history_menu_forgotten_site_verify_is_not_remembered",
        "values": {
-        "locale": "[en-US]",
+        "locale": [
+         "en-US"
+        ],
+        "platform": "all",
         "test_case_id": "174051",
         "test_suite_id": "2000"
        }
@@ -1027,7 +1160,10 @@
        "file": "c:\\github\\iris2\\tests\\firefox\\history\\history_menu_open_site.py",
        "name": "history_menu_open_site",
        "values": {
-        "locale": "[en-US]",
+        "locale": [
+         "en-US"
+        ],
+        "platform": "all",
         "profile": "brand_new",
         "test_case_id": "118807",
         "test_suite_id": "2000"
@@ -1038,7 +1174,10 @@
        "file": "c:\\github\\iris2\\tests\\firefox\\history\\history_menu_open_site_in_private_window.py",
        "name": "history_menu_open_site_in_private_window",
        "values": {
-        "locale": "[en-US]",
+        "locale": [
+         "en-US"
+        ],
+        "platform": "all",
         "profile": "brand_new",
         "test_case_id": "118808",
         "test_suite_id": "2000"
@@ -1049,7 +1188,10 @@
        "file": "c:\\github\\iris2\\tests\\firefox\\history\\history_menu_recent_history.py",
        "name": "history_menu_recent_history",
        "values": {
-        "locale": "[en-US]",
+        "locale": [
+         "en-US"
+        ],
+        "platform": "all",
         "profile": "brand_new",
         "test_case_id": "178345",
         "test_suite_id": "2000"
@@ -1060,7 +1202,10 @@
        "file": "c:\\github\\iris2\\tests\\firefox\\history\\history_sidebar.py",
        "name": "history_sidebar",
        "values": {
-        "locale": "[en-US]",
+        "locale": [
+         "en-US"
+        ],
+        "platform": "all",
         "profile": "brand_new",
         "test_case_id": "118811",
         "test_suite_id": "2000"
@@ -1071,7 +1216,10 @@
        "file": "c:\\github\\iris2\\tests\\firefox\\history\\history_sidebar_bookmark_site.py",
        "name": "history_sidebar_bookmark_site",
        "values": {
-        "locale": "[en-US]",
+        "locale": [
+         "en-US"
+        ],
+        "platform": "all",
         "profile": "brand_new",
         "test_case_id": "120123",
         "test_suite_id": "2000"
@@ -1082,7 +1230,10 @@
        "file": "c:\\github\\iris2\\tests\\firefox\\history\\history_sidebar_bookmark_site_custom_settings.py",
        "name": "history_sidebar_bookmark_site_custom_settings",
        "values": {
-        "locale": "[en-US]",
+        "locale": [
+         "en-US"
+        ],
+        "platform": "all",
         "profile": "brand_new",
         "test_case_id": "120124",
         "test_suite_id": "2000"
@@ -1093,7 +1244,10 @@
        "file": "c:\\github\\iris2\\tests\\firefox\\history\\history_sidebar_copy_site_to_bookmarks_toolbar.py",
        "name": "history_sidebar_copy_site_to_bookmarks_toolbar",
        "values": {
-        "locale": "[en-US]",
+        "locale": [
+         "en-US"
+        ],
+        "platform": "all",
         "test_case_id": "120127",
         "test_suite_id": "2000"
        }
@@ -1103,7 +1257,10 @@
        "file": "c:\\github\\iris2\\tests\\firefox\\history\\history_sidebar_copy_site_to_url_bar.py",
        "name": "history_sidebar_copy_site_to_url_bar",
        "values": {
-        "locale": "[en-US]",
+        "locale": [
+         "en-US"
+        ],
+        "platform": "all",
         "profile": "brand_new",
         "test_case_id": "120129",
         "test_suite_id": "2000"
@@ -1114,7 +1271,10 @@
        "file": "c:\\github\\iris2\\tests\\firefox\\history\\history_sidebar_copy_time_range.py",
        "name": "history_sidebar_copy_time_range",
        "values": {
-        "locale": "[en-US]",
+        "locale": [
+         "en-US"
+        ],
+        "platform": "all",
         "test_case_id": "120125",
         "test_suite_id": "2000"
        }
@@ -1124,7 +1284,10 @@
        "file": "c:\\github\\iris2\\tests\\firefox\\history\\history_sidebar_delete_site.py",
        "name": "history_sidebar_delete_site",
        "values": {
-        "locale": "[en-US]",
+        "locale": [
+         "en-US"
+        ],
+        "platform": "all",
         "profile": "brand_new",
         "test_case_id": "120130",
         "test_suite_id": "2000"
@@ -1135,7 +1298,10 @@
        "file": "c:\\github\\iris2\\tests\\firefox\\history\\history_sidebar_delete_site_verify_if_remembered.py",
        "name": "history_sidebar_delete_site_verify_if_remembered",
        "values": {
-        "locale": "[en-US]",
+        "locale": [
+         "en-US"
+        ],
+        "platform": "all",
         "profile": "brand_new",
         "test_case_id": "120131",
         "test_suite_id": "2000"
@@ -1146,7 +1312,10 @@
        "file": "c:\\github\\iris2\\tests\\firefox\\history\\history_sidebar_delete_time_range.py",
        "name": "history_sidebar_delete_time_range",
        "values": {
-        "locale": "[en-US]",
+        "locale": [
+         "en-US"
+        ],
+        "platform": "all",
         "profile": "brand_new",
         "test_case_id": "120134",
         "test_suite_id": "2000"
@@ -1157,7 +1326,10 @@
        "file": "c:\\github\\iris2\\tests\\firefox\\history\\history_sidebar_dismiss_search.py",
        "name": "history_sidebar_dismiss_search",
        "values": {
-        "locale": "[en-US]",
+        "locale": [
+         "en-US"
+        ],
+        "platform": "all",
         "profile": "brand_new",
         "test_case_id": "119442",
         "test_suite_id": "2000"
@@ -1168,7 +1340,10 @@
        "file": "c:\\github\\iris2\\tests\\firefox\\history\\history_sidebar_forget_site.py",
        "name": "history_sidebar_forget_site",
        "values": {
-        "locale": "[en-US]",
+        "locale": [
+         "en-US"
+        ],
+        "platform": "all",
         "profile": "brand_new",
         "test_case_id": "120132",
         "test_suite_id": "2000"
@@ -1184,7 +1359,23 @@
        "file": "c:\\github\\iris2\\tests\\firefox\\toolbars_window_controls\\about_firefox_controls.py",
        "name": "about_firefox_controls",
        "values": {
-        "locale": "['ar', 'zh-CN', 'en-US', 'fr', 'de', 'ja', 'ko', 'pl', 'pt-PT', 'ro', 'ru', 'es-ES', 'tr', 'vi']",
+        "locale": [
+         "en-US",
+         "zh-CN",
+         "es-ES",
+         "fr",
+         "de",
+         "ar",
+         "ru",
+         "ko",
+         "pt-PT",
+         "vi",
+         "pl",
+         "tr",
+         "ro",
+         "ja"
+        ],
+        "platform": "all",
         "test_case_id": "120465",
         "test_suite_id": "1998"
        }
@@ -1194,7 +1385,10 @@
        "file": "c:\\github\\iris2\\tests\\firefox\\toolbars_window_controls\\browser_control_console.py",
        "name": "browser_control_console",
        "values": {
-        "locale": "en-US",
+        "locale": [
+         "en-US"
+        ],
+        "platform": "all",
         "test_case_id": "120464",
         "test_suite_id": "1998"
        }
@@ -1204,7 +1398,10 @@
        "file": "c:\\github\\iris2\\tests\\firefox\\toolbars_window_controls\\browser_controls_upper_corner.py",
        "name": "browser_controls_upper_corner",
        "values": {
-        "locale": "en-US",
+        "locale": [
+         "en-US"
+        ],
+        "platform": "all",
         "test_case_id": "119481",
         "test_suite_id": "1998"
        }
@@ -1214,7 +1411,10 @@
        "file": "c:\\github\\iris2\\tests\\firefox\\toolbars_window_controls\\confirm_close_multiple_tabs_controls.py",
        "name": "confirm_close_multiple_tabs_controls",
        "values": {
-        "locale": "en-US",
+        "locale": [
+         "en-US"
+        ],
+        "platform": "all",
         "preferences": {
          "browser.tabs.warnOnClose": true,
          "browser.warnOnQuit": true
@@ -1229,7 +1429,10 @@
        "file": "c:\\github\\iris2\\tests\\firefox\\toolbars_window_controls\\download_dialog_controls.py",
        "name": "download_dialog_controls",
        "values": {
-        "locale": "en-US",
+        "locale": [
+         "en-US"
+        ],
+        "platform": "all",
         "test_case_id": "118801",
         "test_suite_id": "1998"
        }
@@ -1240,7 +1443,10 @@
        "name": "drag_space",
        "values": {
         "exclude": "linux",
-        "locale": "en-US",
+        "locale": [
+         "en-US"
+        ],
+        "platform": "all",
         "test_case_id": "118184",
         "test_suite_id": "1998"
        }
@@ -1250,7 +1456,10 @@
        "file": "c:\\github\\iris2\\tests\\firefox\\toolbars_window_controls\\hamburger_menu_customize.py",
        "name": "hamburger_menu_customize",
        "values": {
-        "locale": "en-US"
+        "locale": [
+         "en-US"
+        ],
+        "platform": "all"
        }
       },
       {
@@ -1258,7 +1467,10 @@
        "file": "c:\\github\\iris2\\tests\\firefox\\toolbars_window_controls\\library_controls.py",
        "name": "library_controls",
        "values": {
-        "locale": "en-US",
+        "locale": [
+         "en-US"
+        ],
+        "platform": "all",
         "test_case_id": "120467",
         "test_suite_id": "1998"
        }
@@ -1268,7 +1480,10 @@
        "file": "c:\\github\\iris2\\tests\\firefox\\toolbars_window_controls\\print_dialog_controls.py",
        "name": "print_dialog_controls",
        "values": {
-        "locale": "en-US",
+        "locale": [
+         "en-US"
+        ],
+        "platform": "all",
         "test_case_id": "118804",
         "test_suite_id": "1998"
        }
@@ -1278,7 +1493,10 @@
        "file": "c:\\github\\iris2\\tests\\firefox\\toolbars_window_controls\\save_image_controls.py",
        "name": "save_image_controls",
        "values": {
-        "locale": "en-US",
+        "locale": [
+         "en-US"
+        ],
+        "platform": "all",
         "test_case_id": "118803",
         "test_suite_id": "1998"
        }
@@ -1288,7 +1506,10 @@
        "file": "c:\\github\\iris2\\tests\\firefox\\toolbars_window_controls\\sidebar_controls.py",
        "name": "sidebar_controls",
        "values": {
-        "locale": "en-US",
+        "locale": [
+         "en-US"
+        ],
+        "platform": "all",
         "test_case_id": "119466",
         "test_suite_id": "1998"
        }
@@ -1298,7 +1519,10 @@
        "file": "c:\\github\\iris2\\tests\\firefox\\toolbars_window_controls\\title_bar_activation.py",
        "name": "title_bar_activation",
        "values": {
-        "locale": "en-US",
+        "locale": [
+         "en-US"
+        ],
+        "platform": "all",
         "test_case_id": "118183",
         "test_suite_id": "1998"
        }
@@ -1308,7 +1532,10 @@
        "file": "c:\\github\\iris2\\tests\\firefox\\toolbars_window_controls\\web_console_controls.py",
        "name": "web_console_controls",
        "values": {
-        "locale": "en-US",
+        "locale": [
+         "en-US"
+        ],
+        "platform": "all",
         "test_case_id": "120137",
         "test_suite_id": "1998"
        }
@@ -1319,7 +1546,10 @@
        "name": "web_developer_menu",
        "values": {
         "exclude": "['win', 'linux', 'osx']",
-        "locale": "en-US",
+        "locale": [
+         "en-US"
+        ],
+        "platform": "all",
         "test_case_id": "119483",
         "test_suite_id": "1998"
        }
@@ -1333,33 +1563,47 @@
        "description": "This is a unit test to verify basic Firefox build info.",
        "file": "c:\\github\\iris2\\tests\\firefox\\unit_tests\\firefox_build_apis.py",
        "name": "firefox_build_apis",
-       "values": {}
+       "values": {
+        "locale": "all",
+        "platform": "all"
+       }
       },
       {
        "description": "This is a unit test for keyboard events.",
        "file": "c:\\github\\iris2\\tests\\firefox\\unit_tests\\keyboard_shortcuts.py",
        "name": "keyboard_shortcuts",
        "values": {
-        "blocked_by": "issue_1682"
+        "blocked_by": "issue_1682",
+        "locale": "all",
+        "platform": "all"
        }
       },
       {
        "description": "This is a unit test for hover, and click.",
        "file": "c:\\github\\iris2\\tests\\firefox\\unit_tests\\mouse_events.py",
        "name": "mouse_events",
-       "values": {}
+       "values": {
+        "locale": "all",
+        "platform": "all"
+       }
       },
       {
        "description": "This is a unit test for ocr.",
        "file": "c:\\github\\iris2\\tests\\firefox\\unit_tests\\ocr.py",
        "name": "ocr",
-       "values": {}
+       "values": {
+        "locale": "all",
+        "platform": "all"
+       }
       },
       {
        "description": "Unit tests for Settings Class",
        "file": "c:\\github\\iris2\\tests\\firefox\\unit_tests\\settings.py",
        "name": "settings",
-       "values": {}
+       "values": {
+        "locale": "all",
+        "platform": "all"
+       }
       }
      ],
      "name": "unit_tests"
@@ -1372,6 +1616,8 @@
        "name": "background_update",
        "values": {
         "enabled": false,
+        "locale": "all",
+        "platform": "all",
         "preferences": {
          "app.update.auto": true,
          "app.update.badgeWaitTime": 10,
@@ -1388,6 +1634,8 @@
        "name": "manual_update",
        "values": {
         "enabled": false,
+        "locale": "all",
+        "platform": "all",
         "preferences": {
          "app.update.auto": true
         }
@@ -1450,7 +1698,13 @@
          "name": "test_notepad1_1",
          "values": {
           "blocked_by": "232111",
-          "meta": "Notepad Test experiment"
+          "locale": [
+           "en-US",
+           "es-ES",
+           "ro"
+          ],
+          "meta": "Notepad Test experiment",
+          "platform": "all"
          }
         }
        ],
@@ -1467,7 +1721,9 @@
        "name": "test_notepad2",
        "values": {
         "blocked_by": "",
-        "meta": "Notepad Test experiment2"
+        "locale": "all",
+        "meta": "Notepad Test experiment2",
+        "platform": "all"
        }
       }
      ],
