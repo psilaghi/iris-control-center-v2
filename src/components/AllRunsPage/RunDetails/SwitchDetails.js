@@ -4,22 +4,38 @@ import AllTests from './AllTests';
 import SelectedRunDetails from './SelectedRunDetails';
 import { Route, Switch, Redirect, withRouter } from 'react-router-dom';
 import ApiClient from '../../apiClient';
+import styled from 'styled-components';
+
+const NoDataContainer = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #d7d7db;
+  min-height: 150px;
+  font-size: 28px;
+  color: red;
+`;
 
 const EMPTY_LIST = [];
 
 class SwitchDetails extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { details: {} };
+    this.state = { details: {}, hasError: false };
   }
 
   componentDidMount() {
-    ApiClient.get(`/runs/${this.props.match.params.id}/run.json`).then(response =>
-      this.setState({ details: response })
-    );
+    ApiClient.get(`/runs/${this.props.match.params.id}/run.json`)
+      .then(response =>
+        response ? this.setState({ details: response }) : this.setState({ hasError: true })
+      )
+      .catch(() => this.setState({ hasError: true }));
   }
 
   render() {
+    if (this.state.hasError) {
+      return <NoDataContainer>Error, incomplete run! No data to display.</NoDataContainer>;
+    }
     return (
       <Switch>
         <Route

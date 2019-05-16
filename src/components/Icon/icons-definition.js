@@ -43,6 +43,23 @@ export default {
     </g>
   `
   ],
+  'arrowhead-down': [
+    17,
+    10,
+    `
+    <g id="Handover-for-All-Runs-Page" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Selected-Test-States" transform="translate(-661.000000, -1246.000000)" fill="#0060DF">
+            <g id="Test-Details---Asserts-Expanded" transform="translate(41.000000, 1137.000000)">
+                <g id="Failed-Assert" transform="translate(10.000000, 102.000000)">
+                    <g id="Arrowhead-Right" transform="translate(618.500000, 12.000000) rotate(90.000000) translate(-618.500000, -12.000000) translate(614.000000, 4.000000)">
+                        <path d="M0.293,0.293 C0.683499851,-0.0973819383 1.31650015,-0.0973819383 1.707,0.293 L8.707,7.293 C9.09738194,7.68349985 9.09738194,8.31650015 8.707,8.707 L1.707,15.707 C1.31462111,16.0859722 0.690915223,16.0805524 0.305181425,15.6948186 C-0.0805523739,15.3090848 -0.0859722095,14.6853789 0.293,14.293 L6.586,8 L0.293,1.707 C-0.0973819383,1.31650015 -0.0973819383,0.683499851 0.293,0.293 Z" id="Path"></path>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+  `
+  ],
   exit: [
     15,
     15,

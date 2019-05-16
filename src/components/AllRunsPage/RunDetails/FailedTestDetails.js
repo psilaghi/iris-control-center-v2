@@ -43,9 +43,24 @@ const Summary = styled.div`
 const AssertSummary = styled.div`
   display: flex;
   align-items: center;
+  justify-content: space-between;
+  &:hover {
+    background-color: #e6e6e6;
+  }
+  height: 40px;
 `;
-const StyledIcon = styled(Icon)`
+const AssertContainer = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 18px;
+`;
+const StyledWarningIcon = styled(Icon)`
   margin: 0 10px;
+`;
+const StyledArrowheadIcon = styled(Icon)`
+  margin: 0 30px;
+  color: #0060df;
 `;
 
 function FailedTestDetails(props) {
@@ -61,7 +76,7 @@ function FailedTestDetails(props) {
           ) : (
             <Detail key={key}>
               <DetailTitle>{key}: </DetailTitle>
-              {data[key] || 'null'}
+              {data[key] + ''}
             </Detail>
           )
         )}
@@ -77,9 +92,12 @@ function FailedTestDetails(props) {
       {/* {renderDetails(props.test, 'test')} */}
       <div>
         <AssertSummary>
-          <StyledIcon icon="Warning" />
-          Failed Assert:
-          <span>{props.test.assert.message}</span>
+          <AssertContainer>
+            <StyledWarningIcon icon="Warning" />
+            <span>Failed Assert:&nbsp;</span>
+            <span>{props.test.assert.message}</span>
+          </AssertContainer>
+          <StyledArrowheadIcon icon="arrowhead-right" />
         </AssertSummary>
         {renderDetails(props.test.assert, 'assert')}
       </div>

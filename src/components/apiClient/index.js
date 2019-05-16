@@ -5,7 +5,7 @@ class ApiClient {
     if (response.ok) {
       return response.json();
     } else {
-      return {};
+      return null;
     }
   }
 

@@ -39,7 +39,7 @@ function SelectedRunDetails(props) {
           ) : (
             <Detail key={key}>
               <DetailTitle>{key}: </DetailTitle>
-              {data[key] || 'null'}
+              {data[key] + ''}
             </Detail>
           )
         )}
