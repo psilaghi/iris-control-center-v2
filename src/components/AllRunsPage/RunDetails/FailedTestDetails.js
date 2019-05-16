@@ -40,6 +40,13 @@ const Summary = styled.div`
   margin-bottom: 12px;
   overflow: auto;
 `;
+const AssertSummary = styled.div`
+  display: flex;
+  align-items: center;
+`;
+const StyledIcon = styled(Icon)`
+  margin: 0 10px;
+`;
 
 function FailedTestDetails(props) {
   const renderDetails = (data, keyName) => {
@@ -67,7 +74,15 @@ function FailedTestDetails(props) {
         <Title>{props.test.name}</Title>
         <Description>{props.test.description}</Description>
       </Summary>
-      {renderDetails(props.test, 'test')}
+      {/* {renderDetails(props.test, 'test')} */}
+      <div>
+        <AssertSummary>
+          <StyledIcon icon="Warning" />
+          Failed Assert:
+          <span>{props.test.assert.message}</span>
+        </AssertSummary>
+        {renderDetails(props.test.assert, 'assert')}
+      </div>
     </Container>
   );
 }

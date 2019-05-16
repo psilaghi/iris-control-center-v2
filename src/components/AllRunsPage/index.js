@@ -51,6 +51,10 @@ class AllRunsPage extends React.Component {
     ApiClient.get('/data/runs.json').then(response => this.setState({ runs: response.runs }));
   }
 
+  getSelectedRunId() {
+    const selectedRun = this.state.runs.find(run => run.id === this.props.match.params.id);
+    return selectedRun && selectedRun.id;
+  }
   handleDelete = id => {
     ApiClient.get(`/delete?${id}`);
     this.setState({ runs: this.state.runs.filter(run => run.id !== id) });
@@ -96,7 +100,7 @@ class AllRunsPage extends React.Component {
             <TrashIcon icon="trashcanblack" />
           </DeleteAllButton>
         </ButtonContainer>
-        <RunDetails />
+        <RunDetails selectedRunId={this.getSelectedRunId()} />
       </Container>
     );
   }

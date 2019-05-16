@@ -5,6 +5,8 @@ import SelectedRunDetails from './SelectedRunDetails';
 import { Route, Switch, Redirect, withRouter } from 'react-router-dom';
 import ApiClient from '../../apiClient';
 
+const EMPTY_LIST = [];
+
 class SwitchDetails extends React.Component {
   constructor(props) {
     super(props);
@@ -24,7 +26,9 @@ class SwitchDetails extends React.Component {
           path={`${this.props.match.path}/failed`}
           render={() => (
             <FailedTests
-              details={this.state.details.tests && this.state.details.tests.failed_tests}
+              details={
+                (this.state.details.tests && this.state.details.tests.failed_tests) || EMPTY_LIST
+              }
             />
           )}
         />

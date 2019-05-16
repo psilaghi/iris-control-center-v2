@@ -10,7 +10,7 @@ const MainGrid = styled.div`
   grid-template-columns: 30% 1fr;
   /* height: 500px; */
 `;
-const NoDataContainer = styled.div`
+const NoSelection = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
@@ -20,6 +20,14 @@ const NoDataContainer = styled.div`
 `;
 const SyledIcon = styled(Icon)`
   font-size: 100px;
+`;
+const NoDataContainer = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #d7d7db;
+  margin-left: 10px;
+  min-height: 150px;
 `;
 
 class FailedTests extends React.Component {
@@ -37,19 +45,25 @@ class FailedTests extends React.Component {
   render() {
     return (
       <MainGrid>
-        <FailedTestsList
-          list={this.props.details}
-          onTestClick={this.handleExpandedTest}
-          expanded={this.state.expanded}
-          onExpand={expanded => this.setState({ expanded })}
-          selectedTest={(this.state.expandedTest || {}).name}
-        />
-        {this.state.expandedTest ? (
-          <FailedTestDetails test={this.state.expandedTest.data} />
+        {this.props.details.length ? (
+          <React.Fragment>
+            <FailedTestsList
+              list={this.props.details}
+              onTestClick={this.handleExpandedTest}
+              expanded={this.state.expanded}
+              onExpand={expanded => this.setState({ expanded })}
+              selectedTest={(this.state.expandedTest || {}).name}
+            />
+            {this.state.expandedTest ? (
+              <FailedTestDetails test={this.state.expandedTest.data} />
+            ) : (
+              <NoSelection>
+                <SyledIcon icon="PoitingFingerLeft" />
+              </NoSelection>
+            )}
+          </React.Fragment>
         ) : (
-          <NoDataContainer>
-            <SyledIcon icon="PoitingFingerLeft" />
-          </NoDataContainer>
+          <NoDataContainer>No failures</NoDataContainer>
         )}
       </MainGrid>
     );
