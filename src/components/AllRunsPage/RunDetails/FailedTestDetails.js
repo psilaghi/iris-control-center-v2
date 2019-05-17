@@ -12,7 +12,9 @@ const Container = styled.div`
 const Details = styled.div`
   word-wrap: break-word;
   font-size: 12px;
-  padding-left: 10px;
+  /* padding-left: 10px; */
+  background-color: #f9f9fa;
+  margin: 10px;
 `;
 const Title = styled.div`
   font-size: 21px;
@@ -31,16 +33,15 @@ const Description = styled.div`
   white-space: nowrap;
   padding-left: 40px;
 `;
-const Summary = styled.div`
+const TitleSummary = styled.div`
   display: flex;
   justify-content: center;
   flex-direction: column;
   min-height: 84px;
   background-color: #f9f9fa;
-  margin-bottom: 12px;
   overflow: auto;
 `;
-const AssertSummary = styled.div`
+const AssertContainer = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -48,61 +49,116 @@ const AssertSummary = styled.div`
     background-color: #e6e6e6;
   }
   height: 40px;
-`;
-const AssertContainer = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+  padding: 0 30px 0 10px;
+  margin: 10px 0;
   font-size: 18px;
 `;
-const StyledWarningIcon = styled(Icon)`
-  margin: 0 10px;
+const AssertSummary = styled.div`
+  display: flex;
+  align-items: center;
 `;
-const StyledArrowheadIcon = styled(Icon)`
-  margin: 0 30px;
+const StyledWarningIcon = styled(Icon)`
+  margin-right: 10px;
+`;
+const ExpandIcon = styled(Icon)`
+  ${props => props.expanded && 'transform: rotate(90deg);'}
+`;
+const ExpandButton = styled.button`
+  border: none;
+  padding: 10px;
+  background: none;
   color: #0060df;
+  &:active,
+  &:focus {
+    outline: none;
+    border: none;
+  }
+  cursor: pointer;
+`;
+const ThumbnailButton = styled.button`
+  border: none;
+  padding: 10px;
+  background: none;
+  &:active,
+  &:focus {
+    outline: none;
+    border: none;
+  }
+  cursor: pointer;
 `;
 
-function FailedTestDetails(props) {
-  const renderDetails = (data, keyName) => {
-    return (
-      <Details key={keyName}>
-        {Object.keys(data).map(key =>
-          data[key] && typeof data[key] === 'object' ? (
-            <Detail key={key}>
-              <DetailTitle>{key}: </DetailTitle>
-              {renderDetails(data[key], key)}
-            </Detail>
-          ) : (
-            <Detail key={key}>
-              <DetailTitle>{key}: </DetailTitle>
-              {data[key] + ''}
-            </Detail>
-          )
-        )}
-      </Details>
-    );
+class FailedTestDetails extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      expanded: false
+    };
+  }
+
+  toggleCollapse = event => {
+    if (event.target.type !== 'checkbox') {
+      this.setState({
+        expanded: !this.state.expanded
+      });
+    }
   };
-  return (
-    <Container>
-      <Summary>
-        <Title>{props.test.name}</Title>
-        <Description>{props.test.description}</Description>
-      </Summary>
-      {/* {renderDetails(props.test, 'test')} */}
-      <div>
-        <AssertSummary>
-          <AssertContainer>
+
+  renderDetails = (data, keyName) => (
+    <Details key={keyName}>
+      {Object.keys(data).map(key =>
+        data[key] && typeof data[key] === 'object' ? (
+          <Detail key={key}>
+            <DetailTitle>{key}: </DetailTitle>
+            {this.renderDetails(data[key], key)}
+          </Detail>
+        ) : (
+          <Detail key={key}>
+            <DetailTitle>{key}: </DetailTitle>
+            {data[key] + ''}
+          </Detail>
+        )
+      )}
+    </Details>
+  );
+
+  render() {
+    const { assert, debug_images, ...details } = this.props.test;
+    return (
+      <Container>
+        <TitleSummary>
+          <Title>{this.props.test.name}</Title>
+          <Description>{this.props.test.description}</Description>
+        </TitleSummary>
+
+        <AssertContainer>
+          <AssertSummary>
             <StyledWarningIcon icon="Warning" />
             <span>Failed Assert:&nbsp;</span>
-            <span>{props.test.assert.message}</span>
-          </AssertContainer>
-          <StyledArrowheadIcon icon="arrowhead-right" />
-        </AssertSummary>
-        {renderDetails(props.test.assert, 'assert')}
-      </div>
-    </Container>
-  );
+            <span>{this.props.test.assert.message}</span>
+          </AssertSummary>
+          <ExpandButton type="button" onClick={this.toggleCollapse}>
+            <ExpandIcon expanded={this.state.expanded} icon="arrowhead-right" />
+          </ExpandButton>
+        </AssertContainer>
+        {this.state.expanded && this.renderDetails(assert, 'assert')}
+
+        <AssertContainer>
+          <span>Debug images</span>
+          <ThumbnailButton type="button">
+            <Icon icon="ThumbnailIcon" />
+          </ThumbnailButton>
+        </AssertContainer>
+
+        <AssertContainer>
+          <span>Details</span>
+          <ExpandButton type="button" onClick={this.toggleCollapse}>
+            <ExpandIcon expanded={this.state.expanded} icon="arrowhead-right" />
+          </ExpandButton>
+        </AssertContainer>
+        {this.state.expanded && this.renderDetails(details, 'assert')}
+      </Container>
+    );
+  }
 }
 
 export default FailedTestDetails;
