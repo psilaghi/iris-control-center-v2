@@ -1,7 +1,7 @@
 import * as React from 'react';
 import CheckboxTree from '../../tree/CheckboxTree';
 
-class FailedTestsList extends React.Component {
+class TestsList extends React.Component {
   render() {
     return (
       <div>
@@ -22,4 +22,4 @@ class FailedTestsList extends React.Component {
   }
 }
 
-export default FailedTestsList;
+export default TestsList;

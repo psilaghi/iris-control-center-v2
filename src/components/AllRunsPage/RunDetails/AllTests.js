@@ -1,7 +1,7 @@
 import * as React from 'react';
 import styled from 'styled-components';
-import FailedTestsList from './FailedTestsList';
-import FailedTestDetails from './FailedTestDetails';
+import TestsList from './TestsList';
+import AllTestDetails from './AllTestDetails';
 import Icon from '../../Icon';
 
 const MainGrid = styled.div`
@@ -37,7 +37,7 @@ class AllTests extends React.Component {
   render() {
     return (
       <MainGrid>
-        <FailedTestsList
+        <TestsList
           list={this.props.details}
           onTestClick={this.handleExpandedTest}
           expanded={this.state.expanded}
@@ -45,7 +45,7 @@ class AllTests extends React.Component {
           selectedTest={(this.state.expandedTest || {}).name}
         />
         {this.state.expandedTest ? (
-          <FailedTestDetails test={this.state.expandedTest.data} />
+          <AllTestDetails test={this.state.expandedTest.data} />
         ) : (
           <NoDataContainer>
             <SyledIcon icon="PoitingFingerLeft" />

@@ -11,7 +11,7 @@ const Container = styled.div`
 `;
 const Details = styled.div`
   word-wrap: break-word;
-  font-size: 12px;
+  font-size: 15px;
   margin: 10px;
 `;
 const Title = styled.div`
@@ -25,7 +25,7 @@ const Detail = styled.div`
 const DetailKey = styled.i`
   color: #0060df;
 `;
-const DetailValue = styled.div``;
+const DetailValue = styled.span``;
 const AssertKey = styled.div`
   color: #0060df;
   font-weight: bold;
@@ -72,7 +72,7 @@ const ExpandIcon = styled(Icon)`
 `;
 const ExpandButton = styled.button`
   border: none;
-  padding: 10px;
+  padding: 10px 10px 10px 0;
   background: none;
   color: #0060df;
   &:active,
@@ -84,7 +84,7 @@ const ExpandButton = styled.button`
 `;
 const ThumbnailButton = styled.button`
   border: none;
-  padding: 10px;
+  padding: 10px 6px 10px 10px;
   background: none;
   &:active,
   &:focus {
@@ -135,8 +135,8 @@ class FailedTestDetails extends React.Component {
     });
   };
 
-  renderDetails = (data, keyName, KeyComponent, ValueComponent) =>
-    withExpand(function(props) {
+  renderDetails = (data, keyName, KeyComponent, ValueComponent) => {
+    const DetailsComponent = withExpand(props => {
       return (
         <Details key={keyName}>
           {Object.keys(data).map(key =>
@@ -162,6 +162,8 @@ class FailedTestDetails extends React.Component {
         </Details>
       );
     });
+    return <DetailsComponent />;
+  };
 
   render() {
     const { assert, debug_images, ...details } = this.props.test;

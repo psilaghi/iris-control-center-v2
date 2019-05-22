@@ -1,6 +1,6 @@
 import * as React from 'react';
 import styled from 'styled-components';
-import FailedTestsList from './FailedTestsList';
+import TestsList from './TestsList';
 import FailedTestDetails from './FailedTestDetails';
 import Icon from '../../Icon';
 
@@ -47,7 +47,7 @@ class FailedTests extends React.Component {
     return this.props.details.length ? (
       <MainGrid>
         <React.Fragment>
-          <FailedTestsList
+          <TestsList
             list={this.props.details}
             onTestClick={this.handleExpandedTest}
             expanded={this.state.expanded}
