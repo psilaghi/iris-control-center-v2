@@ -122,34 +122,34 @@ class SelectedRunDetails extends React.Component {
   openLog = () => {};
 
   renderDetails = (data, keyName, KeyComponent, ValueComponent) => {
-    const DetailsComponent = withExpand(props => {
-      debugger;
-      return (
-        <Details key={keyName}>
-          {Object.keys(data).map(key =>
-            data[key] && typeof data[key] === 'object' ? (
-              <Detail key={key}>
-                <ExpandButton type="button" onClick={props.onToggleClick}>
-                  <ExpandIcon expanded={props.expanded} icon="CarrotRight" />
-                </ExpandButton>
-                <KeyComponent>{key}: </KeyComponent>
-                {props.expanded && (
-                  <ValueComponent>
-                    {this.renderDetails(data[key], key, KeyComponent, ValueComponent)}
-                  </ValueComponent>
-                )}
-              </Detail>
-            ) : (
-              <Detail key={key}>
-                <KeyComponent>{key}: </KeyComponent>
-                <ValueComponent>{data[key] + ''}</ValueComponent>
-              </Detail>
-            )
-          )}
-        </Details>
-      );
-    });
-    return <DetailsComponent />;
+    const DetailsComponent = withExpand(props => (
+      <Detail>
+        <ExpandButton type="button" onClick={props.onToggleClick}>
+          <ExpandIcon expanded={props.expanded} icon="CarrotRight" />
+        </ExpandButton>
+        <KeyComponent>{props.attrName}: </KeyComponent>
+        {props.expanded && (
+          <ValueComponent>
+            {this.renderDetails(data[props.attrName], props.attrName, KeyComponent, ValueComponent)}
+          </ValueComponent>
+        )}
+      </Detail>
+    ));
+
+    return (
+      <Details key={keyName}>
+        {Object.keys(data).map(key =>
+          data[key] && typeof data[key] === 'object' ? (
+            <DetailsComponent key={key} attrName={key} />
+          ) : (
+            <Detail key={key}>
+              <KeyComponent>{key}: </KeyComponent>
+              <ValueComponent>{data[key] + ''}</ValueComponent>
+            </Detail>
+          )
+        )}
+      </Details>
+    );
   };
 
   render() {
@@ -158,9 +158,9 @@ class SelectedRunDetails extends React.Component {
       <Container>
         {this.props.details &&
           this.renderDetails(this.props.details, 'details', DetailKey, DetailValue)}
-        <ViewLogButton type="button" onClick={this.openLog}>
+        <ViewLogButton type="button" onClick={this.openLog} title="Open the log file">
           View Log
-          <LogIcon icon="trashcanblack" />
+          <LogIcon icon="ExternalLink" />
         </ViewLogButton>
       </Container>
     );
