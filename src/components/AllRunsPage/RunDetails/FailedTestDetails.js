@@ -8,6 +8,7 @@ const Container = styled.div`
   overflow: auto;
   border: 1px solid #d7d7db;
   margin-left: 10px;
+  /* min-height: 500px; */
 `;
 const Details = styled.div`
   word-wrap: break-word;
@@ -72,7 +73,7 @@ const ExpandIcon = styled(Icon)`
 `;
 const ExpandButton = styled.button`
   border: none;
-  padding: 10px 10px 10px 0;
+  padding: 0 10px 0 0;
   background: none;
   color: #0060df;
   &:active,

@@ -6,6 +6,7 @@ const Container = styled.div`
   overflow: auto;
   border: 1px solid #d7d7db;
   padding: 10px;
+  /* min-height: 500px; */
 `;
 const Details = styled.div`
   word-wrap: break-word;
@@ -20,15 +21,12 @@ const Detail = styled.div`
     float: left;
   }
 `;
-const DetailTitle = styled.i`
-  color: #0060df;
-`;
 const ExpandIcon = styled(Icon)`
   ${props => props.expanded && 'transform: rotate(90deg);'}
 `;
 const ExpandButton = styled.button`
   border: none;
-  padding: 10px 10px 10px 0;
+  padding: 0 10px 0 0;
   background: none;
   color: #0060df;
   &:active,
@@ -49,6 +47,9 @@ const ViewLogButton = styled.button`
   border-radius: 4px;
   background-color: rgba(12, 12, 13, 0.1);
   &:active,
+  &:visited {
+    color: inherit;
+  }
   &:focus {
     outline: none;
     border: none;
@@ -56,6 +57,7 @@ const ViewLogButton = styled.button`
   :hover {
     background: #979797;
     cursor: pointer;
+    text-decoration: none;
   }
   font-size: 13px;
   display: flex;
@@ -119,11 +121,6 @@ const withExpand = WrappedComponent => {
 };
 
 class SelectedRunDetails extends React.Component {
-  openLog = () => {
-    // window.location.href="file:///G:\Workspace\iris-control-center-v2\public\runs\20190329085036\iris_log.log";
-    window.location.href = 'localhost:3000/runs/20190329085036/iris_log.log';
-  };
-
   renderDetails = (data, keyName, KeyComponent, ValueComponent) => {
     const DetailsComponent = withExpand(props => (
       <Detail>
@@ -156,15 +153,22 @@ class SelectedRunDetails extends React.Component {
   };
 
   render() {
-    // const { assert, debug_images, ...details } = this.props.test;
     return (
       <Container>
-        {this.props.details &&
-          this.renderDetails(this.props.details, 'details', DetailKey, DetailValue)}
-        <ViewLogButton type="button" onClick={this.openLog} title="Open the log file">
-          View Log
-          <LogIcon icon="ExternalLink" />
-        </ViewLogButton>
+        {this.props.details && (
+          <React.Fragment>
+            {this.renderDetails(this.props.details, 'details', DetailKey, DetailValue)}
+            <ViewLogButton
+              as="a"
+              target="_blank"
+              href={`/runs/${this.props.details.run_id}/iris_log.log`}
+              title="Open the log file"
+            >
+              View Log
+              <LogIcon icon="ExternalLink" />
+            </ViewLogButton>
+          </React.Fragment>
+        )}
       </Container>
     );
   }
