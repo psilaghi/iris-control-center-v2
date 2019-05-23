@@ -119,7 +119,10 @@ const withExpand = WrappedComponent => {
 };
 
 class SelectedRunDetails extends React.Component {
-  openLog = () => {};
+  openLog = () => {
+    // window.location.href="file:///G:\Workspace\iris-control-center-v2\public\runs\20190329085036\iris_log.log";
+    window.location.href = 'localhost:3000/runs/20190329085036/iris_log.log';
+  };
 
   renderDetails = (data, keyName, KeyComponent, ValueComponent) => {
     const DetailsComponent = withExpand(props => (
