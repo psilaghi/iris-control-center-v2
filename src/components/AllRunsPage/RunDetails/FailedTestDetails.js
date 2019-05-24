@@ -84,6 +84,9 @@ const ExpandButton = styled.button`
   cursor: pointer;
 `;
 const ThumbnailButton = styled.button`
+  display: flex;
+  align-items: center;
+  justify-content: center;
   border: none;
   padding: 10px 6px 10px 10px;
   background: none;
@@ -91,6 +94,11 @@ const ThumbnailButton = styled.button`
   &:focus {
     outline: none;
     border: none;
+  }
+  :hover {
+    border-radius: 50%;
+    background-color: #737373;
+    opacity: 0.2;
   }
   cursor: pointer;
 `;
@@ -190,7 +198,7 @@ class FailedTestDetails extends React.Component {
 
         <DataContainer>
           <span>Debug images</span>
-          <ThumbnailButton type="button">
+          <ThumbnailButton type="button" title="Open image thumbnails">
             <Icon icon="ThumbnailIcon" />
           </ThumbnailButton>
         </DataContainer>

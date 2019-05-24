@@ -7,6 +7,22 @@ const Container = styled.div`
   border: 1px solid #d7d7db;
   padding: 10px;
   /* min-height: 500px; */
+  display: grid;
+  grid-template-areas: 'left right';
+  grid-template-columns: 2fr 2fr;
+  column-gap: 30px;
+`;
+const LeftColumn = styled.div`
+  grid-area: left;
+  overflow: auto;
+`;
+const RightColumn = styled.div`
+  grid-area: right;
+  overflow: auto;
+`;
+const SystemConfig = styled.div`
+  font-size: 18px;
+  padding-bottom: 6px;
 `;
 const Details = styled.div`
   word-wrap: break-word;
@@ -14,12 +30,12 @@ const Details = styled.div`
   padding-left: 10px;
 `;
 const Detail = styled.div`
-  padding-bottom: 12px;
-  float: right;
+  padding-bottom: 6px;
+  /* float: right;
   width: 50%;
   &:nth-child(odd) {
     float: left;
-  }
+  } */
 `;
 const ExpandIcon = styled(Icon)`
   ${props => props.expanded && 'transform: rotate(90deg);'}
@@ -63,7 +79,7 @@ const ViewLogButton = styled.button`
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-top: 15px;
+  margin-bottom: 6px;
 `;
 const LogIcon = styled(Icon)`
   margin-left: 12px;
@@ -121,6 +137,20 @@ const withExpand = WrappedComponent => {
 };
 
 class SelectedRunDetails extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      paramsSection: false,
+      valuesSection: false
+    };
+  }
+
+  toggleCollapse = expandedSection => {
+    this.setState({
+      [expandedSection]: !this.state[expandedSection]
+    });
+  };
+
   renderDetails = (data, keyName, KeyComponent, ValueComponent) => {
     const DetailsComponent = withExpand(props => (
       <Detail>
@@ -154,19 +184,114 @@ class SelectedRunDetails extends React.Component {
 
   render() {
     return (
+      // <Container>
+      //   {this.props.details && (
+      //     <React.Fragment>
+      //       {this.renderDetails(this.props.details, 'details', DetailKey, DetailValue)}
+      //       <ViewLogButton
+      //         as="a"
+      //         target="_blank"
+      //         href={`/runs/${this.props.details.run_id}/iris_log.log`}
+      //         title="Open the log file"
+      //       >
+      //         View Log
+      //         <LogIcon icon="ExternalLink" />
+      //       </ViewLogButton>
+      //     </React.Fragment>
+      //   )}
+      // </Container>
       <Container>
         {this.props.details && (
           <React.Fragment>
-            {this.renderDetails(this.props.details, 'details', DetailKey, DetailValue)}
-            <ViewLogButton
-              as="a"
-              target="_blank"
-              href={`/runs/${this.props.details.run_id}/iris_log.log`}
-              title="Open the log file"
-            >
-              View Log
-              <LogIcon icon="ExternalLink" />
-            </ViewLogButton>
+            <LeftColumn>
+              <Details>
+                <Detail>
+                  <DetailKey>Run ID: </DetailKey>
+                  <DetailValue>{this.props.details.run_id}</DetailValue>
+                </Detail>
+                <Detail>
+                  <DetailKey>Duration of Run: </DetailKey>
+                  <DetailValue>{this.props.details.total_time}</DetailValue>
+                </Detail>
+                <br />
+                <Detail>
+                  <DetailKey>Passed/Total: </DetailKey>
+                  <DetailValue>
+                    {this.props.details.passed}/{this.props.details.total}
+                  </DetailValue>
+                </Detail>
+                <Detail>
+                  <DetailKey>Failures: </DetailKey>
+                  <DetailValue>{this.props.details.failed}</DetailValue>
+                </Detail>
+                <Detail>
+                  <DetailKey>Skipped: </DetailKey>
+                  <DetailValue>{this.props.details.skipped}</DetailValue>
+                </Detail>
+                <Detail>
+                  <DetailKey>Errors: </DetailKey>
+                  <DetailValue>{this.props.details.errors}</DetailValue>
+                </Detail>
+                <br />
+                <SystemConfig>System Config</SystemConfig>
+                <Detail>
+                  <DetailKey>Iris Version: </DetailKey>
+                  <DetailValue>{this.props.details.iris_version}</DetailValue>
+                </Detail>
+                <Detail>
+                  <DetailKey>Branch: </DetailKey>
+                  <DetailValue>{this.props.details.iris_branch}</DetailValue>
+                </Detail>
+                <Detail>
+                  <DetailKey>Repo: </DetailKey>
+                  <DetailValue>{this.props.details.iris_repo}</DetailValue>
+                </Detail>
+                <Detail>
+                  <DetailKey>Branch Head: </DetailKey>
+                  <DetailValue>{this.props.details.iris_branch_head}</DetailValue>
+                </Detail>
+                <ViewLogButton
+                  as="a"
+                  target="_blank"
+                  href={`/runs/${this.props.details.run_id}/iris_log.log`}
+                  title="Open the log file"
+                >
+                  View Log
+                  <LogIcon icon="ExternalLink" />
+                </ViewLogButton>
+                <br />
+                <Detail>
+                  <DetailKey>Args: </DetailKey>
+                  <DetailValue>{this.props.details.args}</DetailValue>
+                </Detail>
+                <Detail>
+                  <DetailKey>Config: </DetailKey>
+                  <DetailValue>{this.props.details.config}</DetailValue>
+                </Detail>
+              </Details>
+            </LeftColumn>
+
+            <RightColumn>
+              <Details>
+                <Detail>
+                  <ExpandButton type="button" onClick={() => this.toggleCollapse('paramsSection')}>
+                    <ExpandIcon expanded={this.state.paramsSection} icon="CarrotRight" />
+                  </ExpandButton>
+                  <DetailKey>Params: </DetailKey>
+                </Detail>
+                {this.state.paramsSection &&
+                  this.renderDetails(this.props.details.params, 'details', DetailKey, DetailValue)}
+
+                <Detail>
+                  <ExpandButton type="button" onClick={() => this.toggleCollapse('valuesSection')}>
+                    <ExpandIcon expanded={this.state.valuesSection} icon="CarrotRight" />
+                  </ExpandButton>
+                  <DetailKey>Values: </DetailKey>
+                </Detail>
+                {this.state.valuesSection &&
+                  this.renderDetails(this.props.details.values, 'details', DetailKey, DetailValue)}
+              </Details>
+            </RightColumn>
           </React.Fragment>
         )}
       </Container>
