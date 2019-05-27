@@ -34,6 +34,7 @@ const StatusCell = styled.div`
 `;
 const Logo = styled.img`
   height: 27px;
+  ${props => props.center && 'margin: 0 auto;'}
 `;
 const SortIconsContainer = styled.div`
   display: none;
@@ -42,6 +43,7 @@ const SortIconsContainer = styled.div`
 const HeaderCell = styled.div`
   display: flex;
   align-items: center;
+  ${props => props.center && 'justify-content: center;'}
 `;
 const DeleteButton = styled.button`
   border: none;
@@ -73,15 +75,15 @@ const TABLE_COLUMNS = [
   },
   {
     Header: () => (
-      <HeaderCell>
-        <span>App</span>
+      <HeaderCell center>
+        <span>Target</span>
         <SortIconsContainer className="sort-icons">
           <Icon icon="sort" />
         </SortIconsContainer>
       </HeaderCell>
     ),
     accessor: 'target',
-    Cell: data => <Logo src={`/images/${data.value}.png`} />,
+    Cell: data => <Logo src={`/images/${data.value}.png`} center />,
     className: 'table__cell'
   },
   {
@@ -130,8 +132,11 @@ const TABLE_COLUMNS = [
       </HeaderCell>
     ),
     accessor: 'duration',
-    Cell: seconds => {
-      seconds = Number(seconds.value);
+    Cell: secondsData => {
+      const seconds = Number(secondsData.value);
+      if (seconds < 1) {
+        return '< 1 sec';
+      }
       var d = Math.floor(seconds / (3600 * 24));
       var h = Math.floor((seconds % (3600 * 24)) / 3600);
       var m = Math.floor((seconds % 3600) / 60);
@@ -207,7 +212,7 @@ class RunsTable extends React.Component {
           },
           {
             id: 'target',
-            value: 60
+            value: 80
           },
           {
             id: 'actions',
@@ -217,6 +222,7 @@ class RunsTable extends React.Component {
         showPagination={false}
         resizable={false}
         minRows={4}
+        pageSize={this.props.runs.length}
         {...!this.props.runs.length && {
           TbodyComponent: () => <div className="no-data-tbody">No test results yet.</div>,
           NoDataComponent: () => null

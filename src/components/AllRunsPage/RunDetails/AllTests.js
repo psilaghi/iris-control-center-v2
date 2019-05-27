@@ -16,10 +16,10 @@ const NoDataContainer = styled.div`
   justify-content: center;
   border: 1px solid #d7d7db;
   margin-left: 10px;
-  min-height: 150px;
+  min-height: 250px;
 `;
 const SyledIcon = styled(Icon)`
-  font-size: 100px;
+  font-size: 80px;
 `;
 
 class AllTests extends React.Component {

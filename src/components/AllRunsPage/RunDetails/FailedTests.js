@@ -16,10 +16,10 @@ const NoSelection = styled.div`
   justify-content: center;
   border: 1px solid #d7d7db;
   margin-left: 10px;
-  min-height: 150px;
+  min-height: 250px;
 `;
 const SyledIcon = styled(Icon)`
-  font-size: 100px;
+  font-size: 80px;
 `;
 const NoDataContainer = styled.div`
   display: flex;
@@ -28,7 +28,8 @@ const NoDataContainer = styled.div`
   border: 1px solid #d7d7db;
   min-height: 150px;
   font-size: 28px;
-  color: rgba(215, 215, 219, 0.5);
+  color: #b1b1b3;
+  font-weight: 600;
 `;
 
 class FailedTests extends React.Component {

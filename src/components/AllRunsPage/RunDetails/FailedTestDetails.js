@@ -1,6 +1,8 @@
 import * as React from 'react';
 import styled from 'styled-components';
 import Icon from '../../Icon';
+import Gallery from 'react-grid-gallery';
+import IMAGES from './images';
 
 const Container = styled.div`
   display: flex;
@@ -59,7 +61,8 @@ const DataContainer = styled.div`
   padding: 0 30px 0 10px;
   margin: 10px 0;
   font-size: 18px;
-  ${props => props.expanded && 'border-bottom: 1px solid #D7D7DB;'}
+  border-bottom: 1px solid transparent;
+  ${props => props.expanded && 'border-color: #D7D7DB;'}
 `;
 const AssertSummary = styled.div`
   display: flex;
@@ -88,7 +91,8 @@ const ThumbnailButton = styled.button`
   align-items: center;
   justify-content: center;
   border: none;
-  padding: 10px 6px 10px 10px;
+  padding: 10px;
+  margin-right: -4px;
   background: none;
   &:active,
   &:focus {
@@ -97,12 +101,18 @@ const ThumbnailButton = styled.button`
   }
   :hover {
     border-radius: 50%;
-    background-color: #737373;
-    opacity: 0.2;
+    background-color: rgba(115, 115, 115, 0.2);
   }
   cursor: pointer;
 `;
-
+const ImagesContainer = styled.div`
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.8);
+`;
 const withExpand = WrappedComponent => {
   class WithExpand extends React.Component {
     state = {
@@ -134,7 +144,8 @@ class FailedTestDetails extends React.Component {
     super(props);
     this.state = {
       assertsSection: false,
-      detailsSection: false
+      detailsSection: false,
+      displayImages: false
     };
   }
 
@@ -179,6 +190,11 @@ class FailedTestDetails extends React.Component {
     const { assert, debug_images, ...details } = this.props.test;
     return (
       <Container>
+        {this.state.displayImages && (
+          <ImagesContainer>
+            <Gallery images={IMAGES} />
+          </ImagesContainer>
+        )}
         <TitleSummary>
           <Title>{this.props.test.name}</Title>
           <Description>{this.props.test.description}</Description>
@@ -198,7 +214,11 @@ class FailedTestDetails extends React.Component {
 
         <DataContainer>
           <span>Debug images</span>
-          <ThumbnailButton type="button" title="Open image thumbnails">
+          <ThumbnailButton
+            type="button"
+            title="Open image thumbnails"
+            onClick={() => this.setState({ displayImages: true })}
+          >
             <Icon icon="ThumbnailIcon" />
           </ThumbnailButton>
         </DataContainer>

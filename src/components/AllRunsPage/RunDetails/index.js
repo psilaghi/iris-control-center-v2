@@ -7,13 +7,14 @@ import SwitchDetails from './SwitchDetails';
 
 const NoDataContainer = styled.div`
   font-size: 28px;
-  color: rgba(215, 215, 219, 0.5);
+  color: #b1b1b3;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   height: 500px;
   border: 1px solid #d7d7db;
+  font-weight: 600;
 `;
 const SyledIcon = styled(Icon)`
   font-size: 150px;

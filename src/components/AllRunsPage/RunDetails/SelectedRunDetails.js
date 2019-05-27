@@ -62,6 +62,7 @@ const ViewLogButton = styled.button`
   border: none;
   border-radius: 4px;
   background-color: rgba(12, 12, 13, 0.1);
+  &:link,
   &:active,
   &:visited {
     color: inherit;

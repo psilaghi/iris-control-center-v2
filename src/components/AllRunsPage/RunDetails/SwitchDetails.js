@@ -14,6 +14,7 @@ const NoDataContainer = styled.div`
   min-height: 150px;
   font-size: 28px;
   color: red;
+  font-weight: 600;
 `;
 
 const EMPTY_LIST = [];
