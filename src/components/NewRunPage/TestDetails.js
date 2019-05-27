@@ -19,6 +19,7 @@ const CloseButton = styled.button`
     outline: none;
     border: none;
   }
+  color: #0060df;
 `;
 const Details = styled.div`
   word-wrap: break-word;

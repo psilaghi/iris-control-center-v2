@@ -66,8 +66,8 @@ export default {
     `
     <g>
       <title>Layer 1</title>
-      <path fill="none" stroke="#0060df" stroke-width="2" stroke-miterlimit="4" id="path2985" d="m2,14.000017l12,-12"/>
-      <path fill="none" stroke="#0060df" stroke-width="2" stroke-miterlimit="4" id="path2985-1" d="m2,2.000017l12,12"/>
+      <path fill="none" stroke="currentColor" stroke-width="2" stroke-miterlimit="4" id="path2985" d="m2,14.000017l12,-12"/>
+      <path fill="none" stroke="currentColor" stroke-width="2" stroke-miterlimit="4" id="path2985-1" d="m2,2.000017l12,12"/>
     </g>
   `
   ],

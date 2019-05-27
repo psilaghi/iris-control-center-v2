@@ -111,8 +111,27 @@ const ImagesContainer = styled.div`
   right: 0;
   bottom: 0;
   left: 0;
-  background-color: rgba(0, 0, 0, 0.8);
+  background-color: rgba(0, 0, 0, 0.7);
+  padding: 36px;
+  box-sizing: border-box;
+  overflow: auto;
 `;
+const CloseButton = styled.button`
+  border: none;
+  padding: 10px;
+  background: none;
+  &:active,
+  &:focus {
+    outline: none;
+    border: none;
+  }
+  color: white;
+  cursor: pointer;
+  position: absolute;
+  right: 0;
+  top: 0;
+`;
+
 const withExpand = WrappedComponent => {
   class WithExpand extends React.Component {
     state = {
@@ -188,11 +207,37 @@ class FailedTestDetails extends React.Component {
 
   render() {
     const { assert, debug_images, ...details } = this.props.test;
+
+    // const {data, name} = this.props.test;
+    const showCarousel = this.props.test.debug_images;
+    let images = [];
+    var path = this.props.test.debug_image_directory;
+
+    if (showCarousel) {
+      var new_path = path.replace(/\\/gi, '/') + '/';
+      var final_path = new_path.substring(new_path.indexOf('/runs'), new_path.length);
+
+      this.props.test.debug_images.forEach(item => {
+        images.push({
+          src: final_path + item,
+          thumbnail: final_path + item,
+          thumbnailWidth: 320,
+          thumbnailHeight: 212,
+          caption: item
+        });
+      });
+    }
     return (
       <Container>
-        {this.state.displayImages && (
-          <ImagesContainer>
-            <Gallery images={IMAGES} />
+        {this.state.displayImages && showCarousel && (
+          <ImagesContainer
+            onKeyDown={event => event.key === 'Escape' && this.setState({ displayImages: false })}
+            tabIndex="0"
+          >
+            <Gallery images={images} enableImageSelection={false} />
+            <CloseButton onClick={() => this.setState({ displayImages: false })}>
+              <Icon icon="exit" />
+            </CloseButton>
           </ImagesContainer>
         )}
         <TitleSummary>
