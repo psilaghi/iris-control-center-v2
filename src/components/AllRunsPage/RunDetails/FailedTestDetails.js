@@ -1,8 +1,7 @@
-import * as React from 'react';
+import React from 'react';
 import styled from 'styled-components';
 import Icon from '../../Icon';
 import Gallery from 'react-grid-gallery';
-import IMAGES from './images';
 
 const Container = styled.div`
   display: flex;
@@ -35,6 +34,10 @@ const AssertKey = styled.div`
 `;
 const AssertValue = styled.div`
   background-color: #f9f9fa;
+  padding: 0 20px;
+`;
+const Code = styled.code`
+  color: black;
 `;
 const Description = styled.div`
   font-size: 15px;
@@ -111,7 +114,7 @@ const ImagesContainer = styled.div`
   right: 0;
   bottom: 0;
   left: 0;
-  background-color: rgba(0, 0, 0, 0.7);
+  background-color: rgba(0, 0, 0, 0.8);
   padding: 36px;
   box-sizing: border-box;
   overflow: auto;
@@ -164,13 +167,30 @@ class FailedTestDetails extends React.Component {
     this.state = {
       assertsSection: false,
       detailsSection: false,
-      displayImages: false
+      displayImages: false,
+      hasOpenedImage: false
     };
   }
 
+  componentDidMount() {
+    document.addEventListener('keydown', this.handleEsc);
+  }
+  componentWillUnmount() {
+    document.removeEventListener('keydown', this.handleEsc);
+  }
+  handleEsc = event => {
+    if (event.keyCode === 27 && !this.state.hasOpenedImage) {
+      this.setState({ displayImages: false });
+    }
+  };
   toggleCollapse = expandedSection => {
     this.setState({
       [expandedSection]: !this.state[expandedSection]
+    });
+  };
+  toggleOpenedImage = () => {
+    this.setState({
+      hasOpenedImage: !this.state.hasOpenedImage
     });
   };
 
@@ -208,8 +228,7 @@ class FailedTestDetails extends React.Component {
   render() {
     const { assert, debug_images, ...details } = this.props.test;
 
-    // const {data, name} = this.props.test;
-    const showCarousel = this.props.test.debug_images;
+    const showCarousel = this.props.test.debug_images && this.props.test.debug_images.length;
     let images = [];
     var path = this.props.test.debug_image_directory;
 
@@ -227,15 +246,21 @@ class FailedTestDetails extends React.Component {
         });
       });
     }
+
     return (
       <Container>
-        {this.state.displayImages && showCarousel && (
-          <ImagesContainer
-            onKeyDown={event => event.key === 'Escape' && this.setState({ displayImages: false })}
-            tabIndex="0"
-          >
-            <Gallery images={images} enableImageSelection={false} />
-            <CloseButton onClick={() => this.setState({ displayImages: false })}>
+        {this.state.displayImages && (
+          <ImagesContainer>
+            <Gallery
+              images={images}
+              lightboxWillOpen={this.toggleOpenedImage}
+              lightboxWillClose={this.toggleOpenedImage}
+              enableImageSelection={false}
+            />
+            <CloseButton
+              onClick={() => this.setState({ displayImages: false })}
+              title="Close (Esc)"
+            >
               <Icon icon="exit" />
             </CloseButton>
           </ImagesContainer>
@@ -255,11 +280,29 @@ class FailedTestDetails extends React.Component {
             <ExpandIcon expanded={this.state.assertsSection} icon="arrowhead-right" />
           </ExpandButton>
         </DataContainer>
-        {this.state.assertsSection && this.renderDetails(assert, 'assert', AssertKey, AssertValue)}
+        {this.state.assertsSection && (
+          <React.Fragment>
+            <Details>
+              <Detail>
+                <AssertKey>code: </AssertKey>
+                <AssertValue>
+                  <Code>{this.props.test.assert.code}</Code>
+                </AssertValue>
+              </Detail>
+              <Detail>
+                <AssertKey>call_stack: </AssertKey>
+                <AssertValue>
+                  <Code>{this.props.test.assert.call_stack}</Code>
+                </AssertValue>
+              </Detail>
+            </Details>
+          </React.Fragment>
+        )}
 
         <DataContainer>
           <span>Debug images</span>
           <ThumbnailButton
+            disabled={!showCarousel}
             type="button"
             title="Open image thumbnails"
             onClick={() => this.setState({ displayImages: true })}
