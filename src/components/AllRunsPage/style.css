@@ -38,6 +38,7 @@
   border: none;
   /* padding-bottom: 16px; */
   height: 211px;
+  overflow: auto;
 }
 
 .ReactTable .rt-tbody .rt-tr-group:hover {

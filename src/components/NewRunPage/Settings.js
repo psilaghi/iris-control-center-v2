@@ -14,6 +14,7 @@ const LaunchButton = styled.button`
   margin: 10px;
   width: 192px;
   ${props => props.disabled && 'opacity: 0.5;'}
+  cursor: pointer;
 `;
 const Title = styled.h1`
   color: #737373;

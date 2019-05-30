@@ -20,6 +20,7 @@ const CloseButton = styled.button`
     border: none;
   }
   color: #0060df;
+  cursor: pointer;
 `;
 const Details = styled.div`
   word-wrap: break-word;

@@ -38,6 +38,7 @@ const AssertValue = styled.div`
 `;
 const Code = styled.code`
   color: black;
+  white-space: pre-wrap;
 `;
 const Description = styled.div`
   font-size: 15px;

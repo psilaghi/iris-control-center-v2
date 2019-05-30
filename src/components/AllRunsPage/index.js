@@ -33,6 +33,7 @@ const DeleteAllButton = styled.button`
   align-items: center;
   justify-content: center;
   margin-top: 15px;
+  cursor: pointer;
 `;
 const ButtonContainer = styled.div`
   float: right;

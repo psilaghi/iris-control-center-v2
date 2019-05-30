@@ -63,6 +63,7 @@ const DeleteButton = styled.button`
   }
   visibility: hidden;
   color: #0060df;
+  cursor: pointer;
 `;
 
 const TABLE_COLUMNS = [
@@ -89,14 +90,15 @@ const TABLE_COLUMNS = [
   {
     Header: () => (
       <HeaderCell>
-        <span>ID #</span>
+        <span>Run ID</span>
         <SortIconsContainer className="sort-icons">
           <Icon icon="sort" />
         </SortIconsContainer>
       </HeaderCell>
     ),
     accessor: 'id',
-    className: 'table__cell'
+    className: 'table__cell',
+    minWidth: 140
   },
   {
     Header: () => (
@@ -108,7 +110,8 @@ const TABLE_COLUMNS = [
       </HeaderCell>
     ),
     accessor: 'locale',
-    className: 'table__cell'
+    className: 'table__cell',
+    minWidth: 70
   },
   {
     Header: () => (
@@ -120,7 +123,8 @@ const TABLE_COLUMNS = [
       </HeaderCell>
     ),
     accessor: 'total',
-    className: 'table__cell'
+    className: 'table__cell',
+    minWidth: 110
   },
   {
     Header: () => (
@@ -148,7 +152,8 @@ const TABLE_COLUMNS = [
       var sDisplay = s > 0 ? s + (s === 1 ? ' sec' : ' sec') : '';
       return dDisplay + hDisplay + mDisplay + sDisplay;
     },
-    className: 'table__cell'
+    className: 'table__cell',
+    minWidth: 200
   },
   {
     Header: () => (
@@ -168,7 +173,8 @@ const TABLE_COLUMNS = [
       moment(data.original.id, 'YYYYMMDDHHmmss')
         .add(data.original.duration, 's')
         .calendar(),
-    className: 'table__cell'
+    className: 'table__cell',
+    minWidth: 200
   }
 ];
 

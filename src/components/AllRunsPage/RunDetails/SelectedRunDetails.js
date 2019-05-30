@@ -281,7 +281,7 @@ class SelectedRunDetails extends React.Component {
                   <DetailKey>Params: </DetailKey>
                 </Detail>
                 {this.state.paramsSection &&
-                  this.renderDetails(this.props.details.params, 'details', DetailKey, DetailValue)}
+                  this.renderDetails(this.props.details.params, 'params', DetailKey, DetailValue)}
 
                 <Detail>
                   <ExpandButton type="button" onClick={() => this.toggleCollapse('valuesSection')}>
@@ -290,7 +290,7 @@ class SelectedRunDetails extends React.Component {
                   <DetailKey>Values: </DetailKey>
                 </Detail>
                 {this.state.valuesSection &&
-                  this.renderDetails(this.props.details.values, 'details', DetailKey, DetailValue)}
+                  this.renderDetails(this.props.details.values, 'values', DetailKey, DetailValue)}
               </Details>
             </RightColumn>
           </React.Fragment>
