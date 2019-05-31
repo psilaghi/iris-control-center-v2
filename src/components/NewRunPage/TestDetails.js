@@ -35,24 +35,96 @@ const Title = styled.div`
 const Detail = styled.div`
   padding-bottom: 12px;
 `;
-const DetailTitle = styled.i`
+const ExpandableDetail = styled(Detail)`
+  display: flex;
+  align-items: center;
+`;
+const DetailKey = styled.i`
   color: #0060df;
 `;
+const DetailValue = styled.span``;
+const ExpandIcon = styled(Icon)`
+  ${props => props.expanded && 'transform: rotate(90deg);'}
+`;
+const ExpandButton = styled.button`
+  border: none;
+  padding: 0 10px 0 0;
+  background: none;
+  color: #0060df;
+  &:active,
+  &:focus {
+    outline: none;
+    border: none;
+  }
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+`;
 
-function TestDetails(props) {
-  const renderDetails = (data, keyName) => {
+const withExpand = WrappedComponent => {
+  class WithExpand extends React.Component {
+    state = {
+      expanded: false
+    };
+
+    handleToggleClick = () => {
+      this.setState({
+        expanded: !this.state.expanded
+      });
+    };
+
+    render() {
+      return (
+        <WrappedComponent
+          {...this.props}
+          expanded={this.state.expanded}
+          onToggleClick={this.handleToggleClick}
+        />
+      );
+    }
+  }
+
+  return WithExpand;
+};
+
+class TestDetails extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      assertsSection: false,
+      detailsSection: false,
+      displayImages: false,
+      hasOpenedImage: false
+    };
+  }
+
+  renderDetails = (data, keyName, KeyComponent, ValueComponent) => {
+    const DetailsComponent = withExpand(props => (
+      <React.Fragment>
+        <ExpandableDetail>
+          <ExpandButton type="button" onClick={props.onToggleClick}>
+            <ExpandIcon expanded={props.expanded} icon="CarrotRight" />
+          </ExpandButton>
+          <KeyComponent>{props.attrName}: </KeyComponent>
+        </ExpandableDetail>
+        {props.expanded && (
+          <ValueComponent>
+            {this.renderDetails(data[props.attrName], props.attrName, KeyComponent, ValueComponent)}
+          </ValueComponent>
+        )}
+      </React.Fragment>
+    ));
+
     return (
       <Details key={keyName}>
         {Object.keys(data).map(key =>
           data[key] && typeof data[key] === 'object' ? (
-            <Detail key={key}>
-              <DetailTitle>{key}: </DetailTitle>
-              {renderDetails(data[key], key)}
-            </Detail>
+            <DetailsComponent key={key} attrName={key} />
           ) : (
             <Detail key={key}>
-              <DetailTitle>{key}: </DetailTitle>
-              {data[key] || 'null'}
+              <KeyComponent>{key}: </KeyComponent>
+              <ValueComponent>{data[key] + ''}</ValueComponent>
             </Detail>
           )
         )}
@@ -60,15 +132,17 @@ function TestDetails(props) {
     );
   };
 
-  return (
-    <Container>
-      <CloseButton type="button" onClick={props.onClose}>
-        <Icon icon="exit" />
-      </CloseButton>
-      <Title>{props.test.name}</Title>
-      {renderDetails(props.test, 'test')}
-    </Container>
-  );
+  render() {
+    return (
+      <Container>
+        <CloseButton type="button" onClick={this.props.onClose}>
+          <Icon icon="exit" />
+        </CloseButton>
+        <Title>{this.props.test.name}</Title>
+        {this.renderDetails(this.props.test, 'test', DetailKey, DetailValue)}
+      </Container>
+    );
+  }
 }
 
 export default TestDetails;

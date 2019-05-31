@@ -6,7 +6,6 @@ const Container = styled.div`
   overflow: auto;
   border: 1px solid #d7d7db;
   padding: 10px;
-  /* min-height: 500px; */
   display: grid;
   grid-template-areas: 'left right';
   grid-template-columns: 2fr 2fr;
@@ -31,11 +30,12 @@ const Details = styled.div`
 `;
 const Detail = styled.div`
   padding-bottom: 6px;
-  /* float: right;
-  width: 50%;
-  &:nth-child(odd) {
-    float: left;
-  } */
+  display: flex;
+  align-items: center;
+`;
+const ExpandableDetail = styled(Detail)`
+  display: flex;
+  align-items: center;
 `;
 const ExpandIcon = styled(Icon)`
   ${props => props.expanded && 'transform: rotate(90deg);'}
@@ -51,9 +51,13 @@ const ExpandButton = styled.button`
     border: none;
   }
   cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
 `;
 const DetailKey = styled.i`
   color: #0060df;
+  margin-right: 5px;
 `;
 const DetailValue = styled.span``;
 const ViewLogButton = styled.button`
@@ -85,31 +89,6 @@ const ViewLogButton = styled.button`
 const LogIcon = styled(Icon)`
   margin-left: 12px;
 `;
-
-// function SelectedRunDetails(props) {
-//   const renderDetails = (data, keyName) => {
-//     return (
-//       <Details key={keyName}>
-//         {Object.keys(data).map(key =>
-//           data[key] && typeof data[key] === 'object' ? (
-//             <Detail key={key}>
-//               <DetailTitle>{key}: </DetailTitle>
-//               {renderDetails(data[key], key)}
-//             </Detail>
-//           ) : (
-//             <Detail key={key}>
-//               <DetailTitle>{key}: </DetailTitle>
-//               {data[key] + ''}
-//             </Detail>
-//           )
-//         )}
-//       </Details>
-//     );
-//   };
-//   return <Container>{props.details && renderDetails(props.details, 'details')}</Container>;
-// }
-
-// export default SelectedRunDetails;
 
 const withExpand = WrappedComponent => {
   class WithExpand extends React.Component {
@@ -154,17 +133,19 @@ class SelectedRunDetails extends React.Component {
 
   renderDetails = (data, keyName, KeyComponent, ValueComponent) => {
     const DetailsComponent = withExpand(props => (
-      <Detail>
-        <ExpandButton type="button" onClick={props.onToggleClick}>
-          <ExpandIcon expanded={props.expanded} icon="CarrotRight" />
-        </ExpandButton>
-        <KeyComponent>{props.attrName}: </KeyComponent>
+      <React.Fragment>
+        <ExpandableDetail>
+          <ExpandButton type="button" onClick={props.onToggleClick}>
+            <ExpandIcon expanded={props.expanded} icon="CarrotRight" />
+          </ExpandButton>
+          <KeyComponent>{props.attrName}: </KeyComponent>
+        </ExpandableDetail>
         {props.expanded && (
           <ValueComponent>
             {this.renderDetails(data[props.attrName], props.attrName, KeyComponent, ValueComponent)}
           </ValueComponent>
         )}
-      </Detail>
+      </React.Fragment>
     ));
 
     return (
@@ -185,22 +166,6 @@ class SelectedRunDetails extends React.Component {
 
   render() {
     return (
-      // <Container>
-      //   {this.props.details && (
-      //     <React.Fragment>
-      //       {this.renderDetails(this.props.details, 'details', DetailKey, DetailValue)}
-      //       <ViewLogButton
-      //         as="a"
-      //         target="_blank"
-      //         href={`/runs/${this.props.details.run_id}/iris_log.log`}
-      //         title="Open the log file"
-      //       >
-      //         View Log
-      //         <LogIcon icon="ExternalLink" />
-      //       </ViewLogButton>
-      //     </React.Fragment>
-      //   )}
-      // </Container>
       <Container>
         {this.props.details && (
           <React.Fragment>

@@ -9,12 +9,11 @@ const Container = styled.div`
   overflow: auto;
   border: 1px solid #d7d7db;
   margin-left: 10px;
-  /* min-height: 500px; */
 `;
 const Details = styled.div`
   word-wrap: break-word;
   font-size: 15px;
-  margin: 10px;
+  margin: 0 10px;
 `;
 const Title = styled.div`
   font-size: 21px;
@@ -23,6 +22,10 @@ const Title = styled.div`
 `;
 const Detail = styled.div`
   padding-bottom: 12px;
+`;
+const ExpandableDetail = styled(Detail)`
+  display: flex;
+  align-items: center;
 `;
 const DetailKey = styled.i`
   color: #0060df;
@@ -49,11 +52,12 @@ const DataContainer = styled.div`
   &:hover {
     background-color: #e6e6e6;
   }
-  height: 40px;
+  min-height: 40px;
   padding: 0 30px 0 10px;
   margin: 10px 0;
   font-size: 18px;
-  ${props => props.expanded && 'border-bottom: 1px solid #D7D7DB;'}
+  border-bottom: 1px solid transparent;
+  ${props => props.expanded && 'border-color: #D7D7DB;'}
 `;
 const ExpandIcon = styled(Icon)`
   ${props => props.expanded && 'transform: rotate(90deg);'}
@@ -69,6 +73,9 @@ const ExpandButton = styled.button`
     border: none;
   }
   cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
 `;
 const ThumbnailButton = styled.button`
   display: flex;
@@ -146,8 +153,9 @@ class AllTestDetails extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      assertsSection: false,
-      detailsSection: false
+      detailsSection: false,
+      displayImages: false,
+      hasOpenedImage: false
     };
   }
 
@@ -175,17 +183,19 @@ class AllTestDetails extends React.Component {
 
   renderDetails = (data, keyName, KeyComponent, ValueComponent) => {
     const DetailsComponent = withExpand(props => (
-      <Detail>
-        <ExpandButton type="button" onClick={props.onToggleClick}>
-          <ExpandIcon expanded={props.expanded} icon="CarrotRight" />
-        </ExpandButton>
-        <KeyComponent>{props.attrName}: </KeyComponent>
+      <React.Fragment>
+        <ExpandableDetail>
+          <ExpandButton type="button" onClick={props.onToggleClick}>
+            <ExpandIcon expanded={props.expanded} icon="CarrotRight" />
+          </ExpandButton>
+          <KeyComponent>{props.attrName}: </KeyComponent>
+        </ExpandableDetail>
         {props.expanded && (
           <ValueComponent>
             {this.renderDetails(data[props.attrName], props.attrName, KeyComponent, ValueComponent)}
           </ValueComponent>
         )}
-      </Detail>
+      </React.Fragment>
     ));
 
     return (

@@ -174,7 +174,7 @@ const TABLE_COLUMNS = [
         .add(data.original.duration, 's')
         .calendar(),
     className: 'table__cell',
-    minWidth: 200
+    minWidth: 250
   }
 ];
 

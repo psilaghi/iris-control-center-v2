@@ -9,12 +9,11 @@ const Container = styled.div`
   overflow: auto;
   border: 1px solid #d7d7db;
   margin-left: 10px;
-  /* min-height: 500px; */
 `;
 const Details = styled.div`
   word-wrap: break-word;
   font-size: 15px;
-  margin: 10px;
+  margin: 0 10px;
 `;
 const Title = styled.div`
   font-size: 21px;
@@ -23,6 +22,10 @@ const Title = styled.div`
 `;
 const Detail = styled.div`
   padding-bottom: 12px;
+`;
+const ExpandableDetail = styled(Detail)`
+  display: flex;
+  align-items: center;
 `;
 const DetailKey = styled.i`
   color: #0060df;
@@ -36,9 +39,8 @@ const AssertValue = styled.div`
   background-color: #f9f9fa;
   padding: 0 20px;
 `;
-const Code = styled.code`
+const Code = styled.pre`
   color: black;
-  white-space: pre-wrap;
 `;
 const Description = styled.div`
   font-size: 15px;
@@ -61,7 +63,7 @@ const DataContainer = styled.div`
   &:hover {
     background-color: #e6e6e6;
   }
-  height: 40px;
+  min-height: 40px;
   padding: 0 30px 0 10px;
   margin: 10px 0;
   font-size: 18px;
@@ -74,6 +76,7 @@ const AssertSummary = styled.div`
 `;
 const StyledWarningIcon = styled(Icon)`
   margin-right: 10px;
+  flex-shrink: 0;
 `;
 const ExpandIcon = styled(Icon)`
   ${props => props.expanded && 'transform: rotate(90deg);'}
@@ -89,6 +92,9 @@ const ExpandButton = styled.button`
     border: none;
   }
   cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
 `;
 const ThumbnailButton = styled.button`
   display: flex;
@@ -197,17 +203,19 @@ class FailedTestDetails extends React.Component {
 
   renderDetails = (data, keyName, KeyComponent, ValueComponent) => {
     const DetailsComponent = withExpand(props => (
-      <Detail>
-        <ExpandButton type="button" onClick={props.onToggleClick}>
-          <ExpandIcon expanded={props.expanded} icon="CarrotRight" />
-        </ExpandButton>
-        <KeyComponent>{props.attrName}: </KeyComponent>
+      <React.Fragment>
+        <ExpandableDetail>
+          <ExpandButton type="button" onClick={props.onToggleClick}>
+            <ExpandIcon expanded={props.expanded} icon="CarrotRight" />
+          </ExpandButton>
+          <KeyComponent>{props.attrName}: </KeyComponent>
+        </ExpandableDetail>
         {props.expanded && (
           <ValueComponent>
             {this.renderDetails(data[props.attrName], props.attrName, KeyComponent, ValueComponent)}
           </ValueComponent>
         )}
-      </Detail>
+      </React.Fragment>
     ));
 
     return (
@@ -274,8 +282,7 @@ class FailedTestDetails extends React.Component {
         <DataContainer expanded={this.state.assertsSection}>
           <AssertSummary>
             <StyledWarningIcon icon="Warning" />
-            <span>Failed Assert:&nbsp;</span>
-            <span>{this.props.test.assert.message}</span>
+            <span>Failed Assert: {this.props.test.assert.message}</span>
           </AssertSummary>
           <ExpandButton type="button" onClick={() => this.toggleCollapse('assertsSection')}>
             <ExpandIcon expanded={this.state.assertsSection} icon="arrowhead-right" />

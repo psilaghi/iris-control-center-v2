@@ -30,13 +30,9 @@
   color: #737373;
   margin-bottom: 2px;
 }
-/* .no-data-tbody .ReactTable .rt-thead.-header {
-  color: #B1B1B3;
-} */
 
 .ReactTable {
   border: none;
-  /* padding-bottom: 16px; */
   height: 211px;
   overflow: auto;
 }
@@ -105,4 +101,6 @@
 
 .ReactTable .rt-tbody {
   overflow: overlay;
+  overflow: auto;
+  overflow-x: hidden;
 }
