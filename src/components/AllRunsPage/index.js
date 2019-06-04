@@ -7,6 +7,7 @@ import { confirmAlert } from 'react-confirm-alert';
 import 'react-confirm-alert/src/react-confirm-alert.css';
 import RunsTable from './RunsTable';
 import RunDetails from './RunDetails/';
+import './override.css';
 
 const Container = styled.div`
   padding: 15px 30px;

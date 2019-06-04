@@ -74,6 +74,9 @@ const AssertSummary = styled.div`
   display: flex;
   align-items: center;
 `;
+const AssertMessage = styled.span`
+  color: red;
+`;
 const StyledWarningIcon = styled(Icon)`
   margin-right: 10px;
   flex-shrink: 0;
@@ -282,7 +285,8 @@ class FailedTestDetails extends React.Component {
         <DataContainer expanded={this.state.assertsSection}>
           <AssertSummary>
             <StyledWarningIcon icon="Warning" />
-            <span>Failed Assert: {this.props.test.assert.message}</span>
+            <span>Failed Assert:&nbsp;</span>
+            <AssertMessage>{this.props.test.assert.message}</AssertMessage>
           </AssertSummary>
           <ExpandButton type="button" onClick={() => this.toggleCollapse('assertsSection')}>
             <ExpandIcon expanded={this.state.assertsSection} icon="arrowhead-right" />
