@@ -125,7 +125,7 @@ const ImagesContainer = styled.div`
   bottom: 0;
   left: 0;
   background-color: rgba(0, 0, 0, 0.8);
-  padding: 36px;
+  padding: 0 36px 36px;
   box-sizing: border-box;
   overflow: auto;
 `;
@@ -140,9 +140,20 @@ const CloseButton = styled.button`
   }
   color: white;
   cursor: pointer;
-  position: absolute;
-  right: 0;
+`;
+const GalleryTitle = styled.span`
+  font-size: 21px;
+`;
+const GalleryHeader = styled.div`
+  align-items: center;
+  background-color: inherit;
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 0;
+  position: sticky;
   top: 0;
+  z-index: 10;
 `;
 
 const withExpand = WrappedComponent => {
@@ -263,18 +274,21 @@ class FailedTestDetails extends React.Component {
       <Container>
         {this.state.displayImages && (
           <ImagesContainer>
+            <GalleryHeader>
+              <GalleryTitle>{this.props.test.name}</GalleryTitle>
+              <CloseButton
+                onClick={() => this.setState({ displayImages: false })}
+                title="Close (Esc)"
+              >
+                <Icon icon="exit" />
+              </CloseButton>
+            </GalleryHeader>
             <Gallery
               images={images}
               lightboxWillOpen={this.toggleOpenedImage}
               lightboxWillClose={this.toggleOpenedImage}
               enableImageSelection={false}
             />
-            <CloseButton
-              onClick={() => this.setState({ displayImages: false })}
-              title="Close (Esc)"
-            >
-              <Icon icon="exit" />
-            </CloseButton>
           </ImagesContainer>
         )}
         <TitleSummary>
